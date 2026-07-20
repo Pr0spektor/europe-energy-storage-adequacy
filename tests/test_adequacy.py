@@ -133,6 +133,56 @@ def test_real_german_gas_is_strongly_seasonal():
     # roughly a fifth of annual consumption sits above a flat baseline
     assert all(0.10 < r["swing_share"] < 0.30 for r in de)
 
+# ---- Eurostat client: JSON-stat decoding & validation ----
+import eurostat as EU
+
+def _doc(values):
+    """A JSON-stat document shaped exactly like the real Eurostat response (2 geos x 2 months)."""
+    return {
+        "id": ["freq", "nrg_bal", "siec", "unit", "geo", "time"],
+        "size": [1, 1, 1, 1, 2, 2],
+        "value": values,
+        "dimension": {
+            "geo": {"category": {"index": {"DE": 0, "FR": 1}}},
+            "time": {"category": {"index": {"2024-01": 0, "2024-02": 1}}},
+        },
+    }
+
+def test_parse_decodes_geo_and_time_from_flat_index():
+    # flat index = geo_idx * n_time + time_idx  ->  DE Jan=0, DE Feb=1, FR Jan=2, FR Feb=3
+    s = EU.parse_jsonstat(_doc({"0": 100.0, "1": 90.0, "2": 50.0, "3": 45.0}))
+    assert s["DE"]["2024"][0] == 100.0 and s["DE"]["2024"][1] == 90.0
+    assert s["FR"]["2024"][0] == 50.0 and s["FR"]["2024"][1] == 45.0
+    assert s["DE"]["2024"][5] is None          # untouched months stay empty
+
+def test_parse_handles_sparse_values():
+    s = EU.parse_jsonstat(_doc({"2": 50.0}))   # only FR January reported
+    assert "FR" in s and s["FR"]["2024"][0] == 50.0
+    assert "DE" not in s
+
+def test_parse_empty_document():
+    assert EU.parse_jsonstat({"value": {}}) == {}
+    assert EU.parse_jsonstat(None) == {}
+
+def test_validate_flags_negative_and_counts_coverage():
+    good = {"DE": {"2024": [1.0] * 12}}
+    rep = EU.validate(good)
+    assert rep["ok"] and rep["complete_country_years"] == 1 and rep["countries"] == 1
+    bad = {"DE": {"2024": [-1.0] + [1.0] * 11}, "FR": {"2024": [None] * 12}}
+    rep2 = EU.validate(bad)
+    assert not rep2["ok"] and rep2["partial_country_years"] >= 0
+    assert any("negative" in i for i in rep2["issues"])
+    assert any("no observations" in i for i in rep2["issues"])
+
+def test_aggregates_are_separated_from_countries():
+    s = {"EU27_2020": {}, "EA21": {}, "DE": {}, "FR": {}}
+    assert set(EU.countries_only(s)) == {"DE", "FR"}
+
+def test_cached_dataset_passes_its_own_validation():
+    blob = EU.load_cache(EU.GAS) or {}
+    rep = EU.validate(blob.get("series", {}))
+    assert rep["ok"], rep["issues"]
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     passed = failed = 0

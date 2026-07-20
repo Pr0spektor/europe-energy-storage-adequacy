@@ -14,7 +14,7 @@ Stdlib only; unit-tested.
 """
 from __future__ import annotations
 from typing import Sequence
-from eurostat import monthly_series, GAS
+from eurostat import monthly_series, countries_only, GAS
 
 WINTER = (11, 0, 1)      # Dec, Jan, Feb (0-indexed)
 SUMMER = (5, 6, 7)       # Jun, Jul, Aug
@@ -51,9 +51,11 @@ def swing(months: Sequence[float | None]) -> dict | None:
             "swing_share": above / total if total else None}
 
 
-def country_year_table(series: dict | None = None) -> list[dict]:
+def country_year_table(series: dict | None = None, exclude_aggregates: bool = True) -> list[dict]:
     """One row per country-year with every seasonality metric."""
     series = series if series is not None else monthly_series(GAS)
+    if exclude_aggregates:
+        series = countries_only(series)
     rows = []
     for geo, years in sorted(series.items()):
         for year, months in sorted(years.items()):
@@ -87,6 +89,15 @@ def summarise(rows: Sequence[dict]) -> dict:
             "change": last["peak_to_trough"] - first["peak_to_trough"],
         }
     return out
+
+
+def rank_countries(rows: Sequence[dict] | None = None, metric: str = "mean_peak_to_trough") -> list[dict]:
+    """Countries ordered from most to least seasonal — who leans hardest on storage."""
+    rows = rows if rows is not None else country_year_table()
+    summary = summarise(rows)
+    ranked = [{"country": geo, **vals} for geo, vals in summary.items()]
+    ranked.sort(key=lambda r: r.get(metric) or 0.0, reverse=True)
+    return ranked
 
 
 if __name__ == "__main__":
