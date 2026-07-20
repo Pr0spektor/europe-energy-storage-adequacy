@@ -125,7 +125,8 @@ def test_real_eurostat_cache_is_loaded():
 
 def test_real_german_gas_is_strongly_seasonal():
     rows = SE.country_year_table()
-    de = [r for r in rows if r["country"] == "DE"]
+    # complete years only — the current year is still part-reported
+    de = [r for r in rows if r["country"] == "DE" and r["winter_summer"] is not None]
     assert len(de) >= 5
     # winter gas burn is at least twice the summer level in every year on record
     assert all(r["winter_summer"] > 2.0 for r in de)
