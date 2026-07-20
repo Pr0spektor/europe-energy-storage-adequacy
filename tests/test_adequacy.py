@@ -378,6 +378,73 @@ def test_peak_flexibility_totals_add_up():
     f = LNG.peak_flexibility("FR")
     assert approx(f["total_twh_d"], f["storage_twh_d"] + f["lng_twh_d"])
 
+
+# ---- cold-snap stress test ----
+import stress as ST
+
+def test_rate_bound_countries_fail_on_day_one():
+    rate = [r for r in ST.table(1.0) if r["constraint"] == "rate"]
+    assert {r["country"] for r in rate} >= {"BE", "PT", "LV"}
+    assert all(r["binds_on_day"] == 1 for r in rate)
+
+def test_germany_is_volume_bound_not_rate_bound():
+    r = ST.simulate("DE", 1.0)
+    assert r["constraint"] == "volume" and r["binds_on_day"] == 55
+    assert approx(r["daily_call_twh_d"], 3.97, rel=1e-3)
+
+def test_severity_shortens_or_holds_every_country():
+    m = ST.matrix()
+    cap = ST.MAX_DAYS + 1
+    for c, by_sev in m.items():
+        lo = by_sev[1.0] or cap
+        hi = by_sev[1.4] or cap
+        assert hi <= lo, (c, by_sev)
+
+def test_a_colder_winter_converts_volume_limits_into_rate_limits():
+    rate10 = {r["country"] for r in ST.table(1.0) if r["constraint"] == "rate"}
+    rate14 = {r["country"] for r in ST.table(1.4) if r["constraint"] == "rate"}
+    assert rate10 < rate14                    # strictly more countries bind on rate
+    assert "FR" in rate14 and "FR" not in rate10
+
+def test_spain_holds_longest_of_the_large_systems():
+    m = ST.matrix()
+    assert m["ES"][1.0] > m["DE"][1.0] and m["ES"][1.0] > m["FR"][1.0]
+
+def test_fragile_list_is_the_rate_bound_plus_fast_emptying():
+    f = ST.fragile(1.2, 30)
+    codes = {r["country"] for r in f}
+    assert "BE" in codes and "DE" not in codes
+
+def test_inventory_start_uses_last_winter_peak_fill():
+    d = ST._inputs()["DE"]
+    assert approx(d["start_stock_twh"], d["working_volume_twh"] * d["start_fill_pct"] / 100)
+    assert 60 < d["start_fill_pct"] < 100
+
+
+# ---- README headline claims (guard against silent drift) ----
+def test_readme_headline_numbers_still_hold():
+    import lng as _L, storage_fleet as _SF, network as _NW, agsi as _AG, stress as _ST
+    f = {r["code"]: r for r in _SF.fleet()}
+    lf = {r["code"]: r for r in _L.flexibility_table()}
+    dp = {r["code"]: r for r in _AG.snapshot()["winter_2025_26"]}
+    m = _ST.matrix()
+    reh = [x for x in _AG.facilities_de()["facilities"] if x["facility"] == "UGS Rehden"][0]
+    assert round(f["DE"]["working_volume_twh"]) == 246
+    assert round(f["DE"]["duration_days"]) == 35 and round(f["ES"]["duration_days"]) == 171
+    assert dp["BE"]["peak_utilisation_pct"] == 96 and dp["PT"]["peak_utilisation_pct"] == 96
+    assert round(lf["ES"]["lng_share"] * 100) == 84
+    assert round(lf["BE"]["lng_share"] * 100) == 81
+    assert round(lf["DE"]["lng_share"] * 100) == 14
+    assert round(100 * reh["working_gas_volume"] / f["DE"]["working_volume_twh"]) == 14
+    assert round(_NW.corridors()["NO->DE"]) == 1015
+    assert m["DE"][1.0] == 55 and m["DE"][1.2] == 45
+    assert m["FR"][1.0] == 62 and m["ES"][1.0] == 174
+
+def test_readme_rate_bound_counts():
+    import stress as _ST
+    assert len([r for r in _ST.table(1.0) if r["constraint"] == "rate"]) == 3
+    assert len([r for r in _ST.table(1.4) if r["constraint"] == "rate"]) == 10
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     passed = failed = 0

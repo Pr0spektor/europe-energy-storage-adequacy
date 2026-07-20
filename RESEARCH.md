@@ -174,6 +174,41 @@ The bottleneck is not pipe diameter. It is **concentration**: a single sea-facin
 
 ![Network](results/network_map.png)
 
+## The applied question — how long does a cold spell take to break something?
+
+Everything above is measurement. This is the test an operator, a regulator or a trader actually runs: **if it turns cold and stays cold, how many days do we have, and what fails first?** Storage stock starts at each country's own peak fill last winter; the daily call is its own observed worst day, scaled; LNG send-out supplies what it can and storage covers the rest, capped by published withdrawal capacity.
+
+Two failure modes, with opposite remedies:
+
+- **Rate-bound (day 1)** — capacity in GW cannot meet the call at all. More gas underground would change nothing; the fix is compressors, wells and interconnection.
+- **Volume-bound (day n)** — the rates are fine, the inventory empties. The fix is more cavern, or more imports booked earlier.
+
+| Country | Starting fill | Daily call | 1.0x worst day | 1.2x | 1.4x |
+|---|---|---|---|---|---|
+| Belgium | 94% | 0.89 TWh/d | day 1 — **rate** | day 1 — **rate** | day 1 — **rate** |
+| Latvia | 61% | 0.19 TWh/d | day 1 — **rate** | day 1 — **rate** | day 1 — **rate** |
+| Portugal | 97% | 0.28 TWh/d | day 1 — **rate** | day 1 — **rate** | day 1 — **rate** |
+| Denmark | 65% | 0.11 TWh/d | day 51 | day 43 | day 37 |
+| Germany | 76% | 3.97 TWh/d | day 55 | day 45 | day 38 |
+| France | 94% | 3.07 TWh/d | day 62 | day 1 — **rate** | day 1 — **rate** |
+| Croatia | 76% | 0.15 TWh/d | day 73 | day 1 — **rate** | day 1 — **rate** |
+| Netherlands | 73% | 2.08 TWh/d | day 83 | day 62 | day 50 |
+| Slovakia | 76% | 0.34 TWh/d | day 83 | day 69 | day 59 |
+| Czechia | 93% | 0.45 TWh/d | day 94 | day 79 | day 67 |
+| Hungary | 73% | 0.52 TWh/d | day 96 | day 80 | day 68 |
+| Austria | 86% | 0.85 TWh/d | day 102 | day 85 | day 1 — **rate** |
+| Poland | 101% | 0.64 TWh/d | day 104 | day 77 | day 1 — **rate** |
+| Romania | 99% | 0.28 TWh/d | day 120 | day 1 — **rate** | day 1 — **rate** |
+| Italy | 95% | 2.15 TWh/d | day 145 | day 110 | day 88 |
+| Bulgaria | 84% | 0.04 TWh/d | day 148 | day 1 — **rate** | day 1 — **rate** |
+| Spain | 87% | 1.15 TWh/d | day 174 | day 1 — **rate** | day 1 — **rate** |
+
+**At a repeat of last winter's worst day, Belgium, Latvia, Portugal are already rate-bound on day one** — they were at their delivery ceiling, not their inventory ceiling. Push severity to 1.4x and the rate-bound set grows to Austria, Belgium, Bulgaria, Spain, France, Croatia, Latvia, Poland, Portugal, Romania: **a colder winter does not slowly drain Europe, it converts volume problems into rate problems.** That is a different failure, on a different timescale, with a different fix — and it is completely invisible in a storage-fill percentage.
+
+Germany, the largest fleet in Europe, empties in **55 days** at 1.0x and **45 days** at 1.2x. Spain, with a seventh of the volume, holds **174 days** — because most of its peak arrives by ship rather than out of the ground.
+
+![Stress test](results/stress_days.png)
+
 ## What happens when the same fleet has to hold hydrogen
 
 Hydrogen holds about **0.30** of methane's energy per cubic metre, and a cavern stores a volume, not an energy. Repurposed, Europe's **1100 TWh** of gas storage becomes **260 TWh** of hydrogen storage — an energy shrink of **4.2x**.

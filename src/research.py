@@ -9,6 +9,7 @@ from eurostat import load_raw_dir, countries_only
 from seasonality import country_year_table, summarise
 import demand as D, balance as BAL, network as NW, storage_fleet as SF, agsi, hydrogen as H
 import lng as LNG
+import stress as ST
 from data import UGS_NATURAL_GAS_TWH, UGS_H2_BY_TYPE, total_ugs_h2_twh
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -231,6 +232,40 @@ def main():
       "carries the load that used to arrive from three directions, and it is doing so on non-firm "
       "terms.\n")
     A("![Network](results/network_map.png)\n")
+
+    A("## The applied question — how long does a cold spell take to break something?\n")
+    A("Everything above is measurement. This is the test an operator, a regulator or a trader "
+      "actually runs: **if it turns cold and stays cold, how many days do we have, and what fails "
+      "first?** Storage stock starts at each country's own peak fill last winter; the daily call is "
+      "its own observed worst day, scaled; LNG send-out supplies what it can and storage covers the "
+      "rest, capped by published withdrawal capacity.\n")
+    A("Two failure modes, with opposite remedies:\n")
+    A("- **Rate-bound (day 1)** — capacity in GW cannot meet the call at all. More gas underground "
+      "would change nothing; the fix is compressors, wells and interconnection.\n"
+      "- **Volume-bound (day n)** — the rates are fine, the inventory empties. The fix is more "
+      "cavern, or more imports booked earlier.\n")
+    A("| Country | Starting fill | Daily call | 1.0x worst day | 1.2x | 1.4x |")
+    A("|---|---|---|---|---|---|")
+    m = ST.matrix()
+    base = {r["country"]: r for r in ST.table(1.0)}
+    fmt = lambda d: ("day 1 — **rate**" if d == 1 else ("day %d" % d) if d else "holds")
+    for c in sorted(m, key=lambda c: (m[c][1.0] is None, m[c][1.0] or 999)):
+        A("| %s | %.0f%% | %.2f TWh/d | %s | %s | %s |" % (
+            N.get(c, c), base[c]["start_fill_pct"], base[c]["daily_call_twh_d"],
+            fmt(m[c][1.0]), fmt(m[c][1.2]), fmt(m[c][1.4])))
+    A("")
+    r10 = sorted(r["country"] for r in ST.table(1.0) if r["constraint"] == "rate")
+    r14 = sorted(r["country"] for r in ST.table(1.4) if r["constraint"] == "rate")
+    A("**At a repeat of last winter's worst day, %s are already rate-bound on day one** — they were "
+      "at their delivery ceiling, not their inventory ceiling. Push severity to 1.4x and the "
+      "rate-bound set grows to %s: **a colder winter does not slowly drain Europe, it converts "
+      "volume problems into rate problems.** That is a different failure, on a different timescale, "
+      "with a different fix — and it is completely invisible in a storage-fill percentage.\n"
+      % (", ".join(N.get(c, c) for c in r10), ", ".join(N.get(c, c) for c in r14)))
+    A("Germany, the largest fleet in Europe, empties in **%d days** at 1.0x and **%d days** at 1.2x. "
+      "Spain, with a seventh of the volume, holds **%d days** — because most of its peak arrives by "
+      "ship rather than out of the ground.\n" % (m["DE"][1.0], m["DE"][1.2], m["ES"][1.0]))
+    A("![Stress test](results/stress_days.png)\n")
 
     # ---------------------------------------------------------------- hydrogen
     A("## What happens when the same fleet has to hold hydrogen\n")

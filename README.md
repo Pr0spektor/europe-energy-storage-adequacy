@@ -1,38 +1,78 @@
 # europe-energy-storage-adequacy
 
-**Can Europe carry winter without natural gas?** A transparent adequacy model of the
-seasonal storage Europe needs as it electrifies — and of what underground storage can
-still deliver once it is repurposed from methane to hydrogen. Built on **real Eurostat
-monthly consumption data** plus published storage capacities.
+**Europe measures winter gas security with one number — how full storage is. That number is
+wrong in three ways, and this repo quantifies all three from public data.**
 
 Author: **[Pr0spektor](https://github.com/Pr0spektor)**
 
 ---
 
-## The finding
+## The edge
+
+A storage-fill percentage silently assumes that volume is the constraint, that storage is the
+only source of flexibility, and that a national total describes a national system. All three
+assumptions fail, and each failure is measurable:
+
+**1 · Volume, rate and duration are three different scarcities — and they rank countries differently.**
+Germany holds the largest fleet in Europe, **246 TWh**, and empties it in **35 days** at maximum
+rate. Spain holds a seventh of that and lasts **171 days**. Last winter **Belgium and Portugal
+hit 96% of their own withdrawal *rate*** on the peak day while looking comfortable on fill.
+A single "% full" target speaks to none of these.
+
+**2 · Storage is not the only flexibility, and the alternative carries a different risk.**
+On its peak day **84% of Spain's and 81% of Belgium's flexibility arrived by LNG ship**, against
+**14% for Germany**. Regasification needs no geology and builds fast — but it depends on a cargo
+being at the jetty on exactly the days every other importer is bidding for it. Caverns are
+pre-positioned; ships are not. A fill-based metric scores Iberia safe and misses the exposure
+entirely.
+
+**3 · National aggregates hide the concentration that actually breaks.**
+**Rehden alone is 35.7 TWh — 14% of German working volume — and sat at 6% full.** On the peak
+winter gas day Norway supplied **1,015 GWh/d** into Germany through two coastal point clusters,
+**both running above their published firm capacity (162% and 139%)** — i.e. on interruptible
+terms. Neither fact is visible in any national percentage.
+
+**Put together, they produce the result the fill metric cannot express:**
+
+> A colder winter does not slowly drain Europe. **It converts volume problems into rate problems.**
+> At a repeat of last winter's worst day, 3 countries are already rate-bound on day one. At 1.4x
+> that day, 10 are — including France. Different failure, different timescale, different fix.
+
+![Stress test](results/stress_days.png)
+
+## What it is good for
+
+The model answers one operational question — *if it turns cold and stays cold, how many days do
+we have, and what fails first, the gas or the ability to move it?* — for every European country,
+from data that refreshes daily and costs nothing.
+
+| Who | Decision it informs |
+|---|---|
+| **Storage operators** (Uniper, SEFE, Storengy, RWE, VNG) | Which sites carry real option value. Fast-cycle salt caverns are worth more per TWh than slow depleted fields in a rate-bound market — and only caverns have a hydrogen future. Capacity marketing and asset-retention cases. |
+| **Regulators & ministries** (BNetzA, BMWK, DG ENER) | Storage obligations expressed in % full do not bind on the constraint that fails. A rate-and-duration standard does. This quantifies the gap. |
+| **Utilities & traders** | Which points bind and when; how much of a country's peak sits on non-firm capacity that can be curtailed; where the seasonal spread is really priced. |
+| **Industrial offtakers** (chemicals, cement, glass, steel) | German chemicals alone burn **54 TWh/y**. Interruptibility exposure, hedging horizon, and siting all follow from days-to-bind, not from fill. |
+| **Infrastructure investors** | Separates assets with duration value from assets that are stranded volume. |
+| **Data-centre and large-load developers** | German data centres go from **~20 TWh to 25–37 TWh** of electricity by 2030 — a flat load competing for the same firm winter capacity the gas system is backstopping. |
+
+**As a forecasting input:** the seasonality metrics (peak/trough, swing share, weather-exposed
+share by country) are a demand nowcast; the stress test is the downside scenario attached to it.
+The two together turn "storage is 83% full" into "at 1.2x last winter's worst day, this system
+has 45 days and then it is a rate problem."
+
+## Built in three languages, because the client is not always in Python
 
 | | |
 |---|---|
-| Seasonal swing to carry (70% wind + solar) | **238 TWh / 85 GW** |
-| UGS today (natural gas) | 1,100 TWh — **22% utilised** |
-| Same fleet repurposed to hydrogen | **260 TWh — 92% utilised** |
-| Energy lost in the switch | **~4.2×** |
-| Binding constraint | **working volume**, not deliverability |
+| **Python** | reference implementation, 71 unit tests, all four data feeds |
+| **R** | `r/adequacy.R` — full port of the stress test and hydrogen physics, base R + jsonlite, with regression assertions against the Python reference (executed in CI) |
+| **VBA** | `vba/StorageStress.bas` — the stress test as Excel worksheet functions, so an analyst can drag a severity cell and watch days-to-bind move. `SelfTest()` reproduces the Python values. |
 
-A cavern stores a *volume*, not an energy. Hydrogen holds only ~0.30 of methane's energy
-per cubic metre, so Europe's comfortable gas buffer becomes a thin hydrogen margin — and it
-runs out entirely as wind and solar deepen.
+---
 
-![Fill curves](results/storage_fill_curves.png)
-![Network map](results/network_map.png)
-![Storage cycle](results/storage_cycle.png)
-![Sectoral split](results/demand_by_sector.png)
-![Requirement vs available](results/requirement_vs_available.png)
-![Scenarios](results/scenarios.png)
+## Underlying findings
 
-**→ One-page findings: [INSIGHT_MEMO.md](INSIGHT_MEMO.md)**
-**→ The study: [RESEARCH.md](RESEARCH.md)** — Europe's winter problem in five layers
-**→ Full results, every country and year: [RESULTS.md](RESULTS.md)** · raw table: [results/seasonality.csv](results/seasonality.csv)
+**→ The study: [RESEARCH.md](RESEARCH.md)** · **[RESULTS.md](RESULTS.md)** · **[INSIGHT_MEMO.md](INSIGHT_MEMO.md)** · raw table [results/seasonality.csv](results/seasonality.csv)
 
 ### The chain of evidence, in one place
 
@@ -50,6 +90,7 @@ runs out entirely as wind and solar deepen.
 | Who ran out of *rate*, not gas? | **Belgium 96%, Portugal 96%, Croatia 90%** of their own withdrawal capacity on the peak day; Germany only 47% | [RESEARCH L4](RESEARCH.md) |
 | Which sites, which operators? | 46 German sites, 23 operators; **Rehden alone 35.7 TWh = 15%** of national volume, at **6% full** | [RESEARCH L4](RESEARCH.md) |
 | Caverns or ships? | **84% of Spain's** and **81% of Belgium's** peak-day flexibility arrived by LNG ship; Germany only **14%** | [RESEARCH](RESEARCH.md) |
+| How long does a cold spell take to break something? | Germany **55 days**, France **62**, Spain **174**; Belgium/Portugal/Latvia **rate-bound on day 1** | [RESEARCH](RESEARCH.md) |
 | What happens under hydrogen? | Same caverns hold **4.2× less** energy — the buffer disappears | [RESULTS §6](RESULTS.md) |
 
 
@@ -118,6 +159,9 @@ python src/storage_fleet.py    # volume vs deliverability vs duration
 python src/storage_chart.py    # fill curves, deliverability, German sites
 python src/lng.py              # LNG regas vs storage on the peak day (GIE ALSI)
 python src/lng_chart.py        # lng_terminals.png, lng_winter_peaks.png, lng_vs_storage.png
+python src/stress.py           # cold-snap stress test — days to bind, rate vs volume
+python src/stress_chart.py     # stress_days.png
+Rscript r/adequacy.R           # same model in R (needs jsonlite)
 python src/research.py         # regenerates RESEARCH.md from every layer
 python tests/test_adequacy.py  # 22/22 standalone …
 pytest -q                      # … or under pytest (CI)
