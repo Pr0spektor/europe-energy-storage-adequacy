@@ -43,3 +43,23 @@
 
 Raw API responses are stored verbatim and decoded by the same unit-tested parsers used
 for live pulls, so every figure in RESULTS.md can be traced back to the source document.
+
+## Gas network (added 2026-07-20)
+
+| Source | Endpoint | What it gives | Cached as |
+|---|---|---|---|
+| ENTSOG Transparency Platform | `interconnections.csv?fromCountryKey=..&toCountryKey=..` | topology: which points join which countries, operator on each side, schematic map coordinates | `data/raw/entsog_de_border_2026-01-15.json` |
+| ENTSOG Transparency Platform | `operationalData.csv?indicator=Physical Flow\|Firm Technical&periodType=day&pointDirection=..` | metered daily flow and firm technical capacity per point-direction | same file |
+
+**No API key and no registration are required for ENTSOG.** `src/entsog.py` calls it
+directly and falls back to the bundled snapshot when offline.
+
+Two further sources are free but gated behind a registration:
+
+- **GIE AGSI+ / ALSI** (facility-level storage fill, injection and withdrawal rates) —
+  free account at <https://agsi.gie.eu/account>; the key appears on the API Account page
+  and does not expire.
+- **ENTSO-E Transparency Platform** (electricity flows, generation, congestion) — register
+  at <https://transparency.entsoe.eu/>, then email transparency@entsoe.eu with subject
+  "RESTful API access"; access is granted within ~3 working days, after which the security
+  token is generated in account settings.

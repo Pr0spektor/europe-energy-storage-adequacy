@@ -152,15 +152,37 @@ In 2025 the EU-27 injected **557 TWh** into storage between April and October an
 
 2. **Countries with no storage at all.** Ireland (55 TWh/y), Georgia (34 TWh/y), Slovenia (10 TWh/y), Luxembourg (7 TWh/y), Estonia (4 TWh/y) consume gas but hold none of it underground. Their entire winter swing has to arrive in real time through a pipeline or an LNG terminal — so an interconnector outage there is immediately a supply event, not a price event.
 
-## 6. What this means for storage
+## 6. The network — where the gas physically has to squeeze through
+
+Source: **ENTSOG Transparency Platform** (`transparency.entsog.eu/api/v1`, open, no API key), gas day **2026-01-15**, cached in `data/raw/entsog_de_border_2026-01-15.json`. Utilisation = physical flow / firm technical capacity at the same point-direction.
+
+| Border point | Operator | Corridor | Flow (GWh/d) | Firm capacity (GWh/d) | Utilisation | Status |
+|---|---|---|---|---|---|---|
+| Dornum / NETRA | OGE | NO->DE | 589 | 423 | 139% | above firm — running on non-firm capacity |
+| Emden (EPT1) | OGE | NO->DE | 426 | 263 | 162% | above firm — running on non-firm capacity |
+| Mallnow | GASCADE | DE->PL | 223 | 259 | 86% | at the firm limit |
+| VIP Oberkappel | OGE | DE->AT | 217 | 215 | 101% | above firm — running on non-firm capacity |
+| Uberackern ABG | OGE | DE->AT | 68 | 0 | — | no firm capacity published |
+| VIP Waidhaus | OGE | DE->CZ | 0 | 0 | — | idle |
+
+![Network map](results/network_map.png)
+
+![Corridors](results/network_corridors.png)
+
+**Conclusion.** On a peak winter day Germany pulls **1015 GWh/d** in from Norway through just two point clusters, Emden and Dornum, and both are running *above* their published firm capacity — 162% and 139% respectively. That extra volume is interruptible or additional capacity: contractually curtailable, not guaranteed. The single-corridor concentration is the bottleneck, not the pipe diameter.
+
+Meanwhile **VIP Waidhaus sits at zero** — the Czech route that used to carry Russian gas into Bavaria is idle, and **Mallnow now runs west-to-east at 86% of firm**, exporting to Poland instead of importing from it. The map of 2019 has been redrawn: the load has moved from the eastern border to the North Sea coast, and the eastern points are now transit and reverse-flow assets.
+
+## 7. What this means for storage
 
 - The swing above a flat baseline is what storage and flexible supply must cover. For the EU it is on the order of **hundreds of TWh every year** — that is the job underground storage does today.
 - Batteries do not touch this: the entire EU grid-battery fleet is ~0.04 TWh, four orders of magnitude below the seasonal task.
 - Repurposing the gas storage fleet to hydrogen cuts its stored energy ~4.2x (1,100 TWh → 260 TWh), because a cavern holds a **volume**, not an energy.
 
-## 7. What is NOT in this repo yet (honest gaps)
+## 8. What is NOT in this repo yet (honest gaps)
 
 - **Facility-level storage** — this uses national stock changes, not individual site fill levels and injection/withdrawal curves. GIE AGSI+ publishes those, but its API needs a registered key.
-- **Transmission topology and congestion** — which specific interconnector binds, and when. ENTSO-G/ENTSO-E publish it; the Transparency Platform also requires a key.
+- **The rest of Europe's border points** — the ENTSOG client in `src/entsog.py` fetches any country pair live; the bundled snapshot covers Germany's borders with NO, PL, CZ, AT and CH. Run it with a network connection to extend to NL, BE, FR, DK and the rest of the EU.
+- **Electricity grid congestion** — ENTSO-E's Transparency Platform needs a free registered token: register on the site, then email transparency@entsoe.eu for RESTful API access.
 - **Named sites** — no open pan-European dataset ties an individual plant or data centre to metered demand, so branch-level is as granular as public data honestly goes.
 

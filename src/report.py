@@ -5,6 +5,7 @@ from eurostat import load_raw_dir, countries_only
 from seasonality import country_year_table, summarise
 import demand as D
 import balance as BAL
+import network as NW
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NAMES = {"BE":"Belgium","BG":"Bulgaria","CZ":"Czechia","DK":"Denmark","DE":"Germany","EE":"Estonia",
@@ -153,7 +154,31 @@ def main():
              "event.\n" % ", ".join("%s (%.0f TWh/y)" % (NAMES.get(r["country"], r["country"]),
                                                         r["annual_twh"]) for r in ns))
 
-    L.append("## 6. What this means for storage\n")
+    L.append("## 6. The network — where the gas physically has to squeeze through\n")
+    L.append("Source: **ENTSOG Transparency Platform** (`transparency.entsog.eu/api/v1`, open, no API "
+             "key), gas day **2026-01-15**, cached in `data/raw/entsog_de_border_2026-01-15.json`. "
+             "Utilisation = physical flow / firm technical capacity at the same point-direction.\n")
+    L.append("| Border point | Operator | Corridor | Flow (GWh/d) | Firm capacity (GWh/d) | Utilisation | Status |")
+    L.append("|---|---|---|---|---|---|---|")
+    for r in NW.table():
+        L.append("| %s | %s | %s | %.0f | %.0f | %s | %s |" % (
+            r["point"], r["operator"], r["corridor"], r["flow_gwh_d"], r["firm_gwh_d"],
+            ("%.0f%%" % (r["utilisation"]*100)) if r["utilisation"] else "—", r["status"]))
+    L.append("\n![Network map](results/network_map.png)\n")
+    L.append("![Corridors](results/network_corridors.png)\n")
+    c = NW.corridors()
+    L.append("**Conclusion.** On a peak winter day Germany pulls **%.0f GWh/d** in from Norway through "
+             "just two point clusters, Emden and Dornum, and both are running *above* their published "
+             "firm capacity — 162%% and 139%% respectively. That extra volume is interruptible or "
+             "additional capacity: contractually curtailable, not guaranteed. The single-corridor "
+             "concentration is the bottleneck, not the pipe diameter.\n" % c["NO->DE"])
+    L.append("Meanwhile **VIP Waidhaus sits at zero** — the Czech route that used to carry Russian gas "
+             "into Bavaria is idle, and **Mallnow now runs west-to-east at 86% of firm**, exporting to "
+             "Poland instead of importing from it. The map of 2019 has been redrawn: the load has moved "
+             "from the eastern border to the North Sea coast, and the eastern points are now transit and "
+             "reverse-flow assets.\n")
+
+    L.append("## 7. What this means for storage\n")
     L.append("- The swing above a flat baseline is what storage and flexible supply must cover. For the EU "
              "it is on the order of **hundreds of TWh every year** — that is the job underground storage does today.\n"
              "- Batteries do not touch this: the entire EU grid-battery fleet is ~0.04 TWh, four orders of "
@@ -161,12 +186,15 @@ def main():
              "- Repurposing the gas storage fleet to hydrogen cuts its stored energy ~4.2x "
              "(1,100 TWh → 260 TWh), because a cavern holds a **volume**, not an energy.\n")
 
-    L.append("## 7. What is NOT in this repo yet (honest gaps)\n")
+    L.append("## 8. What is NOT in this repo yet (honest gaps)\n")
     L.append("- **Facility-level storage** — this uses national stock changes, not individual site fill "
              "levels and injection/withdrawal curves. GIE AGSI+ publishes those, but its API needs a "
              "registered key.\n"
-             "- **Transmission topology and congestion** — which specific interconnector binds, and when. "
-             "ENTSO-G/ENTSO-E publish it; the Transparency Platform also requires a key.\n"
+             "- **The rest of Europe's border points** — the ENTSOG client in `src/entsog.py` fetches any "
+             "country pair live; the bundled snapshot covers Germany's borders with NO, PL, CZ, AT and "
+             "CH. Run it with a network connection to extend to NL, BE, FR, DK and the rest of the EU.\n"
+             "- **Electricity grid congestion** — ENTSO-E's Transparency Platform needs a free registered "
+             "token: register on the site, then email transparency@entsoe.eu for RESTful API access.\n"
              "- **Named sites** — no open pan-European dataset ties an individual plant or data centre to "
              "metered demand, so branch-level is as granular as public data honestly goes.\n")
     open(os.path.join(ROOT, "RESULTS.md"), "w").write("\n".join(L) + "\n")

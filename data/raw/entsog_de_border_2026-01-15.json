@@ -1,0 +1,32 @@
+{
+"_source": "ENTSOG Transparency Platform, https://transparency.entsog.eu/api/v1/ (no API key required)",
+"_endpoints": ["interconnections.csv?fromCountryKey=..&toCountryKey=..", "operationalData.csv?indicator=Physical Flow|Firm Technical&periodType=day&pointDirection=.."],
+"_gas_day": "2026-01-15",
+"_retrieved": "2026-07-20",
+"_unit": "kWh/d",
+"_note": "Physical Flow can exceed Firm Technical where a point also sells interruptible or additional capacity; the excess is non-firm and can be curtailed. tpMapX/tpMapY are ENTSOG's own schematic map coordinates (x east-positive, y north-positive).",
+"points": [
+ {"pointKey":"ITP-00126","label":"Dornum / NETRA","operator":"OGE","operatorKey":"DE-TSO-0009","direction":"entry","from":"NO","to":"DE","x":-43.95,"y":7.71,"physical_flow":588908693.488,"firm_technical":422669592.0},
+ {"pointKey":"ITP-00080","label":"Emden (EPT1)","operator":"OGE","operatorKey":"DE-TSO-0009","direction":"entry","from":"NO","to":"DE","x":-45.04,"y":7.23,"physical_flow":426143547.649,"firm_technical":262758240.0},
+ {"pointKey":"ITP-00096","label":"Mallnow","operator":"GASCADE","operatorKey":"DE-TSO-0001","direction":"exit","from":"DE","to":"PL","x":-7.12,"y":-1.58,"physical_flow":223496757.0,"firm_technical":259200000.0},
+ {"pointKey":"ITP-00539","label":"VIP Oberkappel","operator":"OGE","operatorKey":"DE-TSO-0009","direction":"exit","from":"DE","to":"AT","x":-11.0,"y":-33.0,"physical_flow":216859416.0,"firm_technical":214506768.0},
+ {"pointKey":"ITP-00019","label":"Uberackern ABG","operator":"OGE","operatorKey":"DE-TSO-0009","direction":"exit","from":"DE","to":"AT","x":-15.25,"y":-34.07,"physical_flow":68479909.0,"firm_technical":0.0},
+ {"pointKey":"ITP-00538","label":"VIP Waidhaus","operator":"OGE","operatorKey":"DE-TSO-0009","direction":"exit","from":"DE","to":"CZ","x":-18.85,"y":-25.13,"physical_flow":0.0,"firm_technical":0.0}
+],
+"topology": [
+ {"pointKey":"ITP-00497","label":"GCP GAZ-SYSTEM/ONTRAS","from":"DE","to":"PL","x":-5.32,"y":-13.15,"operator":"ONTRAS"},
+ {"pointKey":"ITP-00535","label":"Deutschneudorf EUGAL / Brandov","from":"DE","to":"CZ","x":-12.08,"y":-18.06,"operator":"GASCADE"},
+ {"pointKey":"ITP-00537","label":"VIP Brandov","from":"DE","to":"CZ","x":-12.79,"y":-17.06,"operator":"GASCADE"},
+ {"pointKey":"ITP-00010","label":"Brandov OPAL","from":"DE","to":"CZ","x":-11.87,"y":-17.28,"operator":"OPAL"},
+ {"pointKey":"ITP-00150","label":"Olbernhau II","from":"DE","to":"CZ","x":-13.45,"y":-17.81,"operator":"GASCADE"},
+ {"pointKey":"ITP-00007","label":"Uberackern SUDAL","from":"DE","to":"AT","x":-16.48,"y":-34.79,"operator":"bayernets"},
+ {"pointKey":"ITP-00070","label":"Kiefersfelden","from":"DE","to":"AT","x":-19.78,"y":-37.7,"operator":"bayernets"},
+ {"pointKey":"ITP-00294","label":"Wallbach","from":"DE","to":"CH","x":-42.01,"y":-39.03,"operator":"Fluxys TENP / OGE"},
+ {"pointKey":"ITP-00544","label":"VIP Germany-CH","from":"DE","to":"CH","x":-40.78,"y":-38.93,"operator":"Fluxys TENP"},
+ {"pointKey":"ITP-00228","label":"RC Basel","from":"DE","to":"CH","x":-39.99,"y":-37.86,"operator":"terranets bw"},
+ {"pointKey":"ITP-00229","label":"RC Thayngen-Fallentor","from":"DE","to":"CH","x":-37.84,"y":-38.13,"operator":"terranets bw"},
+ {"pointKey":"ITP-00209","label":"Emden (EPT1) NO side","from":"NO","to":"DE","x":-45.04,"y":7.23,"operator":"Gassco"},
+ {"pointKey":"ITP-00210","label":"Emden (NPT)","from":"NO","to":"DE","x":-45.79,"y":6.75,"operator":"Gassco"},
+ {"pointKey":"ITP-00208","label":"Dornum (EPT1 & EPT2)","from":"NO","to":"DE","x":-43.95,"y":7.71,"operator":"Gassco"}
+]
+}

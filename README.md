@@ -23,6 +23,7 @@ A cavern stores a *volume*, not an energy. Hydrogen holds only ~0.30 of methane'
 per cubic metre, so Europe's comfortable gas buffer becomes a thin hydrogen margin — and it
 runs out entirely as wind and solar deepen.
 
+![Network map](results/network_map.png)
 ![Storage cycle](results/storage_cycle.png)
 ![Sectoral split](results/demand_by_sector.png)
 ![Requirement vs available](results/requirement_vs_available.png)
@@ -41,6 +42,7 @@ runs out entirely as wind and solar deepen.
 | What about data centres? | **~20 TWh of electricity** in Germany (2024) → 25-37 TWh by 2030 — a power load, not a gas load | [RESULTS §4](RESULTS.md) |
 | What refills the swing? | EU injected **557 TWh** Apr-Oct 2025, withdrew **667 TWh** in winter; peak month **270 GW** | [RESULTS §5](RESULTS.md) |
 | Where are the bottlenecks? | Deliverability (Germany **74 GW** peak) and five gas-consuming countries with **zero** storage | [RESULTS §5](RESULTS.md) |
+| Where does the network bind? | Norway sends **1,015 GWh/d** into Germany on a peak winter day through two point clusters, both **above firm capacity** (162% / 139%); Waidhaus idle, Mallnow reversed | [RESULTS §6](RESULTS.md) |
 | What happens under hydrogen? | Same caverns hold **4.2× less** energy — the buffer disappears | [RESULTS §6](RESULTS.md) |
 
 
@@ -101,6 +103,9 @@ python src/balance.py          # storage injection/withdrawal cycle + bottleneck
 python src/report.py           # RESULTS.md + results/seasonality.csv
 python src/demand_chart.py     # demand_by_sector.png, de_industry_gas.png
 python src/balance_chart.py    # storage_cycle.png, storage_cover.png
+python src/entsog.py           # ENTSOG snapshot (live fetch needs no API key)
+python src/network.py          # border-point utilisation + bottlenecks
+python src/network_chart.py    # network_map.png, network_corridors.png
 python tests/test_adequacy.py  # 22/22 standalone …
 pytest -q                      # … or under pytest (CI)
 ```

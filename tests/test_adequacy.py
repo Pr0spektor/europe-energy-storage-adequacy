@@ -243,6 +243,50 @@ def test_peak_withdrawal_rate_is_a_power_not_an_energy():
     assert de["peak_withdrawal_gw"] > 20    # tens of GW sustained through the peak month
     assert de["peak_withdrawal_gw"] < de["peak_month_withdrawal_twh"] * 1000
 
+
+# ---- gas network (ENTSOG Transparency Platform, no API key) ----
+import entsog as EG
+import network as NW
+
+def test_snapshot_has_both_metered_and_topology_points():
+    snap = EG.snapshot()
+    assert len(snap["points"]) >= 6 and len(snap["topology"]) >= 10
+    assert snap["_gas_day"] == "2026-01-15"
+
+def test_point_direction_key_matches_entsog_format():
+    assert EG.point_direction("DE-TSO-0009", "ITP-00080", "entry") == "DE-TSO-0009ITP-00080entry"
+
+def test_offline_fetch_falls_back_to_the_snapshot():
+    keys = [EG.point_direction(p["operatorKey"], p["pointKey"], p["direction"])
+            for p in EG.snapshot()["points"]]
+    flows = EG.fetch_flows(keys, "2026-01-15")
+    assert flows.get("DE-TSO-0009ITP-00080entry", 0) > 0
+
+def test_utilisation_is_flow_over_firm_capacity():
+    p = {"physical_flow": 200.0, "firm_technical": 100.0}
+    assert approx(NW.utilisation(p), 2.0)
+    assert NW.utilisation({"physical_flow": 5.0, "firm_technical": 0.0}) is None
+
+def test_classification_covers_every_case():
+    assert NW.classify({"physical_flow": 120., "firm_technical": 100.}).startswith("above firm")
+    assert NW.classify({"physical_flow": 95., "firm_technical": 100.}) == "at the firm limit"
+    assert NW.classify({"physical_flow": 10., "firm_technical": 100.}) == "spare firm capacity"
+    assert NW.classify({"physical_flow": 0., "firm_technical": 100.}) == "idle"
+    assert NW.classify({"physical_flow": 7., "firm_technical": 0.}) == "no firm capacity published"
+
+def test_norwegian_imports_dominate_the_winter_border():
+    c = NW.corridors()
+    assert max(c, key=c.get) == "NO->DE"
+    assert c["NO->DE"] > 900                      # GWh/d on the peak winter gas day
+
+def test_norwegian_entry_points_run_beyond_firm_capacity():
+    stressed = {r["point"] for r in NW.stressed()}
+    assert "Emden (EPT1)" in stressed and "Dornum / NETRA" in stressed
+
+def test_waidhaus_is_idle():
+    row = [r for r in NW.table() if r["point"] == "VIP Waidhaus"][0]
+    assert row["flow_gwh_d"] == 0 and row["status"] == "idle"
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     passed = failed = 0
