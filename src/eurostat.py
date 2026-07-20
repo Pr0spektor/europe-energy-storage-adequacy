@@ -143,6 +143,30 @@ def refresh(spec: dict, since: str = START, until: str | None = None) -> dict:
     return blob
 
 
+def load_raw_dir(subdir: str = "raw", prefix: str = "gas_") -> dict:
+    """Parse every raw JSON-stat file in data/raw/ and merge into {geo: {year: [12]}}.
+
+    Raw responses are stored verbatim (no interpretation) and decoded by the same
+    unit-tested parser used for live pulls, so the bundled data is auditable.
+    """
+    d = os.path.join(DATA, subdir)
+    merged: dict[str, dict[str, list]] = {}
+    if not os.path.isdir(d):
+        return merged
+    for name in sorted(os.listdir(d)):
+        if not (name.startswith(prefix) and name.endswith(".json")):
+            continue
+        with open(os.path.join(d, name)) as f:
+            doc = json.load(f)
+        for geo, years in parse_jsonstat(doc).items():
+            for year, months in years.items():
+                slot = merged.setdefault(geo, {}).setdefault(year, [None] * 12)
+                for i, v in enumerate(months):
+                    if v is not None:
+                        slot[i] = v
+    return merged
+
+
 def load_cache(spec: dict) -> dict | None:
     path = os.path.join(DATA, spec["cache"])
     if not os.path.exists(path):
