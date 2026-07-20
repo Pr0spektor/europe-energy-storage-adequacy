@@ -15,7 +15,7 @@ from seasonality import country_year_table
 from eurostat import load_raw_dir, countries_only
 
 _RAW = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                    "data", "raw", "gas_stock_change_2025.json")
+                    "data", "raw", "stock_change_2025.json")
 TJ_PER_TWH = 3600.0
 AGGREGATES = ("EU27_2020", "EA21", "EA19", "EA20")
 

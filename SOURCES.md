@@ -54,11 +54,21 @@ for live pulls, so every figure in RESULTS.md can be traced back to the source d
 **No API key and no registration are required for ENTSOG.** `src/entsog.py` calls it
 directly and falls back to the bundled snapshot when offline.
 
-Two further sources are free but gated behind a registration:
+## Storage, facility level (added 2026-07-20)
 
-- **GIE AGSI+ / ALSI** (facility-level storage fill, injection and withdrawal rates) —
-  free account at <https://agsi.gie.eu/account>; the key appears on the API Account page
-  and does not expire.
+| Source | Endpoint | What it gives | Cached as |
+|---|---|---|---|
+| GIE AGSI+ | `/api` | latest gas day: EU → country → company → facility, working volume, injection and withdrawal capacity, fill % | `data/raw/agsi_2026-07-18.json`, `data/raw/agsi_de_facilities_2026-07-18.json` |
+| GIE AGSI+ | `/api?type=eu&from=..&to=..` | EU daily history 2020-2026 (2,391 gas days) → gas-year peaks, troughs and maximum withdrawal | `data/raw/agsi_2026-07-18.json` |
+| GIE AGSI+ | `/api?country=XX&from=..&to=..` | per-country winter 2025/26 daily withdrawal vs capacity | `data/raw/agsi_2026-07-18.json` |
+
+AGSI+ is free but authenticated. Create an account at <https://agsi.gie.eu/account>; the
+key appears on the API Account page and does not expire. It must be sent in the **`x-key`
+header** — passing it as a query parameter returns `access denied`. `src/agsi.py` reads it
+from the `AGSI_KEY` environment variable and never stores it in the repository.
+
+One further source is free but gated behind a registration:
+
 - **ENTSO-E Transparency Platform** (electricity flows, generation, congestion) — register
   at <https://transparency.entsoe.eu/>, then email transparency@entsoe.eu with subject
   "RESTful API access"; access is granted within ~3 working days, after which the security

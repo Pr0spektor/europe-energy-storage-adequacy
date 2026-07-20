@@ -228,10 +228,14 @@ def test_eu_cycle_roughly_balances_over_the_year():
     assert abs(e["injection_twh"] - e["withdrawal_twh"]) < 0.5 * e["withdrawal_twh"]
 
 def test_storage_covers_the_seasonal_swing_where_it_exists():
-    rows = [r for r in BAL.table() if r["storage_cover"] is not None][:10]
-    assert len(rows) >= 8
-    assert all(0.7 < r["storage_cover"] < 1.6 for r in rows), \
-        [(r["country"], round(r["storage_cover"], 2)) for r in rows]
+    import statistics
+    rows = [r for r in BAL.table() if r["storage_cover"] and r["swing_twh"] >= 4]
+    assert len(rows) >= 10
+    # the median fleet carries roughly the whole domestic swing
+    assert 0.85 < statistics.median([r["storage_cover"] for r in rows]) < 1.25
+    # and the outliers are the known transit / LNG cases, not noise
+    by = {r["country"]: r["storage_cover"] for r in rows}
+    assert by["AT"] > 2.0 and by["BE"] < 0.5
 
 def test_countries_without_storage_are_flagged():
     codes = {r["country"] for r in BAL.no_storage()}
@@ -286,6 +290,58 @@ def test_norwegian_entry_points_run_beyond_firm_capacity():
 def test_waidhaus_is_idle():
     row = [r for r in NW.table() if r["point"] == "VIP Waidhaus"][0]
     assert row["flow_gwh_d"] == 0 and row["status"] == "idle"
+
+
+# ---- storage fleet (GIE AGSI+) ----
+import agsi as AG
+import storage_fleet as SFL
+
+def test_agsi_snapshot_is_complete():
+    s = AG.snapshot()
+    assert s["_gas_day"] == "2026-07-18"
+    assert len(s["countries"]) >= 18 and len(s["gas_years_eu"]) == 7
+    assert len(s["winter_2025_26"]) >= 17
+
+def test_agsi_key_is_never_hardcoded():
+    src = open(os.path.join(os.path.dirname(__file__), "..", "src", "agsi.py")).read()
+    assert "AGSI_KEY" in src and "x-key" in src
+    # a 32-char hex literal in the source would mean a leaked key
+    import re
+    assert not re.search(r"[\'\"][0-9a-f]{32}[\'\"]", src)
+
+def test_eu_fleet_totals_are_physical():
+    e = SFL.eu_totals()
+    assert 900 < e["working_volume_twh"] < 1400
+    assert e["withdrawal_twh_d"] > e["injection_twh_d"]      # stores empty faster than they fill
+    assert e["refill_days"] > e["duration_days"]
+
+def test_duration_separates_fast_and_slow_fleets():
+    f = {r["code"]: r for r in SFL.fleet()}
+    assert f["DE"]["duration_days"] < f["AT"]["duration_days"]   # caverns vs depleted fields
+    assert f["ES"]["duration_days"] > 100
+
+def test_country_volumes_sum_close_to_the_eu_total():
+    tot = sum(r["working_volume_twh"] for r in SFL.fleet())
+    assert approx(tot, SFL.eu_totals()["working_volume_twh"], rel=0.05)
+
+def test_small_fleets_are_the_ones_at_their_rate_limit():
+    tight = [r["code"] for r in SFL.deliverability_pressure() if r["peak_utilisation_pct"] >= 85]
+    assert "BE" in tight and "PT" in tight
+    assert "DE" not in tight and "IT" not in tight
+
+def test_2025_26_was_the_weakest_entry_into_winter():
+    gy = {g["gas_year"]: g for g in SFL.gas_year_table()}
+    assert gy["2025/26"]["peak_fill"] < min(g["peak_fill"] for k, g in gy.items() if k != "2025/26")
+
+def test_german_storage_is_concentrated():
+    c = SFL.concentration()
+    assert c["top_n_share"] > 0.35
+    assert c["sites"][0][0] == "UGS Rehden"
+
+def test_facility_volumes_do_not_exceed_the_country():
+    fac = AG.facilities_de()
+    listed = sum(f["working_gas_volume"] for f in fac["facilities"])
+    assert listed <= fac["_coverage"]["wgv_total_twh"] + 1e-6
 
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]

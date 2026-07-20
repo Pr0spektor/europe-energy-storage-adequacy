@@ -23,6 +23,7 @@ A cavern stores a *volume*, not an energy. Hydrogen holds only ~0.30 of methane'
 per cubic metre, so Europe's comfortable gas buffer becomes a thin hydrogen margin — and it
 runs out entirely as wind and solar deepen.
 
+![Fill curves](results/storage_fill_curves.png)
 ![Network map](results/network_map.png)
 ![Storage cycle](results/storage_cycle.png)
 ![Sectoral split](results/demand_by_sector.png)
@@ -30,6 +31,7 @@ runs out entirely as wind and solar deepen.
 ![Scenarios](results/scenarios.png)
 
 **→ One-page findings: [INSIGHT_MEMO.md](INSIGHT_MEMO.md)**
+**→ The study: [RESEARCH.md](RESEARCH.md)** — Europe's winter problem in five layers
 **→ Full results, every country and year: [RESULTS.md](RESULTS.md)** · raw table: [results/seasonality.csv](results/seasonality.csv)
 
 ### The chain of evidence, in one place
@@ -43,6 +45,10 @@ runs out entirely as wind and solar deepen.
 | What refills the swing? | EU injected **557 TWh** Apr-Oct 2025, withdrew **667 TWh** in winter; peak month **270 GW** | [RESULTS §5](RESULTS.md) |
 | Where are the bottlenecks? | Deliverability (Germany **74 GW** peak) and five gas-consuming countries with **zero** storage | [RESULTS §5](RESULTS.md) |
 | Where does the network bind? | Norway sends **1,015 GWh/d** into Germany on a peak winter day through two point clusters, both **above firm capacity** (162% / 139%); Waidhaus idle, Mallnow reversed | [RESULTS §6](RESULTS.md) |
+| How much margin is in the storage fleet? | EU **1,130 TWh** working volume, **20.0 TWh/d** out but only **12.3 TWh/d** in — 56 days to empty, 92 to refill | [RESEARCH L4](RESEARCH.md) |
+| Which winters were tight? | 2025/26 peaked at **83% full** — weakest since 2019; every other year hit 88–99% | [RESEARCH L4](RESEARCH.md) |
+| Who ran out of *rate*, not gas? | **Belgium 96%, Portugal 96%, Croatia 90%** of their own withdrawal capacity on the peak day; Germany only 47% | [RESEARCH L4](RESEARCH.md) |
+| Which sites, which operators? | 46 German sites, 23 operators; **Rehden alone 35.7 TWh = 15%** of national volume, at **6% full** | [RESEARCH L4](RESEARCH.md) |
 | What happens under hydrogen? | Same caverns hold **4.2× less** energy — the buffer disappears | [RESULTS §6](RESULTS.md) |
 
 
@@ -106,6 +112,10 @@ python src/balance_chart.py    # storage_cycle.png, storage_cover.png
 python src/entsog.py           # ENTSOG snapshot (live fetch needs no API key)
 python src/network.py          # border-point utilisation + bottlenecks
 python src/network_chart.py    # network_map.png, network_corridors.png
+AGSI_KEY=... python src/agsi.py # GIE AGSI+ storage (free key: https://agsi.gie.eu/account)
+python src/storage_fleet.py    # volume vs deliverability vs duration
+python src/storage_chart.py    # fill curves, deliverability, German sites
+python src/research.py         # regenerates RESEARCH.md from every layer
 python tests/test_adequacy.py  # 22/22 standalone …
 pytest -q                      # … or under pytest (CI)
 ```

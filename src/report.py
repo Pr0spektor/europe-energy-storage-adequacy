@@ -141,12 +141,23 @@ def main():
             ("%.0f%%" % (r["storage_cover"]*100)) if r["storage_cover"] else "n/a",
             r["peak_withdrawal_gw"]))
     L.append("\n![Storage cover](results/storage_cover.png)\n")
-    L.append("**Conclusion.** In every country that owns storage, withdrawal lands within roughly ±15% of "
-             "its own seasonal swing — storage is not a supplement to the winter, it *is* the winter. "
-             "The bottleneck is therefore not the annual volume but two other things:\n")
-    L.append("1. **Deliverability.** Germany alone must pull ~%.0f GW out of the ground in the peak month. "
-             "A cavern field that holds the energy but cannot deliver the rate is useless in a cold snap.\n"
-             % [r for r in BAL.table() if r["country"] == "DE"][0]["peak_withdrawal_gw"])
+    import statistics as _st
+    cov = [r for r in BAL.table() if r["storage_cover"] and r["swing_twh"] >= 4]
+    L.append("**Conclusion.** The median country with a real fleet withdraws **%.0f%% of its own "
+             "seasonal swing** from storage — storage is not a supplement to winter, it *is* winter. "
+             "The spread around that median is the interesting part:\n"
+             % (_st.median([r["storage_cover"] for r in cov]) * 100))
+    L.append("- **Austria %.0f%%, Czechia %.0f%%, Netherlands %.0f%%** — these fleets are far larger than "
+             "domestic need because they store for neighbours and for the traded market.\n"
+             "- **Belgium %.0f%%, Turkiye %.0f%%** — a low ratio does not mean comfort. It means the swing "
+             "is met by LNG regasification and pipeline flexibility arriving in real time instead, which "
+             "is faster to interrupt than a cavern.\n"
+             % tuple(([r for r in cov if r["country"] == c][0]["storage_cover"] * 100)
+                     for c in ("AT", "CZ", "NL", "BE", "TR")))
+    L.append("\nThe bottleneck is therefore not the annual volume but two other things:\n")
+    L.append("1. **Deliverability.** Germany alone must pull ~%.0f GW out of the ground in the peak "
+             "month. A field that holds the energy but cannot deliver the rate is useless in a cold "
+             "snap.\n" % [r for r in BAL.table() if r["country"] == "DE"][0]["peak_withdrawal_gw"])
     ns = BAL.no_storage()
     L.append("2. **Countries with no storage at all.** %s consume gas but hold none of it "
              "underground. Their entire winter swing has to arrive in real time through a pipeline or an "
@@ -187,9 +198,8 @@ def main():
              "(1,100 TWh → 260 TWh), because a cavern holds a **volume**, not an energy.\n")
 
     L.append("## 8. What is NOT in this repo yet (honest gaps)\n")
-    L.append("- **Facility-level storage** — this uses national stock changes, not individual site fill "
-             "levels and injection/withdrawal curves. GIE AGSI+ publishes those, but its API needs a "
-             "registered key.\n"
+    L.append("- **Hourly deliverability** — AGSI+ publishes daily rates, not the hourly ramp a cold snap "
+             "actually demands; intraday flexibility is out of scope here.\n"
              "- **The rest of Europe's border points** — the ENTSOG client in `src/entsog.py` fetches any "
              "country pair live; the bundled snapshot covers Germany's borders with NO, PL, CZ, AT and "
              "CH. Run it with a network connection to extend to NL, BE, FR, DK and the rest of the EU.\n"

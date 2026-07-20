@@ -14,7 +14,7 @@ weather-driven each one is:
 import json, os
 
 _RAW = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                    "data", "raw", "gas_sectors_2024.json")
+                    "data", "raw", "sectors_2024.json")
 
 SECTORS = {
     "TI_EHG_E":    "Power & heat generation",

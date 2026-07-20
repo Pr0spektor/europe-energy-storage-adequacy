@@ -158,6 +158,11 @@ def load_raw_dir(subdir: str = "raw", prefix: str = "gas_") -> dict:
             continue
         with open(os.path.join(d, name)) as f:
             doc = json.load(f)
+        # only inland-consumption files belong in this series; other raw files in
+        # data/raw/ (sector balances, stock changes, AGSI, ENTSOG) are read by
+        # their own modules and must never be merged in here
+        if "IC_OBS" not in doc.get("_source", ""):
+            continue
         for geo, years in parse_jsonstat(doc).items():
             for year, months in years.items():
                 slot = merged.setdefault(geo, {}).setdefault(year, [None] * 12)
