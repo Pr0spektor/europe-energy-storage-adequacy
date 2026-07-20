@@ -135,6 +135,28 @@ Germany's 246 TWh is not one asset — it is 46 sites run by 23 companies, and t
 
 ![German sites](results/de_storage_sites.png)
 
+### Caverns or ships — the other half of the flexibility
+
+Storage is not the only way to meet a cold day. LNG regasification supplies the same service at a rate, and the two are only comparable on the **peak day** — comparing winter totals would be meaningless, because send-out carries baseload as well as swing.
+
+| Country | Storage withdrawal | LNG send-out | Share from ships |
+|---|---|---|---|
+| Spain | 0.18 TWh/d | 0.97 TWh/d | **84%** |
+| Belgium | 0.17 TWh/d | 0.72 TWh/d | **81%** |
+| Portugal | 0.09 TWh/d | 0.19 TWh/d | **68%** |
+| Croatia | 0.05 TWh/d | 0.10 TWh/d | **67%** |
+| Poland | 0.36 TWh/d | 0.28 TWh/d | **44%** |
+| Netherlands | 1.28 TWh/d | 0.80 TWh/d | **38%** |
+| France | 1.90 TWh/d | 1.17 TWh/d | **38%** |
+| Italy | 1.34 TWh/d | 0.81 TWh/d | **38%** |
+| Germany | 3.43 TWh/d | 0.54 TWh/d | **14%** |
+
+This resolves the puzzle from Layer 3, where Belgium's storage covered only 24% of its swing. It is not exposed — it is differently exposed: **84% of Spain's and 81% of Belgium's peak day arrived by ship**, against **14% for Germany**. Regasification is faster to build and needs no geology, but it is supplied by the global LNG market on exactly the days when every other importer is bidding for the same cargo. Caverns are pre-positioned; ships are not. A European adequacy assessment that counts only % of storage full will score Iberia as safe and miss the actual dependency entirely.
+
+![Caverns or ships](results/lng_vs_storage.png)
+
+![LNG terminals](results/lng_terminals.png)
+
 ## Layer 5 — Where the pipes bind
 
 ENTSOG, peak winter gas day **2026-01-15**. Germany imported **1015 GWh/d** from Norway through two coastal clusters — Emden and Dornum — and both ran *above* their published firm technical capacity (**162%** and **139%**). The excess is interruptible or additional capacity: legally curtailable. Meanwhile **VIP Waidhaus, the old Russian route into Bavaria, sat at zero**, and **Mallnow ran backwards** — exporting to Poland at 86% of firm.
@@ -178,9 +200,11 @@ Salt caverns — the only store type with an established hydrogen track record �
 
 5. **2025/26 entered winter at 83% — the weakest on this record** — and the risk showed up as stock, not as speed.
 
-6. **The import side is now concentrated and partly non-firm.** Norway into two German coastal points, above firm capacity, while the eastern routes sit idle or reversed.
+6. **Half of southern Europe's peak day arrives by ship.** 84% for Spain, 81% for Belgium, against 14% for Germany — a dependency invisible to any storage-fill target.
 
-7. **Hydrogen does not inherit this buffer.** The same holes hold 4.2x less energy, so the seasonal margin has to be rebuilt, not converted.
+7. **The import side is now concentrated and partly non-firm.** Norway into two German coastal points, above firm capacity, while the eastern routes sit idle or reversed.
+
+8. **Hydrogen does not inherit this buffer.** The same holes hold 4.2x less energy, so the seasonal margin has to be rebuilt, not converted.
 
 
 ---

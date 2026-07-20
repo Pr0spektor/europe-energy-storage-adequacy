@@ -8,6 +8,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from eurostat import load_raw_dir, countries_only
 from seasonality import country_year_table, summarise
 import demand as D, balance as BAL, network as NW, storage_fleet as SF, agsi, hydrogen as H
+import lng as LNG
 from data import UGS_NATURAL_GAS_TWH, UGS_H2_BY_TYPE, total_ugs_h2_twh
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -189,6 +190,28 @@ def main():
          reh["full"]))
     A("![German sites](results/de_storage_sites.png)\n")
 
+    A("### Caverns or ships — the other half of the flexibility\n")
+    ft = LNG.flexibility_table()
+    A("Storage is not the only way to meet a cold day. LNG regasification supplies the same service "
+      "at a rate, and the two are only comparable on the **peak day** — comparing winter totals would "
+      "be meaningless, because send-out carries baseload as well as swing.\n")
+    A("| Country | Storage withdrawal | LNG send-out | Share from ships |")
+    A("|---|---|---|---|")
+    for r in ft:
+        A("| %s | %.2f TWh/d | %.2f TWh/d | **%.0f%%** |" % (N.get(r["code"], r["code"]),
+          r["storage_twh_d"], r["lng_twh_d"], r["lng_share"] * 100))
+    A("")
+    A("This resolves the puzzle from Layer 3, where Belgium's storage covered only 24%% of its swing. "
+      "It is not exposed — it is differently exposed: **%.0f%% of Spain's and %.0f%% of Belgium's peak "
+      "day arrived by ship**, against **%.0f%% for Germany**. Regasification is faster to build and "
+      "needs no geology, but it is supplied by the global LNG market on exactly the days when every "
+      "other importer is bidding for the same cargo. Caverns are pre-positioned; ships are not. A "
+      "European adequacy assessment that counts only %% of storage full will score Iberia as safe and "
+      "miss the actual dependency entirely.\n"
+      % tuple(([r for r in ft if r["code"] == c][0]["lng_share"] * 100) for c in ("ES", "BE", "DE")))
+    A("![Caverns or ships](results/lng_vs_storage.png)\n")
+    A("![LNG terminals](results/lng_terminals.png)\n")
+
     # ---------------------------------------------------------------- layer 5
     A("## Layer 5 — Where the pipes bind\n")
     c = NW.corridors()
@@ -243,9 +266,13 @@ def main():
       "instrument for both.\n" % ", ".join(r["code"] for r in tight))
     A("5. **2025/26 entered winter at %.0f%% — the weakest on this record** — and the risk showed up "
       "as stock, not as speed.\n" % last["peak_fill"])
-    A("6. **The import side is now concentrated and partly non-firm.** Norway into two German coastal "
+    A("6. **Half of southern Europe's peak day arrives by ship.** %.0f%% for Spain, %.0f%% for "
+      "Belgium, against %.0f%% for Germany — a dependency invisible to any storage-fill target.\n"
+      % tuple(([r for r in LNG.flexibility_table() if r["code"] == c][0]["lng_share"] * 100)
+              for c in ("ES", "BE", "DE")))
+    A("7. **The import side is now concentrated and partly non-firm.** Norway into two German coastal "
       "points, above firm capacity, while the eastern routes sit idle or reversed.\n")
-    A("7. **Hydrogen does not inherit this buffer.** The same holes hold %.1fx less energy, so the "
+    A("8. **Hydrogen does not inherit this buffer.** The same holes hold %.1fx less energy, so the "
       "seasonal margin has to be rebuilt, not converted.\n" % H.energy_loss_factor())
     A("\n---\n")
     A("*Reproduce: `python src/research.py`. Live refresh needs `AGSI_KEY` (free, "

@@ -49,6 +49,7 @@ runs out entirely as wind and solar deepen.
 | Which winters were tight? | 2025/26 peaked at **83% full** — weakest since 2019; every other year hit 88–99% | [RESEARCH L4](RESEARCH.md) |
 | Who ran out of *rate*, not gas? | **Belgium 96%, Portugal 96%, Croatia 90%** of their own withdrawal capacity on the peak day; Germany only 47% | [RESEARCH L4](RESEARCH.md) |
 | Which sites, which operators? | 46 German sites, 23 operators; **Rehden alone 35.7 TWh = 15%** of national volume, at **6% full** | [RESEARCH L4](RESEARCH.md) |
+| Caverns or ships? | **84% of Spain's** and **81% of Belgium's** peak-day flexibility arrived by LNG ship; Germany only **14%** | [RESEARCH](RESEARCH.md) |
 | What happens under hydrogen? | Same caverns hold **4.2× less** energy — the buffer disappears | [RESULTS §6](RESULTS.md) |
 
 
@@ -115,6 +116,8 @@ python src/network_chart.py    # network_map.png, network_corridors.png
 AGSI_KEY=... python src/agsi.py # GIE AGSI+ storage (free key: https://agsi.gie.eu/account)
 python src/storage_fleet.py    # volume vs deliverability vs duration
 python src/storage_chart.py    # fill curves, deliverability, German sites
+python src/lng.py              # LNG regas vs storage on the peak day (GIE ALSI)
+python src/lng_chart.py        # lng_terminals.png, lng_winter_peaks.png, lng_vs_storage.png
 python src/research.py         # regenerates RESEARCH.md from every layer
 python tests/test_adequacy.py  # 22/22 standalone …
 pytest -q                      # … or under pytest (CI)

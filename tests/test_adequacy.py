@@ -343,6 +343,41 @@ def test_facility_volumes_do_not_exceed_the_country():
     listed = sum(f["working_gas_volume"] for f in fac["facilities"])
     assert listed <= fac["_coverage"]["wgv_total_twh"] + 1e-6
 
+
+# ---- LNG regasification (GIE ALSI) ----
+import lng as LNG
+
+def test_alsi_file_loads():
+    d = LNG.load()
+    assert len(d["terminals"]) >= 20 and len(d["winter_2025_26"]) >= 12
+
+def test_eu_send_out_is_plausible():
+    assert 1500 < LNG.load()["eu_send_out_gwh_d"] < 4000
+
+def test_spain_has_the_most_terminals():
+    assert max(LNG.by_country(), key=lambda r: r["terminals"])["code"] == "ES"
+
+def test_iberia_and_belgium_lean_on_ships_not_caverns():
+    for c in ("ES", "BE"):
+        assert LNG.peak_flexibility(c)["lng_share"] > 0.75, c
+
+def test_germany_leans_on_caverns_not_ships():
+    f = LNG.peak_flexibility("DE")
+    assert f["lng_share"] < 0.25 and f["storage_twh_d"] > f["lng_twh_d"]
+
+def test_flexibility_shares_are_fractions_and_ranked():
+    t = LNG.flexibility_table()
+    assert len(t) >= 8
+    assert all(0.0 <= r["lng_share"] <= 1.0 for r in t)
+    assert t == sorted(t, key=lambda r: -r["lng_share"])
+
+def test_countries_without_terminals_return_none():
+    assert LNG.peak_flexibility("AT") is None and LNG.peak_flexibility("HU") is None
+
+def test_peak_flexibility_totals_add_up():
+    f = LNG.peak_flexibility("FR")
+    assert approx(f["total_twh_d"], f["storage_twh_d"] + f["lng_twh_d"])
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     passed = failed = 0

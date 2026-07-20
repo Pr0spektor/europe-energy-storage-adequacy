@@ -67,6 +67,15 @@ key appears on the API Account page and does not expire. It must be sent in the 
 header** — passing it as a query parameter returns `access denied`. `src/agsi.py` reads it
 from the `AGSI_KEY` environment variable and never stores it in the repository.
 
+## LNG regasification (added 2026-07-20)
+
+| Source | Endpoint | What it gives | Cached as |
+|---|---|---|---|
+| GIE ALSI | `/api` | terminals per country and daily send-out, gas day 2026-07-18 | `data/raw/alsi_2026-07-18.json` |
+| GIE ALSI | `/api?country=XX&from=..&to=..` | winter 2025/26 daily send-out → peak day and winter total | same file |
+
+ALSI uses the **same GIE account and `x-key` header as AGSI+**; one key covers both.
+
 One further source is free but gated behind a registration:
 
 - **ENTSO-E Transparency Platform** (electricity flows, generation, congestion) — register
