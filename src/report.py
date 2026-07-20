@@ -3,6 +3,8 @@ import os, sys, statistics as st
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from eurostat import load_raw_dir, countries_only
 from seasonality import country_year_table, summarise
+import demand as D
+import balance as BAL
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NAMES = {"BE":"Belgium","BG":"Bulgaria","CZ":"Czechia","DK":"Denmark","DE":"Germany","EE":"Estonia",
@@ -16,7 +18,7 @@ YEARS = ["2020","2021","2022","2023","2024","2025"]
 def main():
     raw = load_raw_dir()
     s = countries_only(raw)
-    rows = [r for r in country_year_table(s) if r["peak_to_trough"]]
+    rows = [r for r in country_year_table(s) if r["peak_to_trough"] and r["annual_total"]]
     summ = summarise(rows)
 
     # CSV: every country-year metric
@@ -83,7 +85,75 @@ def main():
              % ((1 - de[-1]["annual_total"]/de[1]["annual_total"])*100, de[-1]["peak_to_trough"],
                 de[-1]["swing_absolute"]/3600))
 
-    L.append("## 4. What this means for storage\n")
+    L.append("## 4. Who burns it, and which part of it moves with the weather\n")
+    L.append("Source: **Eurostat `nrg_bal_c`**, natural gas, GWh, 2024 (`data/raw/gas_sectors_2024.json`).\n")
+    L.append("| Country | Power & heat | Industry | Households | Commercial & public | Total (TWh) | Weather-exposed |")
+    L.append("|---|---|---|---|---|---|---|")
+    for c in ["EU27_2020", "DE", "IT", "TR", "FR", "ES", "NL", "PL", "RO", "BE", "HU", "CZ", "AT"]:
+        try:
+            b = D.by_sector(c); sh = D.shares(c)
+        except KeyError:
+            continue
+        tot = sum(b.values())
+        L.append("| %s | %.0f%% | %.0f%% | %.0f%% | %.0f%% | %.0f | %.0f%% |" % (
+            "EU-27" if c == "EU27_2020" else NAMES.get(c, c),
+            sh["Power & heat generation"]*100, sh["Industry"]*100, sh["Households"]*100,
+            sh["Commercial & public services"]*100, tot/1000, D.weather_exposed_share(c)*100))
+    L.append("\n![Sectoral split](results/demand_by_sector.png)\n")
+    L.append("**Where the swing comes from.** Industry runs process heat more or less flat through the "
+             "year; households and commercial buildings are almost pure space heating. So the winter peak "
+             "is overwhelmingly a *buildings* phenomenon, amplified by gas-fired power and district heat "
+             "in cold snaps. In Germany ~%.0f%% of gas volume sits in weather-driven end uses — which is "
+             "why a mild winter moves the whole European balance.\n" % (D.weather_exposed_share("DE")*100))
+
+    L.append("### Germany — which factories\n")
+    br = D.de_industry_branches()
+    L.append("| Branch | Gas, TWh (2024) |")
+    L.append("|---|---|")
+    for k, v in sorted(br.items(), key=lambda kv: -kv[1]):
+        L.append("| %s | %.1f |" % (k, v/1000))
+    L.append("\nChemicals alone burn %.0f TWh — more than the next two branches combined, and this is "
+             "*energy use only*, excluding gas used as feedstock. For scale, **German data centres consumed "
+             "~%.0f TWh of electricity in 2024**, projected to %.0f–%.0f TWh by 2030 (Borderstep/Bitkom). "
+             "Data centres are a fast-growing *electricity* load, not a gas load — they add to the power "
+             "system's flat baseload, not to the seasonal gas swing.\n"
+             % (br["Chemical and petrochemical"]/1000, D.DE_DATACENTRE_ELECTRICITY_TWH_2024,
+                *D.DE_DATACENTRE_ELECTRICITY_TWH_2030))
+    L.append("![German industry](results/de_industry_gas.png)\n")
+
+    L.append("## 5. What refills it, and where the bottlenecks are\n")
+    e = BAL.eu_cycle()
+    L.append("Source: **Eurostat `nrg_cb_gasm`, STK_CHG_MG** (stock changes), 2025 monthly "
+             "(`data/raw/gas_stock_change_2025.json`). Positive = injection, negative = withdrawal.\n")
+    L.append("In 2025 the EU-27 injected **%.0f TWh** into storage between April and October and withdrew "
+             "**%.0f TWh** over the winter. The single heaviest month took **%.0f TWh** out — an average "
+             "delivery rate of about **%.0f GW**, sustained for a month. That is the physical answer to "
+             "\"what replenishes it\": summer pipeline and LNG imports, parked underground, released again "
+             "from November.\n" % (e["injection_twh"], e["withdrawal_twh"],
+                                   e["peak_month_withdrawal_twh"], e["peak_withdrawal_gw"]))
+    L.append("![Storage cycle](results/storage_cycle.png)\n")
+    L.append("| Country | Seasonal swing (TWh) | Storage withdrawal (TWh) | Cover | Peak withdrawal rate (GW) |")
+    L.append("|---|---|---|---|---|")
+    for r in BAL.table()[:16]:
+        L.append("| %s | %.1f | %.1f | %s | %.1f |" % (
+            NAMES.get(r["country"], r["country"]), r["swing_twh"], r["withdrawal_twh"],
+            ("%.0f%%" % (r["storage_cover"]*100)) if r["storage_cover"] else "n/a",
+            r["peak_withdrawal_gw"]))
+    L.append("\n![Storage cover](results/storage_cover.png)\n")
+    L.append("**Conclusion.** In every country that owns storage, withdrawal lands within roughly ±15% of "
+             "its own seasonal swing — storage is not a supplement to the winter, it *is* the winter. "
+             "The bottleneck is therefore not the annual volume but two other things:\n")
+    L.append("1. **Deliverability.** Germany alone must pull ~%.0f GW out of the ground in the peak month. "
+             "A cavern field that holds the energy but cannot deliver the rate is useless in a cold snap.\n"
+             % [r for r in BAL.table() if r["country"] == "DE"][0]["peak_withdrawal_gw"])
+    ns = BAL.no_storage()
+    L.append("2. **Countries with no storage at all.** %s consume gas but hold none of it "
+             "underground. Their entire winter swing has to arrive in real time through a pipeline or an "
+             "LNG terminal — so an interconnector outage there is immediately a supply event, not a price "
+             "event.\n" % ", ".join("%s (%.0f TWh/y)" % (NAMES.get(r["country"], r["country"]),
+                                                        r["annual_twh"]) for r in ns))
+
+    L.append("## 6. What this means for storage\n")
     L.append("- The swing above a flat baseline is what storage and flexible supply must cover. For the EU "
              "it is on the order of **hundreds of TWh every year** — that is the job underground storage does today.\n"
              "- Batteries do not touch this: the entire EU grid-battery fleet is ~0.04 TWh, four orders of "
@@ -91,15 +161,14 @@ def main():
              "- Repurposing the gas storage fleet to hydrogen cuts its stored energy ~4.2x "
              "(1,100 TWh → 260 TWh), because a cavern holds a **volume**, not an energy.\n")
 
-    L.append("## 5. What is NOT in this repo yet (honest gaps)\n")
-    L.append("- **Sectoral split** — how much of each country's gas goes to households, industry and power "
-             "generation. Eurostat carries this annually (`nrg_bal_c`), not in the monthly series used here.\n"
-             "- **Storage fill levels and injection/withdrawal rates per facility** — GIE AGSI+ publishes this, "
-             "but its API needs a registered key.\n"
-             "- **Grid / network map and bottlenecks** — transmission topology and congestion come from "
-             "ENTSO-E; its Transparency Platform also requires a key.\n"
-             "- **Named consumers (plants, data centres)** — no open pan-European dataset ties individual "
-             "sites to metered demand; this needs commercial or national-registry sources.\n")
+    L.append("## 7. What is NOT in this repo yet (honest gaps)\n")
+    L.append("- **Facility-level storage** — this uses national stock changes, not individual site fill "
+             "levels and injection/withdrawal curves. GIE AGSI+ publishes those, but its API needs a "
+             "registered key.\n"
+             "- **Transmission topology and congestion** — which specific interconnector binds, and when. "
+             "ENTSO-G/ENTSO-E publish it; the Transparency Platform also requires a key.\n"
+             "- **Named sites** — no open pan-European dataset ties an individual plant or data centre to "
+             "metered demand, so branch-level is as granular as public data honestly goes.\n")
     open(os.path.join(ROOT, "RESULTS.md"), "w").write("\n".join(L) + "\n")
     print("wrote RESULTS.md and results/seasonality.csv (%d country-years)" % len(rows))
 

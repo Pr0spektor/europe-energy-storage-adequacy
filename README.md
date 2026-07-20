@@ -23,10 +23,26 @@ A cavern stores a *volume*, not an energy. Hydrogen holds only ~0.30 of methane'
 per cubic metre, so Europe's comfortable gas buffer becomes a thin hydrogen margin — and it
 runs out entirely as wind and solar deepen.
 
+![Storage cycle](results/storage_cycle.png)
+![Sectoral split](results/demand_by_sector.png)
 ![Requirement vs available](results/requirement_vs_available.png)
 ![Scenarios](results/scenarios.png)
 
 **→ One-page findings: [INSIGHT_MEMO.md](INSIGHT_MEMO.md)**
+**→ Full results, every country and year: [RESULTS.md](RESULTS.md)** · raw table: [results/seasonality.csv](results/seasonality.csv)
+
+### The chain of evidence, in one place
+
+| Question | Answer | Where |
+|---|---|---|
+| How uneven is European gas demand? | EU-27 peak/trough **2.68** in 2025, up from 2.29 in 2020 — 38 countries, 2020-2026 | [RESULTS §1-2](RESULTS.md) |
+| Who causes it? | ~**47%** of EU gas sits in weather-driven end uses; industry is nearly flat | [RESULTS §4](RESULTS.md) |
+| Which factories? | German chemicals **54 TWh**, food **32**, cement/glass **22**, paper **19**, steel **19** | [RESULTS §4](RESULTS.md) |
+| What about data centres? | **~20 TWh of electricity** in Germany (2024) → 25-37 TWh by 2030 — a power load, not a gas load | [RESULTS §4](RESULTS.md) |
+| What refills the swing? | EU injected **557 TWh** Apr-Oct 2025, withdrew **667 TWh** in winter; peak month **270 GW** | [RESULTS §5](RESULTS.md) |
+| Where are the bottlenecks? | Deliverability (Germany **74 GW** peak) and five gas-consuming countries with **zero** storage | [RESULTS §5](RESULTS.md) |
+| What happens under hydrogen? | Same caverns hold **4.2× less** energy — the buffer disappears | [RESULTS §6](RESULTS.md) |
+
 
 ## Measured seasonality (real data, not assumptions)
 
@@ -80,6 +96,11 @@ tests/              # 22 unit tests (incl. checks against the real data)
 ```bash
 python src/analysis.py         # charts + memo + summary.json  (needs matplotlib)
 python src/seasonality.py      # per-country seasonality table
+python src/demand.py           # sectoral split of demand
+python src/balance.py          # storage injection/withdrawal cycle + bottlenecks
+python src/report.py           # RESULTS.md + results/seasonality.csv
+python src/demand_chart.py     # demand_by_sector.png, de_industry_gas.png
+python src/balance_chart.py    # storage_cycle.png, storage_cover.png
 python tests/test_adequacy.py  # 22/22 standalone …
 pytest -q                      # … or under pytest (CI)
 ```

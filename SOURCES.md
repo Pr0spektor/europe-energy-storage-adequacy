@@ -32,3 +32,14 @@
 
 > Capacity and demand figures are planning inputs at EU aggregate level, not a licensed
 > asset-level dataset. Replace with operator data before commercial use.
+
+## Demand-side split and storage cycle (added 2026-07-20)
+
+| Source | Dataset | What it gives | Cached as |
+|---|---|---|---|
+| Eurostat | `nrg_bal_c` — complete energy balances, natural gas (G3000), GWh, 2024 | gas by sector: power & heat, industry, households, commercial; German industry by branch | `data/raw/gas_sectors_2024.json` |
+| Eurostat | `nrg_cb_gasm` — `STK_CHG_MG`, TJ GCV, monthly 2025, all geos | net injection / withdrawal per country per month | `data/raw/gas_stock_change_2025.json` |
+| Borderstep Institute / Bitkom | German data centre electricity: ~20 TWh (2024); 25-37 TWh projected 2030 | scale comparison for the data-centre question (electricity, not gas) | constant in `src/demand.py` |
+
+Raw API responses are stored verbatim and decoded by the same unit-tested parsers used
+for live pulls, so every figure in RESULTS.md can be traced back to the source document.

@@ -184,6 +184,65 @@ def test_cached_dataset_passes_its_own_validation():
     rep = EU.validate(blob.get("series", {}))
     assert rep["ok"], rep["issues"]
 
+
+# ---- demand-side split (Eurostat nrg_bal_c) ----
+import demand as DM
+
+def test_sector_shares_sum_to_one():
+    sh = DM.shares("DE")
+    assert approx(sum(sh.values()), 1.0, rel=1e-9)
+    assert len(sh) == 4
+
+def test_germany_sector_volumes_are_plausible():
+    b = DM.by_sector("DE")
+    assert 600_000 < sum(b.values()) < 900_000        # GWh, i.e. 600-900 TWh
+    assert b["Households"] > b["Commercial & public services"]
+
+def test_weather_exposed_share_between_industry_and_households():
+    w = DM.weather_exposed_share("DE")
+    assert DM.WEATHER_SENSITIVITY["FC_IND_E"] < w < DM.WEATHER_SENSITIVITY["FC_OTH_HH_E"]
+
+def test_germany_is_the_largest_industrial_gas_user():
+    assert DM.ranking("FC_IND_E", 1)[0][0] == "DE"
+
+def test_chemicals_lead_german_industry():
+    br = DM.de_industry_branches()
+    assert max(br, key=br.get) == "Chemical and petrochemical"
+
+
+# ---- storage cycle & bottlenecks (Eurostat STK_CHG_MG) ----
+import balance as BAL
+
+def test_stock_change_parses_all_twelve_months():
+    st = BAL.parse()
+    assert len(st["DE"]) == 12 and all(v is not None for v in st["DE"])
+
+def test_winter_is_withdrawal_and_summer_is_injection():
+    de = BAL.parse()["DE"]
+    assert de[0] < 0 and de[1] < 0          # January, February: net withdrawal
+    assert de[5] > 0 and de[6] > 0          # June, July: net injection
+
+def test_eu_cycle_roughly_balances_over_the_year():
+    e = BAL.eu_cycle()
+    assert e["injection_twh"] > 300 and e["withdrawal_twh"] > 300
+    assert abs(e["injection_twh"] - e["withdrawal_twh"]) < 0.5 * e["withdrawal_twh"]
+
+def test_storage_covers_the_seasonal_swing_where_it_exists():
+    rows = [r for r in BAL.table() if r["storage_cover"] is not None][:10]
+    assert len(rows) >= 8
+    assert all(0.7 < r["storage_cover"] < 1.6 for r in rows), \
+        [(r["country"], round(r["storage_cover"], 2)) for r in rows]
+
+def test_countries_without_storage_are_flagged():
+    codes = {r["country"] for r in BAL.no_storage()}
+    assert "IE" in codes                    # Ireland consumes ~55 TWh/y and stores none
+    assert "DE" not in codes
+
+def test_peak_withdrawal_rate_is_a_power_not_an_energy():
+    de = [r for r in BAL.table() if r["country"] == "DE"][0]
+    assert de["peak_withdrawal_gw"] > 20    # tens of GW sustained through the peak month
+    assert de["peak_withdrawal_gw"] < de["peak_month_withdrawal_twh"] * 1000
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     passed = failed = 0
