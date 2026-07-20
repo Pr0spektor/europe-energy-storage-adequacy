@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+title: "Europe energy storage adequacy: from natural gas to hydrogen"
+message: "If you use this software, please cite it using these metadata."
+type: software
+authors:
+  - alias: Pr0spektor
+repository-code: "https://github.com/Pr0spektor/europe-energy-storage-adequacy"
+abstract: >-
+  A transparent adequacy model of the seasonal energy storage Europe must carry as it
+  electrifies, and of what underground gas storage can still deliver once repurposed to
+  hydrogen. Combines real Eurostat monthly consumption data (measured seasonality per
+  country and year) with published storage capacities, and separates the two constraints
+  that govern underground storage: working volume and deliverability.
+keywords:
+  - underground-gas-storage
+  - hydrogen-storage
+  - seasonal-storage
+  - energy-adequacy
+  - energy-transition
+  - eurostat
+license: MIT
+version: "1.0.0"
+date-released: "2026-07-20"

@@ -1,0 +1,213 @@
+{
+  "assumptions": {
+    "electricity_demand_twh": 2700.0,
+    "vre_share": 0.7
+  },
+  "requirement": {
+    "seasonal_energy_twh": 238.0,
+    "peak_withdrawal_gw": 85.3,
+    "peak_daily_twh": 4.27,
+    "balancing_baseload_twh_per_day": 2.22
+  },
+  "hydrogen": {
+    "volumetric_energy_ratio": 0.301,
+    "ch4_fleet_twh": 1100.0,
+    "h2_fleet_twh": 260.0,
+    "energy_shrink_factor": 4.23,
+    "by_store": {
+      "Salt caverns": 49.0,
+      "Depleted gas fields": 171.0,
+      "Aquifers": 40.0
+    },
+    "vs_gie_target": {
+      "target_twh": 45.0,
+      "total_h2_twh": 260.0,
+      "target_met": true,
+      "headroom_twh": 215.0,
+      "by_store": [
+        {
+          "store": "Depleted gas fields",
+          "h2_twh": 171.0,
+          "cumulative_twh": 171.0,
+          "covers_target": true
+        },
+        {
+          "store": "Salt caverns",
+          "h2_twh": 49.0,
+          "cumulative_twh": 220.0,
+          "covers_target": true
+        },
+        {
+          "store": "Aquifers",
+          "h2_twh": 40.0,
+          "cumulative_twh": 260.0,
+          "covers_target": true
+        }
+      ]
+    }
+  },
+  "adequacy": {
+    "gas_today": {
+      "energy_utilisation": 0.21634759831012937,
+      "power_utilisation": 0.1219225532235369,
+      "binding_constraint": "none \u2014 both energy and deliverability are sufficient",
+      "energy_gap_twh": 0.0,
+      "power_gap_gw": 0.0
+    },
+    "repurposed_h2": {
+      "energy_utilisation": 0.9153167620813165,
+      "power_utilisation": 0.34138314902590333,
+      "binding_constraint": "none \u2014 both energy and deliverability are sufficient",
+      "energy_gap_twh": 0.0,
+      "power_gap_gw": 0.0
+    },
+    "vre_share_where_h2_fleet_is_exceeded": 0.9,
+    "days_of_cover_gas": 257.8,
+    "days_of_cover_h2": 60.9
+  },
+  "flexibility_ladder": [
+    {
+      "technology": "Grid batteries (Li-ion)",
+      "energy_twh": 0.035,
+      "power_gw": 20.0,
+      "round_trip_eff": 0.87,
+      "nominal_duration_h": 4,
+      "hours_at_rated_power": 1.75,
+      "days_of_eu_demand": 0.0047314814814814815
+    },
+    {
+      "technology": "Pumped hydro",
+      "energy_twh": 0.25,
+      "power_gw": 55.0,
+      "round_trip_eff": 0.78,
+      "nominal_duration_h": 10,
+      "hours_at_rated_power": 4.545454545454546,
+      "days_of_eu_demand": 0.033796296296296297
+    },
+    {
+      "technology": "UGS \u2014 repurposed to H2",
+      "energy_twh": 260.0,
+      "power_gw": 250.0,
+      "round_trip_eff": 0.35,
+      "nominal_duration_h": 1500,
+      "hours_at_rated_power": 1040.0,
+      "days_of_eu_demand": 35.148148148148145
+    },
+    {
+      "technology": "UGS \u2014 natural gas today",
+      "energy_twh": 1100.0,
+      "power_gw": 700.0,
+      "round_trip_eff": 0.45,
+      "nominal_duration_h": 2000,
+      "hours_at_rated_power": 1571.4285714285713,
+      "days_of_eu_demand": 148.7037037037037
+    }
+  ],
+  "seasonal_capable": [
+    "UGS \u2014 repurposed to H2",
+    "UGS \u2014 natural gas today"
+  ],
+  "scenarios": [
+    {
+      "vre_share": 0.6,
+      "seasonal_energy_twh": 225.1,
+      "peak_withdrawal_gw": 80.7,
+      "h2_fleet_utilisation": 0.866,
+      "balancing_baseload_twh_per_day": 2.96
+    },
+    {
+      "vre_share": 0.7,
+      "seasonal_energy_twh": 238.0,
+      "peak_withdrawal_gw": 85.3,
+      "h2_fleet_utilisation": 0.915,
+      "balancing_baseload_twh_per_day": 2.22
+    },
+    {
+      "vre_share": 0.8,
+      "seasonal_energy_twh": 250.9,
+      "peak_withdrawal_gw": 90.0,
+      "h2_fleet_utilisation": 0.965,
+      "balancing_baseload_twh_per_day": 1.48
+    },
+    {
+      "vre_share": 0.9,
+      "seasonal_energy_twh": 264.0,
+      "peak_withdrawal_gw": 94.7,
+      "h2_fleet_utilisation": 1.015,
+      "balancing_baseload_twh_per_day": 0.74
+    },
+    {
+      "vre_share": 1.0,
+      "seasonal_energy_twh": 277.0,
+      "peak_withdrawal_gw": 99.4,
+      "h2_fleet_utilisation": 1.065,
+      "balancing_baseload_twh_per_day": 0.0
+    }
+  ],
+  "observed_seasonality": {
+    "by_country_year": [
+      {
+        "country": "DE",
+        "year": "2020",
+        "peak_to_trough": 2.7278709924283784,
+        "winter_summer": 2.4995960877275065,
+        "swing_share": 0.1730499020471658,
+        "swing_absolute": 599382.2899999998,
+        "annual_total": 3463638.424
+      },
+      {
+        "country": "DE",
+        "year": "2021",
+        "peak_to_trough": 3.6778385907138067,
+        "winter_summer": 3.118914063712867,
+        "swing_share": 0.19235651481516428,
+        "swing_absolute": 698852.371,
+        "annual_total": 3633109.9660000005
+      },
+      {
+        "country": "DE",
+        "year": "2022",
+        "peak_to_trough": 4.046577522152377,
+        "winter_summer": 3.1558783456325936,
+        "swing_share": 0.20056967986261245,
+        "swing_absolute": 616530.2834999999,
+        "annual_total": 3073895.7350000003
+      },
+      {
+        "country": "DE",
+        "year": "2023",
+        "peak_to_trough": 3.4194482227698337,
+        "winter_summer": 2.9934207416789604,
+        "swing_share": 0.19692616032374843,
+        "swing_absolute": 582267.6925000001,
+        "annual_total": 2956781.829
+      },
+      {
+        "country": "DE",
+        "year": "2024",
+        "peak_to_trough": 3.3814223678327435,
+        "winter_summer": 2.8678680024752086,
+        "swing_share": 0.19236476362579238,
+        "swing_absolute": 579604.3775,
+        "annual_total": 3013048.578
+      }
+    ],
+    "summary": {
+      "DE": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024"
+        ],
+        "mean_peak_to_trough": 3.450631539179428,
+        "mean_winter_summer": 2.9271354482454273,
+        "mean_swing_share": 0.19105340413489666,
+        "peak_to_trough_first_year": 2.7278709924283784,
+        "peak_to_trough_last_year": 3.3814223678327435,
+        "change": 0.6535513754043651
+      }
+    }
+  }
+}
