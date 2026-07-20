@@ -147,6 +147,384 @@
   "observed_seasonality": {
     "by_country_year": [
       {
+        "country": "AL",
+        "year": "2020",
+        "peak_to_trough": null,
+        "winter_summer": 1.1088993296506713,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "AL",
+        "year": "2021",
+        "peak_to_trough": 2.178248861685452,
+        "winter_summer": 0.8876849039485621,
+        "swing_share": 0.06308366930309144,
+        "swing_absolute": 127.80599999999998,
+        "annual_total": 2025.976
+      },
+      {
+        "country": "AL",
+        "year": "2022",
+        "peak_to_trough": 5.528699402786994,
+        "winter_summer": 0.8227479693178784,
+        "swing_share": 0.06647025974262817,
+        "swing_absolute": 105.69774999999993,
+        "annual_total": 1590.151
+      },
+      {
+        "country": "AL",
+        "year": "2023",
+        "peak_to_trough": 9.57397000631796,
+        "winter_summer": 0.7501923447934415,
+        "swing_share": 0.22514763024168158,
+        "swing_absolute": 902.12175,
+        "annual_total": 4006.801
+      },
+      {
+        "country": "AL",
+        "year": "2024",
+        "peak_to_trough": 2.8589500752634223,
+        "winter_summer": 0.8778388495475207,
+        "swing_share": 0.11128859685687456,
+        "swing_absolute": 331.5935,
+        "annual_total": 2979.582
+      },
+      {
+        "country": "AL",
+        "year": "2025",
+        "peak_to_trough": 7.851309433002797,
+        "winter_summer": 2.085680126729833,
+        "swing_share": 0.303035101327283,
+        "swing_absolute": 396.1523333333332,
+        "annual_total": 1307.2820000000002
+      },
+      {
+        "country": "AL",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "AT",
+        "year": "2020",
+        "peak_to_trough": 3.2375734838282133,
+        "winter_summer": 2.7230038075571965,
+        "swing_share": 0.1842903779863639,
+        "swing_absolute": 61820.496999999974,
+        "annual_total": 335451.57200000004
+      },
+      {
+        "country": "AT",
+        "year": "2021",
+        "peak_to_trough": 3.1669863593579586,
+        "winter_summer": 2.909918588340959,
+        "swing_share": 0.17882308507504835,
+        "swing_absolute": 63578.970499999996,
+        "annual_total": 355541.179
+      },
+      {
+        "country": "AT",
+        "year": "2022",
+        "peak_to_trough": 3.628727978052841,
+        "winter_summer": 2.974382467031564,
+        "swing_share": 0.18822424502057117,
+        "swing_absolute": 59487.83049999998,
+        "annual_total": 316047.65100000007
+      },
+      {
+        "country": "AT",
+        "year": "2023",
+        "peak_to_trough": 3.1019178636579543,
+        "winter_summer": 2.841652679709525,
+        "swing_share": 0.17969519489107907,
+        "swing_absolute": 49298.29100000001,
+        "annual_total": 274343.958
+      },
+      {
+        "country": "AT",
+        "year": "2024",
+        "peak_to_trough": 3.552849767059545,
+        "winter_summer": 2.949763744224937,
+        "swing_share": 0.20066569967764858,
+        "swing_absolute": 54842.88366666665,
+        "annual_total": 273304.72400000005
+      },
+      {
+        "country": "AT",
+        "year": "2025",
+        "peak_to_trough": 3.7252604004176386,
+        "winter_summer": 3.336891062657122,
+        "swing_share": 0.20756208680747842,
+        "swing_absolute": 61837.08350000001,
+        "annual_total": 297920.899
+      },
+      {
+        "country": "AT",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "BE",
+        "year": "2020",
+        "peak_to_trough": 2.026368016781615,
+        "winter_summer": 1.8368714280139358,
+        "swing_share": 0.12545482386462556,
+        "swing_absolute": 87719.06666666665,
+        "annual_total": 699208.4
+      },
+      {
+        "country": "BE",
+        "year": "2021",
+        "peak_to_trough": 2.667607520725507,
+        "winter_summer": 2.3157944964016663,
+        "swing_share": 0.15685331586797044,
+        "swing_absolute": 110164.75000000003,
+        "annual_total": 702342.5
+      },
+      {
+        "country": "BE",
+        "year": "2022",
+        "peak_to_trough": 2.442562345721734,
+        "winter_summer": 2.0745058073032894,
+        "swing_share": 0.12953325338849137,
+        "swing_absolute": 78680.93333333335,
+        "annual_total": 607418.7999999999
+      },
+      {
+        "country": "BE",
+        "year": "2023",
+        "peak_to_trough": 2.323819667712052,
+        "winter_summer": 2.0849592473861756,
+        "swing_share": 0.1456787944091241,
+        "swing_absolute": 83431.94999999997,
+        "annual_total": 572711.7000000001
+      },
+      {
+        "country": "BE",
+        "year": "2024",
+        "peak_to_trough": 2.894019387063051,
+        "winter_summer": 2.35150831443333,
+        "swing_share": 0.1570107270310794,
+        "swing_absolute": 86542.75833333336,
+        "annual_total": 551190.1
+      },
+      {
+        "country": "BE",
+        "year": "2025",
+        "peak_to_trough": 2.804837672947167,
+        "winter_summer": 2.52056983359156,
+        "swing_share": 0.16248017448887386,
+        "swing_absolute": 91096.50833333333,
+        "annual_total": 560662.2999999999
+      },
+      {
+        "country": "BE",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "BG",
+        "year": "2020",
+        "peak_to_trough": 2.454834341048411,
+        "winter_summer": 2.1157371886683616,
+        "swing_share": 0.14110575727706723,
+        "swing_absolute": 16475.968083333333,
+        "annual_total": 116763.25899999999
+      },
+      {
+        "country": "BG",
+        "year": "2021",
+        "peak_to_trough": 1.948163206386498,
+        "winter_summer": 1.591225055206838,
+        "swing_share": 0.09988549801974678,
+        "swing_absolute": 13188.01625000001,
+        "annual_total": 132031.341
+      },
+      {
+        "country": "BG",
+        "year": "2022",
+        "peak_to_trough": 2.8130622621352113,
+        "winter_summer": 1.9174780465547205,
+        "swing_share": 0.1485866007041469,
+        "swing_absolute": 16068.00433333333,
+        "annual_total": 108138.986
+      },
+      {
+        "country": "BG",
+        "year": "2023",
+        "peak_to_trough": 2.0060176937667524,
+        "winter_summer": 1.649418191959148,
+        "swing_share": 0.104813970924155,
+        "swing_absolute": 10585.61383333333,
+        "annual_total": 100994.30200000001
+      },
+      {
+        "country": "BG",
+        "year": "2024",
+        "peak_to_trough": 1.9151111693813907,
+        "winter_summer": 1.6084448031062466,
+        "swing_share": 0.09424194435346767,
+        "swing_absolute": 10227.974083333334,
+        "annual_total": 108528.89499999999
+      },
+      {
+        "country": "BG",
+        "year": "2025",
+        "peak_to_trough": 2.091217719294016,
+        "winter_summer": 1.9736680711289818,
+        "swing_share": 0.1154448217787888,
+        "swing_absolute": 12416.744000000002,
+        "annual_total": 107555.65999999999
+      },
+      {
+        "country": "BG",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "CY",
+        "year": "2020",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": 0,
+        "annual_total": 0.0
+      },
+      {
+        "country": "CY",
+        "year": "2021",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": 0,
+        "annual_total": 0.0
+      },
+      {
+        "country": "CY",
+        "year": "2022",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": 0,
+        "annual_total": 0.0
+      },
+      {
+        "country": "CY",
+        "year": "2023",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": 0,
+        "annual_total": 0.0
+      },
+      {
+        "country": "CY",
+        "year": "2024",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": 0,
+        "annual_total": 0.0
+      },
+      {
+        "country": "CY",
+        "year": "2025",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": 0,
+        "annual_total": 0.0
+      },
+      {
+        "country": "CY",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "CZ",
+        "year": "2020",
+        "peak_to_trough": 3.013719954558968,
+        "winter_summer": 2.7188610458216216,
+        "swing_share": 0.1884771528452017,
+        "swing_absolute": 63798.63849999998,
+        "annual_total": 338495.34300000005
+      },
+      {
+        "country": "CZ",
+        "year": "2021",
+        "peak_to_trough": 3.4454109491470484,
+        "winter_summer": 3.0423169335872036,
+        "swing_share": 0.19233411073260753,
+        "swing_absolute": 69774.414,
+        "annual_total": 362777.116
+      },
+      {
+        "country": "CZ",
+        "year": "2022",
+        "peak_to_trough": 3.598556249770542,
+        "winter_summer": 3.3500450251510387,
+        "swing_share": 0.20918777300794347,
+        "swing_absolute": 63626.43149999998,
+        "annual_total": 304159.41900000005
+      },
+      {
+        "country": "CZ",
+        "year": "2023",
+        "peak_to_trough": 3.0703790940738442,
+        "winter_summer": 2.9243354648248063,
+        "swing_share": 0.19772946551944132,
+        "swing_absolute": 52971.81199999996,
+        "annual_total": 267900.44600000005
+      },
+      {
+        "country": "CZ",
+        "year": "2024",
+        "peak_to_trough": 3.8854958771528683,
+        "winter_summer": 3.1438477196215904,
+        "swing_share": 0.20738772885492326,
+        "swing_absolute": 55409.76650000001,
+        "annual_total": 267179.581
+      },
+      {
+        "country": "CZ",
+        "year": "2025",
+        "peak_to_trough": 3.8640177326448533,
+        "winter_summer": 3.402672737566525,
+        "swing_share": 0.2084147206813381,
+        "swing_absolute": 59541.44300000004,
+        "annual_total": 285687.31999999995
+      },
+      {
+        "country": "CZ",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
         "country": "DE",
         "year": "2020",
         "peak_to_trough": 2.7278709924283784,
@@ -190,23 +568,2363 @@
         "swing_share": 0.19236476362579238,
         "swing_absolute": 579604.3775,
         "annual_total": 3013048.578
+      },
+      {
+        "country": "DE",
+        "year": "2025",
+        "peak_to_trough": 3.5845856633997237,
+        "winter_summer": 3.3867152756785686,
+        "swing_share": 0.20907282876272434,
+        "swing_absolute": 651102.237,
+        "annual_total": 3114236.512
+      },
+      {
+        "country": "DE",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "DK",
+        "year": "2020",
+        "peak_to_trough": 2.3021544480133116,
+        "winter_summer": 2.0461977740172737,
+        "swing_share": 0.12366825526803182,
+        "swing_absolute": 13469.9105,
+        "annual_total": 108919.71
+      },
+      {
+        "country": "DK",
+        "year": "2021",
+        "peak_to_trough": 2.946919276228985,
+        "winter_summer": 2.510553131098755,
+        "swing_share": 0.15425782669855362,
+        "swing_absolute": 17978.775,
+        "annual_total": 116550.16399999999
+      },
+      {
+        "country": "DK",
+        "year": "2022",
+        "peak_to_trough": 2.439770648625694,
+        "winter_summer": 2.164964646192746,
+        "swing_share": 0.14156179714044897,
+        "swing_absolute": 13143.155000000013,
+        "annual_total": 92843.93999999997
+      },
+      {
+        "country": "DK",
+        "year": "2023",
+        "peak_to_trough": 2.0701281152981985,
+        "winter_summer": 1.8283261224667393,
+        "swing_share": 0.12641607732027785,
+        "swing_absolute": 11867.922250000007,
+        "annual_total": 93879.84899999999
+      },
+      {
+        "country": "DK",
+        "year": "2024",
+        "peak_to_trough": 2.9562678964349294,
+        "winter_summer": 2.2186223948057955,
+        "swing_share": 0.14467737858556895,
+        "swing_absolute": 13658.438499999993,
+        "annual_total": 94406.17900000002
+      },
+      {
+        "country": "DK",
+        "year": "2025",
+        "peak_to_trough": 2.7836169864978397,
+        "winter_summer": 2.2933519646912846,
+        "swing_share": 0.14828924319080722,
+        "swing_absolute": 13775.148333333342,
+        "annual_total": 92893.77999999998
+      },
+      {
+        "country": "DK",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "EE",
+        "year": "2020",
+        "peak_to_trough": 3.5689655172413794,
+        "winter_summer": 3.1047666335650446,
+        "swing_share": 0.18979995060508761,
+        "swing_absolute": 3073.999999999999,
+        "annual_total": 16196.0
+      },
+      {
+        "country": "EE",
+        "year": "2021",
+        "peak_to_trough": 4.759862778730703,
+        "winter_summer": 4.004502251125563,
+        "swing_share": 0.2214213041187478,
+        "swing_absolute": 4062.416666666666,
+        "annual_total": 18347.0
+      },
+      {
+        "country": "EE",
+        "year": "2022",
+        "peak_to_trough": 5.232505643340858,
+        "winter_summer": 3.902327553088611,
+        "swing_share": 0.23168767896564432,
+        "swing_absolute": 3165.279999999999,
+        "annual_total": 13661.840000000002
+      },
+      {
+        "country": "EE",
+        "year": "2023",
+        "peak_to_trough": 4.523917995444191,
+        "winter_summer": 3.312372535690007,
+        "swing_share": 0.21450253624635543,
+        "swing_absolute": 2685.2500000000005,
+        "annual_total": 12518.5
+      },
+      {
+        "country": "EE",
+        "year": "2024",
+        "peak_to_trough": 6.393794749403341,
+        "winter_summer": 4.212016574585635,
+        "swing_share": 0.24103332693471935,
+        "swing_absolute": 3264.7,
+        "annual_total": 13544.6
+      },
+      {
+        "country": "EE",
+        "year": "2025",
+        "peak_to_trough": 3.734341252699784,
+        "winter_summer": 3.387948544346649,
+        "swing_share": 0.20233309638780625,
+        "swing_absolute": 2476.3749999999995,
+        "annual_total": 12239.1
+      },
+      {
+        "country": "EE",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "EL",
+        "year": "2020",
+        "peak_to_trough": 1.6383966376000838,
+        "winter_summer": 1.130050012273552,
+        "swing_share": 0.06147881456361023,
+        "swing_absolute": 14082.948916666654,
+        "annual_total": 229069.94900000002
+      },
+      {
+        "country": "EL",
+        "year": "2021",
+        "peak_to_trough": 1.5678280922097503,
+        "winter_summer": 0.9701360116376211,
+        "swing_share": 0.04676038132553199,
+        "swing_absolute": 11829.47400000001,
+        "annual_total": 252980.69999999998
+      },
+      {
+        "country": "EL",
+        "year": "2022",
+        "peak_to_trough": 2.5873988980587725,
+        "winter_summer": 1.0730371037921742,
+        "swing_share": 0.11811549143489064,
+        "swing_absolute": 24206.064500000008,
+        "annual_total": 204935.561
+      },
+      {
+        "country": "EL",
+        "year": "2023",
+        "peak_to_trough": 1.6567110582631477,
+        "winter_summer": 0.9387525303922709,
+        "swing_share": 0.04653353930862686,
+        "swing_absolute": 8582.597083333325,
+        "annual_total": 184438.94900000002
+      },
+      {
+        "country": "EL",
+        "year": "2024",
+        "peak_to_trough": 1.6917860161423344,
+        "winter_summer": 1.0349741861087496,
+        "swing_share": 0.06432146013979588,
+        "swing_absolute": 15421.692249999996,
+        "annual_total": 239759.673
+      },
+      {
+        "country": "EL",
+        "year": "2025",
+        "peak_to_trough": 1.9918327210896165,
+        "winter_summer": 1.3467986690254432,
+        "swing_share": 0.08890083893500593,
+        "swing_absolute": 22603.787999999997,
+        "annual_total": 254258.43300000002
+      },
+      {
+        "country": "EL",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "ES",
+        "year": "2020",
+        "peak_to_trough": 1.7411199408612086,
+        "winter_summer": 1.2567990984476884,
+        "swing_share": 0.0576986251037283,
+        "swing_absolute": 74120.0,
+        "annual_total": 1284606.0
+      },
+      {
+        "country": "ES",
+        "year": "2021",
+        "peak_to_trough": 1.4461080231784142,
+        "winter_summer": 1.2801835042920366,
+        "swing_share": 0.05789899861391718,
+        "swing_absolute": 78695.00466666669,
+        "annual_total": 1359177.301
+      },
+      {
+        "country": "ES",
+        "year": "2022",
+        "peak_to_trough": 1.564148259584079,
+        "winter_summer": 1.156780259591341,
+        "swing_share": 0.05419085689918301,
+        "swing_absolute": 70865.20533333329,
+        "annual_total": 1307696.7110000001
+      },
+      {
+        "country": "ES",
+        "year": "2023",
+        "peak_to_trough": 1.3872441212655482,
+        "winter_summer": 1.1995522601000679,
+        "swing_share": 0.040931993416953145,
+        "swing_absolute": 48065.378666666744,
+        "annual_total": 1174274.0739999998
+      },
+      {
+        "country": "ES",
+        "year": "2024",
+        "peak_to_trough": 1.6582710400147882,
+        "winter_summer": 1.4110080003922598,
+        "swing_share": 0.07202009400867683,
+        "swing_absolute": 80883.56758333328,
+        "annual_total": 1123069.4530000002
+      },
+      {
+        "country": "ES",
+        "year": "2025",
+        "peak_to_trough": 1.5237387850653585,
+        "winter_summer": 1.3000178583046154,
+        "swing_share": 0.05796252332561198,
+        "swing_absolute": 69156.66999999987,
+        "annual_total": 1193127.3180000002
+      },
+      {
+        "country": "ES",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "FI",
+        "year": "2020",
+        "peak_to_trough": 1.6307178631051753,
+        "winter_summer": 1.509334328995093,
+        "swing_share": 0.072868754557931,
+        "swing_absolute": 6767.933333333339,
+        "annual_total": 92878.4
+      },
+      {
+        "country": "FI",
+        "year": "2021",
+        "peak_to_trough": 3.490973811339944,
+        "winter_summer": 2.3291218413810357,
+        "swing_share": 0.18947361804081314,
+        "swing_absolute": 17582.583333333336,
+        "annual_total": 92797.0
+      },
+      {
+        "country": "FI",
+        "year": "2022",
+        "peak_to_trough": 2.5963060686015833,
+        "winter_summer": 1.5120158326265196,
+        "swing_share": 0.13562798481570676,
+        "swing_absolute": 6645.5,
+        "annual_total": 48998.0
+      },
+      {
+        "country": "FI",
+        "year": "2023",
+        "peak_to_trough": 3.835994677312043,
+        "winter_summer": 1.3447786817944314,
+        "swing_share": 0.12238132133384987,
+        "swing_absolute": 8213.5,
+        "annual_total": 67114.0
+      },
+      {
+        "country": "FI",
+        "year": "2024",
+        "peak_to_trough": 2.317073170731707,
+        "winter_summer": 1.6906401798013484,
+        "swing_share": 0.11159736875996872,
+        "swing_absolute": 7509.833333333335,
+        "annual_total": 67294.0
+      },
+      {
+        "country": "FI",
+        "year": "2025",
+        "peak_to_trough": 2.637376237623762,
+        "winter_summer": 1.447659221001815,
+        "swing_share": 0.09374521164318862,
+        "swing_absolute": 5190.140833333337,
+        "annual_total": 55364.329999999994
+      },
+      {
+        "country": "FI",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "FR",
+        "year": "2020",
+        "peak_to_trough": 3.4809012005963407,
+        "winter_summer": 2.9058597999270406,
+        "swing_share": 0.20520971715841305,
+        "swing_absolute": 330465.9545000001,
+        "annual_total": 1610381.609
+      },
+      {
+        "country": "FR",
+        "year": "2021",
+        "peak_to_trough": 4.446947273875481,
+        "winter_summer": 3.506363654078529,
+        "swing_share": 0.2122410303490965,
+        "swing_absolute": 362208.74450000003,
+        "annual_total": 1706591.529
+      },
+      {
+        "country": "FR",
+        "year": "2022",
+        "peak_to_trough": 3.882810586113221,
+        "winter_summer": 3.137887582862995,
+        "swing_share": 0.20215905838173095,
+        "swing_absolute": 312056.7845,
+        "annual_total": 1543620.093
+      },
+      {
+        "country": "FR",
+        "year": "2023",
+        "peak_to_trough": 3.7766356646331922,
+        "winter_summer": 3.2718692284206243,
+        "swing_share": 0.21943400941060698,
+        "swing_absolute": 299032.98075,
+        "annual_total": 1362746.739
+      },
+      {
+        "country": "FR",
+        "year": "2024",
+        "peak_to_trough": 4.642307738006859,
+        "winter_summer": 3.542494312843108,
+        "swing_share": 0.22433043156636837,
+        "swing_absolute": 286857.5524999999,
+        "annual_total": 1278727.7700000003
+      },
+      {
+        "country": "FR",
+        "year": "2025",
+        "peak_to_trough": 4.584656284208802,
+        "winter_summer": 3.7444371944691155,
+        "swing_share": 0.23601202444568714,
+        "swing_absolute": 292060.08708333335,
+        "annual_total": 1237479.6909999999
+      },
+      {
+        "country": "FR",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "GE",
+        "year": "2020",
+        "peak_to_trough": 4.9015930772280925,
+        "winter_summer": 4.221789394091228,
+        "swing_share": 0.2348391927233542,
+        "swing_absolute": 23817.81833333334,
+        "annual_total": 101421.81999999999
+      },
+      {
+        "country": "GE",
+        "year": "2021",
+        "peak_to_trough": 4.347735281547605,
+        "winter_summer": 3.741618273189868,
+        "swing_share": 0.2412081773326506,
+        "swing_absolute": 24646.42,
+        "annual_total": 102179.04
+      },
+      {
+        "country": "GE",
+        "year": "2022",
+        "peak_to_trough": null,
+        "winter_summer": 3.89049451311121,
+        "swing_share": 0.3018222960752452,
+        "swing_absolute": 34685.098333333335,
+        "annual_total": 114918.94
+      },
+      {
+        "country": "GE",
+        "year": "2023",
+        "peak_to_trough": null,
+        "winter_summer": 4.829969299105101,
+        "swing_share": 0.31004374261878626,
+        "swing_absolute": 43541.975833333345,
+        "annual_total": 140438.16999999998
+      },
+      {
+        "country": "GE",
+        "year": "2024",
+        "peak_to_trough": 4.790968658048484,
+        "winter_summer": 3.7737282227949445,
+        "swing_share": 0.2537114701769481,
+        "swing_absolute": 30870.812499999993,
+        "annual_total": 121676.85
+      },
+      {
+        "country": "GE",
+        "year": "2025",
+        "peak_to_trough": 4.829904875576102,
+        "winter_summer": 3.5651424838373846,
+        "swing_share": 0.2379491220759801,
+        "swing_absolute": 29602.92666666666,
+        "annual_total": 124408.64
+      },
+      {
+        "country": "GE",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "HR",
+        "year": "2020",
+        "peak_to_trough": 2.0811097695665355,
+        "winter_summer": 1.8221662939313217,
+        "swing_share": 0.12495723129309255,
+        "swing_absolute": 15121.611499999997,
+        "annual_total": 121014.297
+      },
+      {
+        "country": "HR",
+        "year": "2021",
+        "peak_to_trough": 2.3197676840471573,
+        "winter_summer": 1.824612634132668,
+        "swing_share": 0.12402283213149339,
+        "swing_absolute": 14442.449499999995,
+        "annual_total": 116449.925
+      },
+      {
+        "country": "HR",
+        "year": "2022",
+        "peak_to_trough": 2.805055387886523,
+        "winter_summer": 2.1176870753045334,
+        "swing_share": 0.14438610609016636,
+        "swing_absolute": 14503.312333333335,
+        "annual_total": 100448.116
+      },
+      {
+        "country": "HR",
+        "year": "2023",
+        "peak_to_trough": 2.069284172734879,
+        "winter_summer": 1.5846293466715382,
+        "swing_share": 0.09553874874853704,
+        "swing_absolute": 9672.677500000007,
+        "annual_total": 101243.502
+      },
+      {
+        "country": "HR",
+        "year": "2024",
+        "peak_to_trough": 2.917629004243547,
+        "winter_summer": 2.0081198062337284,
+        "swing_share": 0.13268773210460227,
+        "swing_absolute": 12709.450500000003,
+        "annual_total": 95784.669
+      },
+      {
+        "country": "HR",
+        "year": "2025",
+        "peak_to_trough": 4.2431143211340485,
+        "winter_summer": 2.4888221203203065,
+        "swing_share": 0.17034813347551836,
+        "swing_absolute": 18156.718999999997,
+        "annual_total": 106585.95800000001
+      },
+      {
+        "country": "HR",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "HU",
+        "year": "2020",
+        "peak_to_trough": 3.8526261831052735,
+        "winter_summer": 3.2270058099765824,
+        "swing_share": 0.21170406316261373,
+        "swing_absolute": 86237.23900000003,
+        "annual_total": 407348.05799999996
+      },
+      {
+        "country": "HU",
+        "year": "2021",
+        "peak_to_trough": 3.635693434361815,
+        "winter_summer": 3.3739930719545503,
+        "swing_share": 0.2016276373884735,
+        "swing_absolute": 87036.37741666667,
+        "annual_total": 431668.885
+      },
+      {
+        "country": "HU",
+        "year": "2022",
+        "peak_to_trough": 4.630673784740845,
+        "winter_summer": 3.552729988115541,
+        "swing_share": 0.23370174076226993,
+        "swing_absolute": 85858.199,
+        "annual_total": 367383.652
+      },
+      {
+        "country": "HU",
+        "year": "2023",
+        "peak_to_trough": 3.2608633558796662,
+        "winter_summer": 2.9810702112239196,
+        "swing_share": 0.1993714543118542,
+        "swing_absolute": 65348.67300000001,
+        "annual_total": 327773.468
+      },
+      {
+        "country": "HU",
+        "year": "2024",
+        "peak_to_trough": 3.6876298721534213,
+        "winter_summer": 3.1963369946244957,
+        "swing_share": 0.21143957825784918,
+        "swing_absolute": 69807.72041666666,
+        "annual_total": 330154.463
+      },
+      {
+        "country": "HU",
+        "year": "2025",
+        "peak_to_trough": 4.786210396587482,
+        "winter_summer": 4.160378469860995,
+        "swing_share": 0.23303502747767688,
+        "swing_absolute": 80251.47999999998,
+        "annual_total": 344375.18200000003
+      },
+      {
+        "country": "HU",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "IE",
+        "year": "2020",
+        "peak_to_trough": 1.2467334329836866,
+        "winter_summer": 1.1604775436914738,
+        "swing_share": 0.03189503082771265,
+        "swing_absolute": 6746.454750000012,
+        "annual_total": 211520.55899999998
+      },
+      {
+        "country": "IE",
+        "year": "2021",
+        "peak_to_trough": 1.4776959826677836,
+        "winter_summer": 1.2563084124757622,
+        "swing_share": 0.053394493555582484,
+        "swing_absolute": 10856.060999999998,
+        "annual_total": 203317.988
+      },
+      {
+        "country": "IE",
+        "year": "2022",
+        "peak_to_trough": 1.3748809113548037,
+        "winter_summer": 1.118142551344652,
+        "swing_share": 0.038365839748644874,
+        "swing_absolute": 7966.6700000000055,
+        "annual_total": 207650.088
+      },
+      {
+        "country": "IE",
+        "year": "2023",
+        "peak_to_trough": 1.3915524860505468,
+        "winter_summer": 1.2215659521095605,
+        "swing_share": 0.04528196363596705,
+        "swing_absolute": 8719.864916666684,
+        "annual_total": 192568.17099999997
+      },
+      {
+        "country": "IE",
+        "year": "2024",
+        "peak_to_trough": 1.5416069175639389,
+        "winter_summer": 1.3275402570664374,
+        "swing_share": 0.05282621786712875,
+        "swing_absolute": 10462.803499999995,
+        "annual_total": 198060.81000000003
+      },
+      {
+        "country": "IE",
+        "year": "2025",
+        "peak_to_trough": 1.6890147830278817,
+        "winter_summer": 1.314966911846434,
+        "swing_share": 0.06010792671017484,
+        "swing_absolute": 11664.809333333324,
+        "annual_total": 194064.41000000003
+      },
+      {
+        "country": "IE",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "IT",
+        "year": "2020",
+        "peak_to_trough": 2.5893708627846963,
+        "winter_summer": 2.010429591667643,
+        "swing_share": 0.1438690269338251,
+        "swing_absolute": 388743.75,
+        "annual_total": 2702067.0
+      },
+      {
+        "country": "IT",
+        "year": "2021",
+        "peak_to_trough": 2.531048381642839,
+        "winter_summer": 2.1310413296526436,
+        "swing_share": 0.1415229134386062,
+        "swing_absolute": 410374.41666666674,
+        "annual_total": 2899703.0
+      },
+      {
+        "country": "IT",
+        "year": "2022",
+        "peak_to_trough": 2.554591109182218,
+        "winter_summer": 1.984542064169459,
+        "swing_share": 0.14440408607437122,
+        "swing_absolute": 377126.0,
+        "annual_total": 2611602.0
+      },
+      {
+        "country": "IT",
+        "year": "2023",
+        "peak_to_trough": 2.2045121593905654,
+        "winter_summer": 1.9250440917107587,
+        "swing_share": 0.12547936178716879,
+        "swing_absolute": 295040.05000000005,
+        "annual_total": 2351303.4
+      },
+      {
+        "country": "IT",
+        "year": "2024",
+        "peak_to_trough": 2.299934088320095,
+        "winter_summer": 1.948678283125536,
+        "swing_share": 0.13567973139562609,
+        "swing_absolute": 319818.42183333327,
+        "annual_total": 2357156.95
+      },
+      {
+        "country": "IT",
+        "year": "2025",
+        "peak_to_trough": 2.5361588701325672,
+        "winter_summer": 2.1305081538364643,
+        "swing_share": 0.1532367206587925,
+        "swing_absolute": 368482.2064166665,
+        "annual_total": 2404659.9590000003
+      },
+      {
+        "country": "IT",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "LT",
+        "year": "2020",
+        "peak_to_trough": 1.807161032351872,
+        "winter_summer": 1.4628313191835076,
+        "swing_share": 0.08274729930099557,
+        "swing_absolute": 7813.000000000002,
+        "annual_total": 94420.0
+      },
+      {
+        "country": "LT",
+        "year": "2021",
+        "peak_to_trough": 2.958881185751853,
+        "winter_summer": 2.0641964112197964,
+        "swing_share": 0.1374723708864878,
+        "swing_absolute": 12252.5,
+        "annual_total": 89127.0
+      },
+      {
+        "country": "LT",
+        "year": "2022",
+        "peak_to_trough": 3.310236220472441,
+        "winter_summer": 1.8610618722039334,
+        "swing_share": 0.14060086860080642,
+        "swing_absolute": 9043.166666666668,
+        "annual_total": 64318.0
+      },
+      {
+        "country": "LT",
+        "year": "2023",
+        "peak_to_trough": 2.072395833333333,
+        "winter_summer": 1.366919996731225,
+        "swing_share": 0.10374924226574614,
+        "swing_absolute": 6446.666666666668,
+        "annual_total": 62137.0
+      },
+      {
+        "country": "LT",
+        "year": "2024",
+        "peak_to_trough": 2.390880412962432,
+        "winter_summer": 2.067308582538654,
+        "swing_share": 0.14893528204221546,
+        "swing_absolute": 10108.833333333332,
+        "annual_total": 67874.0
+      },
+      {
+        "country": "LT",
+        "year": "2025",
+        "peak_to_trough": 4.389749065670048,
+        "winter_summer": 2.7317720350715273,
+        "swing_share": 0.13499700239808154,
+        "swing_absolute": 9007.0,
+        "annual_total": 66720.0
+      },
+      {
+        "country": "LT",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "LU",
+        "year": "2020",
+        "peak_to_trough": 3.1634385520225003,
+        "winter_summer": 2.5638892480449327,
+        "swing_share": 0.1690325726711144,
+        "swing_absolute": 4923.239499999998,
+        "annual_total": 29125.981000000003
+      },
+      {
+        "country": "LU",
+        "year": "2021",
+        "peak_to_trough": 3.0304241178566484,
+        "winter_summer": 2.5048741605000435,
+        "swing_share": 0.1527416503567648,
+        "swing_absolute": 4788.6965,
+        "annual_total": 31351.609
+      },
+      {
+        "country": "LU",
+        "year": "2022",
+        "peak_to_trough": 4.532177472481198,
+        "winter_summer": 3.3125532793801766,
+        "swing_share": 0.20161957165823263,
+        "swing_absolute": 4968.037500000001,
+        "annual_total": 24640.650999999998
+      },
+      {
+        "country": "LU",
+        "year": "2023",
+        "peak_to_trough": 3.2589000262727414,
+        "winter_summer": 2.892977258167841,
+        "swing_share": 0.19044999743058502,
+        "swing_absolute": 4399.1365000000005,
+        "annual_total": 23098.643
+      },
+      {
+        "country": "LU",
+        "year": "2024",
+        "peak_to_trough": 4.213933720258777,
+        "winter_summer": 2.756040264596612,
+        "swing_share": 0.1696062770788484,
+        "swing_absolute": 4119.8054999999995,
+        "annual_total": 24290.407000000003
+      },
+      {
+        "country": "LU",
+        "year": "2025",
+        "peak_to_trough": 3.5578528232402062,
+        "winter_summer": 2.78068328623122,
+        "swing_share": 0.1688216983451024,
+        "swing_absolute": 4133.857749999999,
+        "annual_total": 24486.531000000003
+      },
+      {
+        "country": "LU",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "LV",
+        "year": "2020",
+        "peak_to_trough": 3.7548354898626966,
+        "winter_summer": 2.125102988132658,
+        "swing_share": 0.14788553571320345,
+        "swing_absolute": 6180.710333333338,
+        "annual_total": 41793.87999999999
+      },
+      {
+        "country": "LV",
+        "year": "2021",
+        "peak_to_trough": 6.177210332077158,
+        "winter_summer": 4.3167850141290245,
+        "swing_share": 0.25022614410930577,
+        "swing_absolute": 11278.819083333336,
+        "annual_total": 45074.503
+      },
+      {
+        "country": "LV",
+        "year": "2022",
+        "peak_to_trough": 7.9406037094937565,
+        "winter_summer": 5.058399126650043,
+        "swing_share": 0.29943413206755615,
+        "swing_absolute": 9536.645333333332,
+        "annual_total": 31848.892
+      },
+      {
+        "country": "LV",
+        "year": "2023",
+        "peak_to_trough": 5.962814268703135,
+        "winter_summer": 3.7277827060069937,
+        "swing_share": 0.2510537103452507,
+        "swing_absolute": 7597.058000000003,
+        "annual_total": 30260.688
+      },
+      {
+        "country": "LV",
+        "year": "2024",
+        "peak_to_trough": 11.79008306492626,
+        "winter_summer": 4.443626819090829,
+        "swing_share": 0.27133455831197134,
+        "swing_absolute": 8741.333666666667,
+        "annual_total": 32216.072
+      },
+      {
+        "country": "LV",
+        "year": "2025",
+        "peak_to_trough": 8.340876647619263,
+        "winter_summer": 4.37660275202721,
+        "swing_share": 0.2519859883199854,
+        "swing_absolute": 7993.814,
+        "annual_total": 31723.247999999996
+      },
+      {
+        "country": "LV",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "MD",
+        "year": "2020",
+        "peak_to_trough": 6.524539877300613,
+        "winter_summer": 5.240517760385311,
+        "swing_share": 0.3036544956349965,
+        "swing_absolute": 11118.916666666668,
+        "annual_total": 36617.0
+      },
+      {
+        "country": "MD",
+        "year": "2021",
+        "peak_to_trough": 6.501968503937008,
+        "winter_summer": 6.096178425357873,
+        "swing_share": 0.29667839069734053,
+        "swing_absolute": 12399.525,
+        "annual_total": 41794.5
+      },
+      {
+        "country": "MD",
+        "year": "2022",
+        "peak_to_trough": 7.325755005089921,
+        "winter_summer": 5.545166933412737,
+        "swing_share": 0.34415231759724363,
+        "swing_absolute": 10181.333333333334,
+        "annual_total": 29583.799999999996
+      },
+      {
+        "country": "MD",
+        "year": "2023",
+        "peak_to_trough": 7.994857785633939,
+        "winter_summer": 5.709047642173765,
+        "swing_share": 0.2914798574501979,
+        "swing_absolute": 7099.4,
+        "annual_total": 24356.399999999998
+      },
+      {
+        "country": "MD",
+        "year": "2024",
+        "peak_to_trough": 8.036171909068084,
+        "winter_summer": 6.452658845830026,
+        "swing_share": 0.3335985645922519,
+        "swing_absolute": 10240.092833333334,
+        "annual_total": 30695.854
+      },
+      {
+        "country": "MD",
+        "year": "2025",
+        "peak_to_trough": 8.623557070338922,
+        "winter_summer": 6.9061805673299945,
+        "swing_share": 0.3076976445222486,
+        "swing_absolute": 9975.881333333336,
+        "annual_total": 32421.051999999996
+      },
+      {
+        "country": "MD",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "ME",
+        "year": "2022",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": 0,
+        "annual_total": 0.0
+      },
+      {
+        "country": "ME",
+        "year": "2023",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": 0,
+        "annual_total": 0.0
+      },
+      {
+        "country": "ME",
+        "year": "2024",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": 0,
+        "annual_total": 0.0
+      },
+      {
+        "country": "ME",
+        "year": "2025",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": 0,
+        "annual_total": 0.0
+      },
+      {
+        "country": "ME",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "MK",
+        "year": "2020",
+        "peak_to_trough": 13.19700478040036,
+        "winter_summer": 1.2425306705045143,
+        "swing_share": 0.21070044306611252,
+        "swing_absolute": 2731.754,
+        "annual_total": 12965.108
+      },
+      {
+        "country": "MK",
+        "year": "2021",
+        "peak_to_trough": 4.738990327419438,
+        "winter_summer": 1.543924293317022,
+        "swing_share": 0.15876093054628074,
+        "swing_absolute": 2580.958666666665,
+        "annual_total": 16256.888
+      },
+      {
+        "country": "MK",
+        "year": "2022",
+        "peak_to_trough": 14.254646312979647,
+        "winter_summer": 2.8532512255398452,
+        "swing_share": 0.3019210936403734,
+        "swing_absolute": 3225.2905000000005,
+        "annual_total": 10682.561
+      },
+      {
+        "country": "MK",
+        "year": "2023",
+        "peak_to_trough": 8.249480929165472,
+        "winter_summer": 1.2323049576150638,
+        "swing_share": 0.09435149555420509,
+        "swing_absolute": 1276.6336666666652,
+        "annual_total": 13530.614000000001
+      },
+      {
+        "country": "MK",
+        "year": "2024",
+        "peak_to_trough": 9.660016565827222,
+        "winter_summer": 1.4578966904614512,
+        "swing_share": 0.18526017820327417,
+        "swing_absolute": 2456.0695833333343,
+        "annual_total": 13257.407
+      },
+      {
+        "country": "MK",
+        "year": "2025",
+        "peak_to_trough": 12.718667847263692,
+        "winter_summer": 2.3660405245205958,
+        "swing_share": 0.24165401108813256,
+        "swing_absolute": 2906.5260000000003,
+        "annual_total": 12027.634
+      },
+      {
+        "country": "MK",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "MT",
+        "year": "2020",
+        "peak_to_trough": 1.9253652118568385,
+        "winter_summer": 0.8897897686580257,
+        "swing_share": 0.07173333034271902,
+        "swing_absolute": 1061.7870000000003,
+        "annual_total": 14801.864
+      },
+      {
+        "country": "MT",
+        "year": "2021",
+        "peak_to_trough": 1.7020441542175122,
+        "winter_summer": 0.6535903359059625,
+        "swing_share": 0.07646024386113263,
+        "swing_absolute": 1132.4545833333323,
+        "annual_total": 14811.025000000003
+      },
+      {
+        "country": "MT",
+        "year": "2022",
+        "peak_to_trough": 1.9358959506768951,
+        "winter_summer": 0.7516035130859138,
+        "swing_share": 0.07890526293073337,
+        "swing_absolute": 1184.6575000000005,
+        "annual_total": 15013.668999999998
+      },
+      {
+        "country": "MT",
+        "year": "2023",
+        "peak_to_trough": 1.591241367727999,
+        "winter_summer": 0.8023590039910234,
+        "swing_share": 0.052190103777925614,
+        "swing_absolute": 818.4609166666667,
+        "annual_total": 15682.301000000001
+      },
+      {
+        "country": "MT",
+        "year": "2024",
+        "peak_to_trough": 1.811861228368854,
+        "winter_summer": 0.7993081724152092,
+        "swing_share": 0.053443923925100056,
+        "swing_absolute": 778.738416666667,
+        "annual_total": 14571.131
+      },
+      {
+        "country": "MT",
+        "year": "2025",
+        "peak_to_trough": 1.6318744161181105,
+        "winter_summer": 0.7695982069725535,
+        "swing_share": 0.06339049257693909,
+        "swing_absolute": 896.010666666667,
+        "annual_total": 14134.779999999999
+      },
+      {
+        "country": "MT",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "NL",
+        "year": "2020",
+        "peak_to_trough": 1.9826836384462765,
+        "winter_summer": 1.7513566244947194,
+        "swing_share": 0.11123038465861709,
+        "swing_absolute": 163728.20341666669,
+        "annual_total": 1471973.723
+      },
+      {
+        "country": "NL",
+        "year": "2021",
+        "peak_to_trough": 3.044445751333136,
+        "winter_summer": 2.291791911808751,
+        "swing_share": 0.1515901464148734,
+        "swing_absolute": 214116.90050000008,
+        "annual_total": 1412472.417
+      },
+      {
+        "country": "NL",
+        "year": "2022",
+        "peak_to_trough": 2.547630591079387,
+        "winter_summer": 2.1464148147654547,
+        "swing_share": 0.13931341629730648,
+        "swing_absolute": 153243.68799999997,
+        "annual_total": 1099992.32
+      },
+      {
+        "country": "NL",
+        "year": "2023",
+        "peak_to_trough": 1.962470816165237,
+        "winter_summer": 1.779848732755582,
+        "swing_share": 0.11537789707360752,
+        "swing_absolute": 120529.27350000011,
+        "annual_total": 1044647.8619999997
+      },
+      {
+        "country": "NL",
+        "year": "2024",
+        "peak_to_trough": 2.480339676447309,
+        "winter_summer": 2.0610946520048916,
+        "swing_share": 0.138837702198169,
+        "swing_absolute": 147002.5003333334,
+        "annual_total": 1058808.22
+      },
+      {
+        "country": "NL",
+        "year": "2025",
+        "peak_to_trough": 2.7021458105020884,
+        "winter_summer": 2.2580624872812307,
+        "swing_share": 0.15252373545134415,
+        "swing_absolute": 161092.81449999998,
+        "annual_total": 1056181.938
+      },
+      {
+        "country": "NL",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "NO",
+        "year": "2020",
+        "peak_to_trough": 1.2591461863114042,
+        "winter_summer": 1.0462726000811873,
+        "swing_share": 0.03209144350474411,
+        "swing_absolute": 5256.683000000023,
+        "annual_total": 163803.25799999997
+      },
+      {
+        "country": "NO",
+        "year": "2021",
+        "peak_to_trough": 1.1894416243506043,
+        "winter_summer": 0.9991415247473616,
+        "swing_share": 0.023217877163762408,
+        "swing_absolute": 4148.243499999988,
+        "annual_total": 178665.92500000002
+      },
+      {
+        "country": "NO",
+        "year": "2022",
+        "peak_to_trough": 1.2000012773109807,
+        "winter_summer": 0.9920555053202048,
+        "swing_share": 0.02205303081828446,
+        "swing_absolute": 3867.9155000000173,
+        "annual_total": 175391.56099999996
+      },
+      {
+        "country": "NO",
+        "year": "2023",
+        "peak_to_trough": 1.3757271312325636,
+        "winter_summer": 1.045702083239158,
+        "swing_share": 0.03911595904151104,
+        "swing_absolute": 6929.2237500000065,
+        "annual_total": 177145.69499999998
+      },
+      {
+        "country": "NO",
+        "year": "2024",
+        "peak_to_trough": 1.4102176673086648,
+        "winter_summer": 1.0463791966558462,
+        "swing_share": 0.021972968802274916,
+        "swing_absolute": 4103.383499999991,
+        "annual_total": 186746.88600000003
+      },
+      {
+        "country": "NO",
+        "year": "2025",
+        "peak_to_trough": 1.348170990934294,
+        "winter_summer": 1.0491141128955748,
+        "swing_share": 0.03552479560208072,
+        "swing_absolute": 6679.572500000004,
+        "annual_total": 188025.642
+      },
+      {
+        "country": "NO",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "PL",
+        "year": "2020",
+        "peak_to_trough": 1.9978150782197397,
+        "winter_summer": 1.8408902702730654,
+        "swing_share": 0.1136611963394324,
+        "swing_absolute": 90014.56649999996,
+        "annual_total": 791955.121
+      },
+      {
+        "country": "PL",
+        "year": "2021",
+        "peak_to_trough": 2.0877044616364775,
+        "winter_summer": 1.9606761059544928,
+        "swing_share": 0.11944661451909386,
+        "swing_absolute": 100850.48149999998,
+        "annual_total": 844314.273
+      },
+      {
+        "country": "PL",
+        "year": "2022",
+        "peak_to_trough": 2.5547996265444346,
+        "winter_summer": 2.1555574990547552,
+        "swing_share": 0.1487216378393625,
+        "swing_absolute": 103463.52550000002,
+        "annual_total": 695685.759
+      },
+      {
+        "country": "PL",
+        "year": "2023",
+        "peak_to_trough": 2.2667082873535884,
+        "winter_summer": 2.01067327357378,
+        "swing_share": 0.13184334823634117,
+        "swing_absolute": 96580.53225000002,
+        "annual_total": 732540.0449999999
+      },
+      {
+        "country": "PL",
+        "year": "2024",
+        "peak_to_trough": 2.3676019492883214,
+        "winter_summer": 1.990660803707432,
+        "swing_share": 0.131658897765205,
+        "swing_absolute": 104094.04100000001,
+        "annual_total": 790634.304
+      },
+      {
+        "country": "PL",
+        "year": "2025",
+        "peak_to_trough": 2.301682813087495,
+        "winter_summer": 2.085041588675024,
+        "swing_share": 0.1345857984849173,
+        "swing_absolute": 113277.49049999993,
+        "annual_total": 841674.9150000002
+      },
+      {
+        "country": "PL",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "PT",
+        "year": "2020",
+        "peak_to_trough": 1.6447157821896443,
+        "winter_summer": 0.9829430509668439,
+        "swing_share": 0.06802795509686685,
+        "swing_absolute": 16481.96983333335,
+        "annual_total": 242282.30599999998
+      },
+      {
+        "country": "PT",
+        "year": "2021",
+        "peak_to_trough": 1.3823017143844591,
+        "winter_summer": 0.9302892850761915,
+        "swing_share": 0.042018285827885776,
+        "swing_absolute": 9795.237999999987,
+        "annual_total": 233118.458
+      },
+      {
+        "country": "PT",
+        "year": "2022",
+        "peak_to_trough": 1.3746920663823845,
+        "winter_summer": 0.920969436242783,
+        "swing_share": 0.029037349581973584,
+        "swing_absolute": 6424.192499999979,
+        "annual_total": 221238.94200000004
+      },
+      {
+        "country": "PT",
+        "year": "2023",
+        "peak_to_trough": 1.4172705849833642,
+        "winter_summer": 0.9429391464967506,
+        "swing_share": 0.047038238060422524,
+        "swing_absolute": 8308.635916666659,
+        "annual_total": 176635.78100000002
+      },
+      {
+        "country": "PT",
+        "year": "2024",
+        "peak_to_trough": 1.5928182788263396,
+        "winter_summer": 1.3591846686447868,
+        "swing_share": 0.06268764893047143,
+        "swing_absolute": 9162.48349999999,
+        "annual_total": 146160.90500000003
+      },
+      {
+        "country": "PT",
+        "year": "2025",
+        "peak_to_trough": 1.4081865224290004,
+        "winter_summer": 1.1034027968488265,
+        "swing_share": 0.03338891177691283,
+        "swing_absolute": 5427.362000000003,
+        "annual_total": 162549.832
+      },
+      {
+        "country": "PT",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "RO",
+        "year": "2020",
+        "peak_to_trough": 3.1490740315242864,
+        "winter_summer": 2.6412827096736966,
+        "swing_share": 0.19469153144742576,
+        "swing_absolute": 89256.91666666669,
+        "annual_total": 458453.0
+      },
+      {
+        "country": "RO",
+        "year": "2021",
+        "peak_to_trough": 3.2474174342272657,
+        "winter_summer": 2.9964106245513284,
+        "swing_share": 0.19313771603705301,
+        "swing_absolute": 89925.5,
+        "annual_total": 465603.0
+      },
+      {
+        "country": "RO",
+        "year": "2022",
+        "peak_to_trough": 3.6387257519131517,
+        "winter_summer": 2.9977578056391185,
+        "swing_share": 0.2080796288666087,
+        "swing_absolute": 81811.5,
+        "annual_total": 393174.0
+      },
+      {
+        "country": "RO",
+        "year": "2023",
+        "peak_to_trough": 3.963834035944087,
+        "winter_summer": 3.3587032659136677,
+        "swing_share": 0.21886462818784158,
+        "swing_absolute": 80510.66666666666,
+        "annual_total": 367856.0
+      },
+      {
+        "country": "RO",
+        "year": "2024",
+        "peak_to_trough": 3.7287459486412367,
+        "winter_summer": 3.0779698850619726,
+        "swing_share": 0.23129564674856212,
+        "swing_absolute": 88230.5,
+        "annual_total": 381462.0
+      },
+      {
+        "country": "RO",
+        "year": "2025",
+        "peak_to_trough": 3.7223264540337713,
+        "winter_summer": 3.3795588692140415,
+        "swing_share": 0.21285346044740358,
+        "swing_absolute": 82162.50000000001,
+        "annual_total": 386005.0
+      },
+      {
+        "country": "RO",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "RS",
+        "year": "2020",
+        "peak_to_trough": 3.5853285787060623,
+        "winter_summer": 2.94942581184881,
+        "swing_share": 0.19942305066229685,
+        "swing_absolute": 19471.666666666664,
+        "annual_total": 97640.0
+      },
+      {
+        "country": "RS",
+        "year": "2021",
+        "peak_to_trough": 2.865012769062386,
+        "winter_summer": 2.4564373699308173,
+        "swing_share": 0.15179977853678317,
+        "swing_absolute": 19466.5,
+        "annual_total": 128238.0
+      },
+      {
+        "country": "RS",
+        "year": "2022",
+        "peak_to_trough": 3.5772607550482878,
+        "winter_summer": 2.9877588830807915,
+        "swing_share": 0.20276812225458132,
+        "swing_absolute": 23741.91666666667,
+        "annual_total": 117089.0
+      },
+      {
+        "country": "RS",
+        "year": "2023",
+        "peak_to_trough": 3.142480211081794,
+        "winter_summer": 3.004938434187134,
+        "swing_share": 0.2095233048976492,
+        "swing_absolute": 23726.0,
+        "annual_total": 113238.0
+      },
+      {
+        "country": "RS",
+        "year": "2024",
+        "peak_to_trough": 3.3827302316676238,
+        "winter_summer": 2.9578655228964297,
+        "swing_share": 0.21533915552012803,
+        "swing_absolute": 24583.333333333336,
+        "annual_total": 114161.0
+      },
+      {
+        "country": "RS",
+        "year": "2025",
+        "peak_to_trough": 3.182893180922349,
+        "winter_summer": 2.9663023679417124,
+        "swing_share": 0.1997732958098812,
+        "swing_absolute": 22147.66666666667,
+        "annual_total": 110864.0
+      },
+      {
+        "country": "RS",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "SE",
+        "year": "2020",
+        "peak_to_trough": 3.5421455938697317,
+        "winter_summer": 1.9037315080591741,
+        "swing_share": 0.15651615691658408,
+        "swing_absolute": 8208.333333333336,
+        "annual_total": 52444.0
+      },
+      {
+        "country": "SE",
+        "year": "2021",
+        "peak_to_trough": 3.0103503184713376,
+        "winter_summer": 1.810154438263867,
+        "swing_share": 0.12351103969741248,
+        "swing_absolute": 6331.253583333333,
+        "annual_total": 51260.629
+      },
+      {
+        "country": "SE",
+        "year": "2022",
+        "peak_to_trough": 3.3727050231575118,
+        "winter_summer": 1.953259348246464,
+        "swing_share": 0.12385537680993024,
+        "swing_absolute": 3622.4475,
+        "annual_total": 29247.398
+      },
+      {
+        "country": "SE",
+        "year": "2023",
+        "peak_to_trough": 1.8876961565386516,
+        "winter_summer": 1.5417100639097834,
+        "swing_share": 0.09611902764449928,
+        "swing_absolute": 3122.349333333333,
+        "annual_total": 32484.196
+      },
+      {
+        "country": "SE",
+        "year": "2024",
+        "peak_to_trough": 2.559670038150177,
+        "winter_summer": 1.749942930601847,
+        "swing_share": 0.10914222415384661,
+        "swing_absolute": 3839.429500000002,
+        "annual_total": 35178.223
+      },
+      {
+        "country": "SE",
+        "year": "2025",
+        "peak_to_trough": 2.0438243297263177,
+        "winter_summer": 1.3908409079323472,
+        "swing_share": 0.098496807967402,
+        "swing_absolute": 3128.2599999999993,
+        "annual_total": 31760.014000000003
+      },
+      {
+        "country": "SE",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "SI",
+        "year": "2020",
+        "peak_to_trough": 2.5679031385157294,
+        "winter_summer": 2.141874104845202,
+        "swing_share": 0.14485690572365095,
+        "swing_absolute": 5065.305,
+        "annual_total": 34967.646
+      },
+      {
+        "country": "SI",
+        "year": "2021",
+        "peak_to_trough": 2.3641452814849027,
+        "winter_summer": 2.1434785905236824,
+        "swing_share": 0.13350749815022467,
+        "swing_absolute": 4916.6798333333345,
+        "annual_total": 36826.994
+      },
+      {
+        "country": "SI",
+        "year": "2022",
+        "peak_to_trough": 2.7370865687146524,
+        "winter_summer": 2.1794693254992863,
+        "swing_share": 0.14904684557614836,
+        "swing_absolute": 4883.0735,
+        "annual_total": 32762.005
+      },
+      {
+        "country": "SI",
+        "year": "2023",
+        "peak_to_trough": 2.4034259418257893,
+        "winter_summer": 2.0684523759256352,
+        "swing_share": 0.1308494384488243,
+        "swing_absolute": 4168.986499999999,
+        "annual_total": 31860.943
+      },
+      {
+        "country": "SI",
+        "year": "2024",
+        "peak_to_trough": 2.263691906915385,
+        "winter_summer": 1.9996369799585092,
+        "swing_share": 0.1255734417416839,
+        "swing_absolute": 4299.19225,
+        "annual_total": 34236.477
+      },
+      {
+        "country": "SI",
+        "year": "2025",
+        "peak_to_trough": 2.0529735312713004,
+        "winter_summer": 1.8685126735466582,
+        "swing_share": 0.12398404944179243,
+        "swing_absolute": 4680.168,
+        "annual_total": 37748.146
+      },
+      {
+        "country": "SI",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "SK",
+        "year": "2020",
+        "peak_to_trough": 3.3231047609880777,
+        "winter_summer": 2.815919963676847,
+        "swing_share": 0.1842945521992943,
+        "swing_absolute": 36319.662,
+        "annual_total": 197073.986
+      },
+      {
+        "country": "SK",
+        "year": "2021",
+        "peak_to_trough": 3.105259466525781,
+        "winter_summer": 2.872582539502163,
+        "swing_share": 0.18095474764762795,
+        "swing_absolute": 39187.3345,
+        "annual_total": 216558.75300000003
+      },
+      {
+        "country": "SK",
+        "year": "2022",
+        "peak_to_trough": 4.2337101795836425,
+        "winter_summer": 3.3455762570936916,
+        "swing_share": 0.21857434317760702,
+        "swing_absolute": 38471.17550000001,
+        "annual_total": 176009.56699999998
+      },
+      {
+        "country": "SK",
+        "year": "2023",
+        "peak_to_trough": 3.724938627479561,
+        "winter_summer": 3.0214352292363404,
+        "swing_share": 0.20268619953362518,
+        "swing_absolute": 33716.12550000001,
+        "annual_total": 166346.42899999997
+      },
+      {
+        "country": "SK",
+        "year": "2024",
+        "peak_to_trough": 3.3935484859282745,
+        "winter_summer": 2.9164103724319235,
+        "swing_share": 0.1958979267531963,
+        "swing_absolute": 33811.301999999996,
+        "annual_total": 172596.528
+      },
+      {
+        "country": "SK",
+        "year": "2025",
+        "peak_to_trough": 4.026373309227768,
+        "winter_summer": 3.308625238149723,
+        "swing_share": 0.2037756962669246,
+        "swing_absolute": 36508.6565,
+        "annual_total": 179160.995
+      },
+      {
+        "country": "SK",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "TR",
+        "year": "2020",
+        "peak_to_trough": 3.5290342793219525,
+        "winter_summer": 2.304082455380933,
+        "swing_share": 0.1741835234713596,
+        "swing_absolute": 320229.75583333324,
+        "annual_total": 1838461.81
+      },
+      {
+        "country": "TR",
+        "year": "2021",
+        "peak_to_trough": 2.0530363645479577,
+        "winter_summer": 1.5916073679406395,
+        "swing_share": 0.10415007621007691,
+        "swing_absolute": 237969.67833333332,
+        "annual_total": 2284872.82
+      },
+      {
+        "country": "TR",
+        "year": "2022",
+        "peak_to_trough": 2.6688114597601347,
+        "winter_summer": 2.065248836660918,
+        "swing_share": 0.17599371279691683,
+        "swing_absolute": 344037.42000000004,
+        "annual_total": 1954827.9
+      },
+      {
+        "country": "TR",
+        "year": "2023",
+        "peak_to_trough": 3.146437272729959,
+        "winter_summer": 2.231339512303777,
+        "swing_share": 0.14463155521728016,
+        "swing_absolute": 278586.83366666676,
+        "annual_total": 1926182.9359999998
+      },
+      {
+        "country": "TR",
+        "year": "2024",
+        "peak_to_trough": 3.039078432573872,
+        "winter_summer": 2.149090163825279,
+        "swing_share": 0.17490128059050944,
+        "swing_absolute": 354635.3884166667,
+        "annual_total": 2027631.7429999998
+      },
+      {
+        "country": "TR",
+        "year": "2025",
+        "peak_to_trough": 3.1060130909452597,
+        "winter_summer": 2.4391356212259114,
+        "swing_share": 0.1684235153369835,
+        "swing_absolute": 376257.91633333336,
+        "annual_total": 2233998.712
+      },
+      {
+        "country": "TR",
+        "year": "2026",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "UA",
+        "year": "2020",
+        "peak_to_trough": 3.0704409463315843,
+        "winter_summer": 2.829114038199099,
+        "swing_share": 0.2110554095165722,
+        "swing_absolute": 244961.25,
+        "annual_total": 1160649.0
+      },
+      {
+        "country": "UA",
+        "year": "2021",
+        "peak_to_trough": 4.294953706210407,
+        "winter_summer": 3.5126673746237316,
+        "swing_share": 0.23407020253736854,
+        "swing_absolute": 243673.16666666663,
+        "annual_total": 1041026.0
+      },
+      {
+        "country": "UA",
+        "year": "2022",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "UK",
+        "year": "2020",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
+      },
+      {
+        "country": "XK",
+        "year": "2022",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": 0,
+        "annual_total": 0.0
+      },
+      {
+        "country": "XK",
+        "year": "2023",
+        "peak_to_trough": null,
+        "winter_summer": null,
+        "swing_share": null,
+        "swing_absolute": null,
+        "annual_total": null
       }
     ],
     "summary": {
+      "AL": {
+        "years": [
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 5.598235555811325,
+        "mean_winter_summer": 1.084828838867447,
+        "mean_swing_share": 0.15380505149431176,
+        "peak_to_trough_first_year": 2.178248861685452,
+        "peak_to_trough_last_year": 7.851309433002797,
+        "change": 5.673060571317345
+      },
+      "AT": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 3.4022193087290256,
+        "mean_winter_summer": 2.955935391586884,
+        "mean_swing_share": 0.18987678157636492,
+        "peak_to_trough_first_year": 3.2375734838282133,
+        "peak_to_trough_last_year": 3.7252604004176386,
+        "change": 0.4876869165894253
+      },
+      "BE": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 2.5265357684918546,
+        "mean_winter_summer": 2.197368187854993,
+        "mean_swing_share": 0.14616851484169413,
+        "peak_to_trough_first_year": 2.026368016781615,
+        "peak_to_trough_last_year": 2.804837672947167,
+        "change": 0.778469656165552
+      },
+      "BG": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 2.204734398668713,
+        "mean_winter_summer": 1.8093285594373827,
+        "mean_swing_share": 0.11734643217622874,
+        "peak_to_trough_first_year": 2.454834341048411,
+        "peak_to_trough_last_year": 2.091217719294016,
+        "change": -0.363616621754395
+      },
+      "CZ": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 3.479596642891354,
+        "mean_winter_summer": 3.0970131544287978,
+        "mean_swing_share": 0.20058849194024256,
+        "peak_to_trough_first_year": 3.013719954558968,
+        "peak_to_trough_last_year": 3.8640177326448533,
+        "change": 0.8502977780858854
+      },
       "DE": {
         "years": [
           "2020",
           "2021",
           "2022",
           "2023",
-          "2024"
+          "2024",
+          "2025"
         ],
-        "mean_peak_to_trough": 3.450631539179428,
-        "mean_winter_summer": 2.9271354482454273,
-        "mean_swing_share": 0.19105340413489666,
+        "mean_peak_to_trough": 3.4729572265494775,
+        "mean_winter_summer": 3.0037320861509507,
+        "mean_swing_share": 0.19405664157286795,
         "peak_to_trough_first_year": 2.7278709924283784,
-        "peak_to_trough_last_year": 3.3814223678327435,
-        "change": 0.6535513754043651
+        "peak_to_trough_last_year": 3.5845856633997237,
+        "change": 0.8567146709713453
+      },
+      "DK": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 2.5831428951831596,
+        "mean_winter_summer": 2.1770026722120988,
+        "mean_swing_share": 0.13981176303394807,
+        "peak_to_trough_first_year": 2.3021544480133116,
+        "peak_to_trough_last_year": 2.7836169864978397,
+        "change": 0.48146253848452814
+      },
+      "EE": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 4.702231322810043,
+        "mean_winter_summer": 3.6539890154002514,
+        "mean_swing_share": 0.21679631554306014,
+        "peak_to_trough_first_year": 3.5689655172413794,
+        "peak_to_trough_last_year": 3.734341252699784,
+        "change": 0.16537573545840445
+      },
+      "EL": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 1.855658903893951,
+        "mean_winter_summer": 1.082291418871635,
+        "mean_swing_share": 0.0710184209512436,
+        "peak_to_trough_first_year": 1.6383966376000838,
+        "peak_to_trough_last_year": 1.9918327210896165,
+        "change": 0.3534360834895327
+      },
+      "ES": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 1.5534383616615661,
+        "mean_winter_summer": 1.2673901635213347,
+        "mean_swing_share": 0.05678384856134507,
+        "peak_to_trough_first_year": 1.7411199408612086,
+        "peak_to_trough_last_year": 1.5237387850653585,
+        "change": -0.21738115579585005
+      },
+      "FI": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 2.751406971452369,
+        "mean_winter_summer": 1.6389250142667073,
+        "mean_swing_share": 0.12094904319190969,
+        "peak_to_trough_first_year": 1.6307178631051753,
+        "peak_to_trough_last_year": 2.637376237623762,
+        "change": 1.0066583745185869
+      },
+      "FR": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 4.135709791238982,
+        "mean_winter_summer": 3.351485295433568,
+        "mean_swing_share": 0.21656437855198385,
+        "peak_to_trough_first_year": 3.4809012005963407,
+        "peak_to_trough_last_year": 4.584656284208802,
+        "change": 1.1037550836124614
+      },
+      "GE": {
+        "years": [
+          "2020",
+          "2021",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 4.71755047310007,
+        "mean_winter_summer": 3.825569593478356,
+        "mean_swing_share": 0.24192699057723324,
+        "peak_to_trough_first_year": 4.9015930772280925,
+        "peak_to_trough_last_year": 4.829904875576102,
+        "change": -0.07168820165199019
+      },
+      "HR": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 2.739326723268782,
+        "mean_winter_summer": 1.974339546099016,
+        "mean_swing_share": 0.13199013064056833,
+        "peak_to_trough_first_year": 2.0811097695665355,
+        "peak_to_trough_last_year": 4.2431143211340485,
+        "change": 2.162004551567513
+      },
+      "HU": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 3.9756161711380837,
+        "mean_winter_summer": 3.4152524242926803,
+        "mean_swing_share": 0.21514658356012292,
+        "peak_to_trough_first_year": 3.8526261831052735,
+        "peak_to_trough_last_year": 4.786210396587482,
+        "change": 0.9335842134822081
+      },
+      "IE": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 1.4535807522747735,
+        "mean_winter_summer": 1.2331669380890533,
+        "mean_swing_share": 0.046978578724201775,
+        "peak_to_trough_first_year": 1.2467334329836866,
+        "peak_to_trough_last_year": 1.6890147830278817,
+        "change": 0.4422813500441951
+      },
+      "IT": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 2.452602578575497,
+        "mean_winter_summer": 2.0217072523604176,
+        "mean_swing_share": 0.14069864004806498,
+        "peak_to_trough_first_year": 2.5893708627846963,
+        "peak_to_trough_last_year": 2.5361588701325672,
+        "change": -0.05321199265212906
+      },
+      "LT": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 2.82155062509033,
+        "mean_winter_summer": 1.9256817028247741,
+        "mean_swing_share": 0.12475034424905547,
+        "peak_to_trough_first_year": 1.807161032351872,
+        "peak_to_trough_last_year": 4.389749065670048,
+        "change": 2.582588033318176
+      },
+      "LU": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 3.6261211186886784,
+        "mean_winter_summer": 2.8018362494868043,
+        "mean_swing_share": 0.17537862792344128,
+        "peak_to_trough_first_year": 3.1634385520225003,
+        "peak_to_trough_last_year": 3.5578528232402062,
+        "change": 0.3944142712177059
+      },
+      "LV": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 7.327737252113711,
+        "mean_winter_summer": 4.008049901006127,
+        "mean_swing_share": 0.24532001147787877,
+        "peak_to_trough_first_year": 3.7548354898626966,
+        "peak_to_trough_last_year": 8.340876647619263,
+        "change": 4.586041157756567
+      },
+      "MD": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 7.501141691894747,
+        "mean_winter_summer": 5.991625029081618,
+        "mean_swing_share": 0.31287687841571316,
+        "peak_to_trough_first_year": 6.524539877300613,
+        "peak_to_trough_last_year": 8.623557070338922,
+        "change": 2.099017193038309
+      },
+      "MK": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 10.469801127175971,
+        "mean_winter_summer": 1.7826580603264155,
+        "mean_swing_share": 0.19877469201639641,
+        "peak_to_trough_first_year": 13.19700478040036,
+        "peak_to_trough_last_year": 12.718667847263692,
+        "change": -0.47833693313666714
+      },
+      "MT": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 1.7663803881610347,
+        "mean_winter_summer": 0.7777081668381148,
+        "mean_swing_share": 0.06602055956909163,
+        "peak_to_trough_first_year": 1.9253652118568385,
+        "peak_to_trough_last_year": 1.6318744161181105,
+        "change": -0.29349079573872805
+      },
+      "NL": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 2.453286047328906,
+        "mean_winter_summer": 2.048094870518438,
+        "mean_swing_share": 0.1348122136823196,
+        "peak_to_trough_first_year": 1.9826836384462765,
+        "peak_to_trough_last_year": 2.7021458105020884,
+        "change": 0.7194621720558119
+      },
+      "NO": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 1.297117479574752,
+        "mean_winter_summer": 1.0297775038232222,
+        "mean_swing_share": 0.028996012488776274,
+        "peak_to_trough_first_year": 1.2591461863114042,
+        "peak_to_trough_last_year": 1.348170990934294,
+        "change": 0.08902480462288986
+      },
+      "PL": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 2.2627187026883426,
+        "mean_winter_summer": 2.007249923539758,
+        "mean_swing_share": 0.1299862488640587,
+        "peak_to_trough_first_year": 1.9978150782197397,
+        "peak_to_trough_last_year": 2.301682813087495,
+        "change": 0.3038677348677554
+      },
+      "PT": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 1.469997491532532,
+        "mean_winter_summer": 1.039954730712697,
+        "mean_swing_share": 0.047033064879088836,
+        "peak_to_trough_first_year": 1.6447157821896443,
+        "peak_to_trough_last_year": 1.4081865224290004,
+        "change": -0.23652925976064387
+      },
+      "RO": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 3.5750206093806334,
+        "mean_winter_summer": 3.0752805266756376,
+        "mean_swing_share": 0.2098204352891491,
+        "peak_to_trough_first_year": 3.1490740315242864,
+        "peak_to_trough_last_year": 3.7223264540337713,
+        "change": 0.5732524225094848
+      },
+      "RS": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 3.289284287748084,
+        "mean_winter_summer": 2.887121398314283,
+        "mean_swing_share": 0.1964377846135533,
+        "peak_to_trough_first_year": 3.5853285787060623,
+        "peak_to_trough_last_year": 3.182893180922349,
+        "change": -0.4024353977837132
+      },
+      "SE": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 2.7360652433189543,
+        "mean_winter_summer": 1.7249398661689137,
+        "mean_swing_share": 0.11794010553161245,
+        "peak_to_trough_first_year": 3.5421455938697317,
+        "peak_to_trough_last_year": 2.0438243297263177,
+        "change": -1.498321264143414
+      },
+      "SI": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 2.39820439478796,
+        "mean_winter_summer": 2.0669040083831622,
+        "mean_swing_share": 0.13463636318038744,
+        "peak_to_trough_first_year": 2.5679031385157294,
+        "peak_to_trough_last_year": 2.0529735312713004,
+        "change": -0.5149296072444289
+      },
+      "SK": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 3.634489138288851,
+        "mean_winter_summer": 3.046758266681781,
+        "mean_swing_share": 0.19769724426304588,
+        "peak_to_trough_first_year": 3.3231047609880777,
+        "peak_to_trough_last_year": 4.026373309227768,
+        "change": 0.7032685482396905
+      },
+      "TR": {
+        "years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "mean_peak_to_trough": 2.9237351499798554,
+        "mean_winter_summer": 2.1300839928895763,
+        "mean_swing_share": 0.15704727727052106,
+        "peak_to_trough_first_year": 3.5290342793219525,
+        "peak_to_trough_last_year": 3.1060130909452597,
+        "change": -0.4230211883766928
+      },
+      "UA": {
+        "years": [
+          "2020",
+          "2021"
+        ],
+        "mean_peak_to_trough": 3.6826973262709957,
+        "mean_winter_summer": 3.1708907064114156,
+        "mean_swing_share": 0.22256280602697037,
+        "peak_to_trough_first_year": 3.0704409463315843,
+        "peak_to_trough_last_year": 4.294953706210407,
+        "change": 1.2245127598788228
       }
     }
   }

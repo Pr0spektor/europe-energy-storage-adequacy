@@ -30,7 +30,7 @@ underground gas storage holds ~1,100 TWh — roughly
    carries more than a month of demand; batteries cover hours and pumped hydro days.
 6. **The seasonal swing is real, measured — and it grew.** On Eurostat monthly data,
    German gas consumption ran at a peak-to-trough ratio of 2.7 in 2020 and
-   3.4 in 2024, averaging 3.5 (winter/summer 2.9).
+   3.6 in 2025, averaging 3.5 (winter/summer 3.0).
    About **19% of annual consumption sits above a flat baseline** — that is the
    share the storage system has to carry every single year.
 
