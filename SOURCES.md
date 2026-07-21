@@ -48,8 +48,8 @@ for live pulls, so every figure in RESULTS.md can be traced back to the source d
 
 | Source | Endpoint | What it gives | Cached as |
 |---|---|---|---|
-| ENTSOG Transparency Platform | `interconnections.csv?fromCountryKey=..&toCountryKey=..` | topology: which points join which countries, operator on each side, schematic map coordinates | `data/raw/entsog_de_border_2026-01-15.json` |
-| ENTSOG Transparency Platform | `operationalData.csv?indicator=Physical Flow\|Firm Technical&periodType=day&pointDirection=..` | metered daily flow and firm technical capacity per point-direction | same file |
+| ENTSOG Transparency Platform | `interconnections.csv?fromCountryKey=..&toCountryKey=..` | which points join which countries, operator on each side, schematic map coordinates (used to locate the points) | `data/raw/entsog_de_border_2026-01-15.json` |
+| ENTSOG Transparency Platform | `operationalData.csv?indicator=Physical Flow\|Firm Technical&periodType=day&pointDirection=..` | daily flow **and** firm technical capacity per point-direction — fetched and verified for every one of the 10 German border points shown (VIP points aggregate the parallel pipes of a border) | same file |
 
 **No API key and no registration are required for ENTSOG.** `src/entsog.py` calls it
 directly and falls back to the bundled snapshot when offline.
