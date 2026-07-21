@@ -51,6 +51,22 @@ day actually came from, and where Germany's border binds:
 ![Caverns or ships](results/lng_vs_storage.png)
 ![Germany's gas border](results/network_map.png)
 
+### And the hydrogen buffer does not transfer one-for-one
+
+The same argument reaches forward. Europe's ≈1,100 TWh of gas storage is often treated as a
+ready-made hydrogen buffer — but a cavern stores a **volume, not an energy**, and hydrogen holds
+≈0.30 of methane's energy per m³, so the same holes hold only **≈260 TWh** of hydrogen: a **4.2×**
+shrink. That does not kill the transition; it turns it into a sizing decision with three levers,
+none free:
+
+1. **Keep methane storage** for the seasonal job and decarbonise the molecule elsewhere (biomethane, e-methane, CCS) — the buffer stays, the cost moves upstream.
+2. **Repurpose to hydrogen and rebuild the volume** — holding the same energy needs **≈4–5× today's cavern volume**, and suitable salt geology sits in only a few regions, so it is a capital *and* a siting problem.
+3. **Qualify depleted fields and aquifers** (211 of the 260 TWh) — the only way to close the gap without vast new caverns, and exactly where hydrogen's track record is thinnest.
+
+Treating the existing fleet as a free hydrogen buffer under-builds seasonal storage by roughly
+that factor — a gap that only shows up in a cold winter, when it cannot be closed quickly.
+**→ full derivation in [RESEARCH.md](RESEARCH.md).**
+
 ## What it is good for
 
 The model answers one operational question — *if it turns cold and stays cold, how many days do
