@@ -283,6 +283,27 @@ def main():
       "of that. Set against the measured seasonal swing from Layer 1, the comfortable methane buffer "
       "becomes a thin margin, and it thins further as electrification pushes more of the heating load "
       "onto the power system.\n" % UGS_H2_BY_TYPE["Salt caverns"])
+    A("**So what — the choice this forces, not a dead end.** \"We already have the storage\" does not "
+      "survive the volumetric arithmetic; the same holes hold roughly a fifth of the energy on "
+      "hydrogen. That does not make the transition impossible, it makes it a sizing decision with "
+      "three levers, none free:\n")
+    A("1. **Keep methane storage for the seasonal job and decarbonise the molecule elsewhere** "
+      "(biomethane, synthetic methane, or carbon capture on the burn) — the existing %d TWh buffer "
+      "stays intact, but the abatement moves upstream and has to be paid for there.\n"
+      % UGS_NATURAL_GAS_TWH)
+    A("2. **Repurpose to hydrogen and rebuild the missing volume** — to hold the same *energy* on "
+      "hydrogen Europe would need on the order of **four to five times the cavern volume it has "
+      "today**, and suitable salt geology is concentrated in a handful of regions (northern Germany, "
+      "the Netherlands, parts of the UK and Iberia), not evenly available where the demand sits. "
+      "New-build is therefore both a capital and a siting problem, not just an engineering one.\n")
+    A("3. **Qualify the depleted fields and aquifers** that hold %d of the %d TWh — the only way the "
+      "numbers close without massive new salt caverns — which is exactly where the hydrogen track "
+      "record is thinnest (cushion-gas losses, gas purity, microbial activity, deliverability).\n"
+      % (UGS_H2_BY_TYPE["Depleted gas fields"] + UGS_H2_BY_TYPE["Aquifers"], round(total_ugs_h2_twh())))
+    A("The engineering-and-strategy point is that this is a decision to be sized now, on this "
+      "arithmetic, rather than an assumption to be waved through. A policy that treats the existing "
+      "fleet as a free hydrogen buffer will under-build seasonal storage by roughly the factor above "
+      "and discover the gap in a cold winter, when it cannot be closed quickly.\n")
     A("![Hydrogen](results/h2_by_store_type.png)\n")
 
     # ---------------------------------------------------------------- conclusion
