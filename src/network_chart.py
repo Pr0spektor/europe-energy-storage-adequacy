@@ -20,12 +20,14 @@ def draw():
     snap = entsog.snapshot()
     fig, ax = plt.subplots(figsize=(9.5, 8))
 
-    # unmetered topology points: the rest of the border, for context
+    # Unmetered topology points: draw them as small hollow dots for context, but do NOT
+    # label every one — a dozen labels around Emden and Brandov collide into an unreadable
+    # smear. The metered points below carry the story and keep their labels.
     for p in snap["topology"]:
-        ax.scatter(p["x"], p["y"], s=26, facecolor="none", edgecolor="#b0b0b0",
-                   linewidth=.9, zorder=2)
-        ax.annotate(p["label"], (p["x"], p["y"]), fontsize=6, color="#909090",
-                    xytext=(4, -7), textcoords="offset points")
+        ax.scatter(p["x"], p["y"], s=22, facecolor="none", edgecolor="#c2c2c2",
+                   linewidth=.8, zorder=2)
+    ax.scatter([], [], s=22, facecolor="none", edgecolor="#c2c2c2",
+               label="other interconnection points")
 
     for p in snap["points"]:
         st = N.classify(p)
@@ -37,7 +39,8 @@ def draw():
                                     ("  ·  %.0f%% of firm" % (u * 100)) if u else "")
         ax.annotate(lab, (p["x"], p["y"]), fontsize=8, fontweight="bold",
                     xytext=OFFSET.get(p["label"], (9, 6)),
-                    textcoords="offset points", zorder=5)
+                    textcoords="offset points", zorder=6,
+                    bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.75))
         ax.annotate("", xy=(p["x"], p["y"]),
                     xytext=(p["x"] - (7 if p["direction"] == "entry" else -7), p["y"]),
                     arrowprops=dict(arrowstyle="-|>", color=COL[st], lw=1.6, alpha=.8), zorder=3)
@@ -50,7 +53,7 @@ def draw():
     handles = [plt.Line2D([], [], marker="o", ls="", color=c, label=k, markersize=8)
                for k, c in COL.items()]
     ax.legend(handles=handles, fontsize=7.5, loc="lower left", title="status", title_fontsize=8)
-    ax.grid(alpha=.2); ax.set_xlim(-52, 4); ax.set_ylim(-46, 16)
+    ax.grid(alpha=.2); ax.set_xlim(-54, 6); ax.set_ylim(-46, 18)
     fig.tight_layout(); fig.savefig(os.path.join(OUT, "network_map.png"), dpi=150); plt.close(fig)
 
 def corridor_chart():
