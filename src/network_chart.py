@@ -16,6 +16,9 @@ COL = {"above firm — running on non-firm capacity": "#c0392b",
        "spare firm capacity": "#2980b9",
        "idle": "#95a5a6"}
 
+CROWD = 5.0   # schematic units within which points are treated as overlapping
+
+
 def _declutter(ys, min_gap, lo, hi):
     """Spread label y-positions so none are closer than min_gap, staying within [lo,hi]."""
     order = sorted(range(len(ys)), key=lambda i: ys[i])
@@ -36,20 +39,41 @@ def draw():
     snap = entsog.snapshot()
     fig, ax = plt.subplots(figsize=(11, 8.5))
 
-    # ---- unmetered interconnection points: hollow dots, every one labelled ----
-    # ENTSOG's schematic coordinates pile same-corridor points on top of each other, so
-    # labels are pulled out to a clear column on the side and joined with a leader line.
+    # ---- unmetered interconnection points ----
+    # A leader line is only used where a point is crowded (another point within CROWD
+    # units); isolated points that have room are labelled directly, no line.
     topo = snap["topology"]
-    for p in topo:
-        ax.scatter(p["x"], p["y"], s=24, facecolor="none", edgecolor="#b0b0b0",
+    all_pts = [(q["x"], q["y"]) for q in topo] + [(q["x"], q["y"]) for q in snap["points"]]
+
+    def _crowded(px, py):
+        near = 0
+        for qx, qy in all_pts:
+            if (qx, qy) == (px, py):
+                continue
+            if abs(qx - px) < CROWD and abs(qy - py) < CROWD:
+                near += 1
+        return near > 0
+
+    for q in topo:
+        ax.scatter(q["x"], q["y"], s=24, facecolor="none", edgecolor="#b0b0b0",
                    linewidth=.9, zorder=2)
-    left = sorted([p for p in topo if p["x"] <= -25], key=lambda p: p["y"])
-    right = sorted([p for p in topo if p["x"] > -25], key=lambda p: p["y"])
-    ly = _declutter([p["y"] for p in left], 3.6, -46, 16)
-    ry = _declutter([p["y"] for p in right], 3.6, -46, 16)
-    for grp, ys, lx, ha in ((left, ly, -57.5, "right"), (right, ry, 4.5, "left")):
-        for p, y in zip(grp, ys):
-            ax.annotate(p["label"], xy=(p["x"], p["y"]), xytext=(lx, y),
+
+    crowded = [q for q in topo if _crowded(q["x"], q["y"])]
+    loose = [q for q in topo if not _crowded(q["x"], q["y"])]
+
+    # isolated points: label in place, no leader line
+    for q in loose:
+        ax.annotate(q["label"], xy=(q["x"], q["y"]), xytext=(6, -2),
+                    textcoords="offset points", fontsize=6.5, color="#7a7a7a", va="center")
+
+    # crowded points: pull labels to a decluttered column on the nearer side, with a line
+    left = sorted([q for q in crowded if q["x"] <= -25], key=lambda q: q["y"])
+    right = sorted([q for q in crowded if q["x"] > -25], key=lambda q: q["y"])
+    ly = _declutter([q["y"] for q in left], 3.6, -46, 16)
+    ry = _declutter([q["y"] for q in right], 3.6, -46, 16)
+    for grp, ys, lx, ha in ((left, ly, -60.5, "right"), (right, ry, 6.5, "left")):
+        for q, y in zip(grp, ys):
+            ax.annotate(q["label"], xy=(q["x"], q["y"]), xytext=(lx, y),
                         fontsize=6.5, color="#7a7a7a", va="center", ha=ha,
                         arrowprops=dict(arrowstyle="-", lw=0.5, color="#c8c8c8",
                                         shrinkA=0, shrinkB=2))
