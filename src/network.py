@@ -9,8 +9,11 @@ Reading the number honestly:
           additional (non-firm) capacity is being used. That extra volume is
           contractually curtailable, so a corridor above 100% is a *risk*
           concentration, not a comfort.
-  firm = 0 with flow > 0: the TSO publishes no firm technical capacity for that
-          direction at all — the whole flow is non-firm.
+  firm = 0 with flow > 0: no firm technical capacity is *published* for that
+          point-direction. This need not mean the flow is genuinely non-firm — at
+          multi-operator borders (e.g. Uberackern, run by both bayernets and OGE) the
+          capacity may be reported under the sibling point/operator while only the flow
+          is metered here. Read as "capacity not published", not "capacity is zero".
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

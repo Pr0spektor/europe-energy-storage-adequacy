@@ -196,6 +196,14 @@ def main():
              "which is exactly why its own import points run above firm.\n"
              % (exp_line, [r for r in NW.table() if r["point"] == "VIP Brandov"][0]["flow_gwh_d"]))
 
+    L.append("> **Reading note — Uberackern.** The Uberackern crossing to Austria appears as two "
+             "ENTSOG points run by two operators: **SUDAL** (bayernets) publishes 228 GWh/d of firm "
+             "capacity but was not nominated that day (idle), while **ABG** (OGE) metered 68 GWh/d of "
+             "real flow but publishes no current capacity at all — its capacity fields are stale (last "
+             "updated 2015). So ABG's \"0 firm\" is a *publication gap*, not a physical zero: capacity "
+             "and flow for this border are split across the two point IDs. This is exactly the "
+             "multi-operator fragmentation that Virtual Interconnection Points (VIPs) exist to "
+             "consolidate.\n")
     L.append("## 7. What this means for storage\n")
     L.append("- The swing above a flat baseline is what storage and flexible supply must cover. For the EU "
              "it is on the order of **hundreds of TWh every year** — that is the job underground storage does today.\n"

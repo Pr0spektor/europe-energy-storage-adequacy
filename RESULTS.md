@@ -186,6 +186,8 @@ Source: **ENTSOG Transparency Platform** (`transparency.entsog.eu/api/v1`, open,
 
 The same day the map of 2019 is visibly redrawn on the export side: **to AT 285 GWh/d**, **to PL 272 GWh/d**, **to CZ 220 GWh/d**, **to CH 195 GWh/d**. **Mallnow now runs west-to-east** (exporting to Poland at 86% of firm, no longer importing), and **VIP Waidhaus — the old Russian route into Bavaria — sits at exactly zero**. But the eastern border is not dead: **VIP Brandov still carries 220 GWh/d into Czechia** and the Polish ONTRAS point runs at its firm limit. Germany has turned from a Russian-gas destination into a **hub that re-exports Norwegian and LNG-sourced gas** south and east — which is exactly why its own import points run above firm.
 
+> **Reading note — Uberackern.** The Uberackern crossing to Austria appears as two ENTSOG points run by two operators: **SUDAL** (bayernets) publishes 228 GWh/d of firm capacity but was not nominated that day (idle), while **ABG** (OGE) metered 68 GWh/d of real flow but publishes no current capacity at all — its capacity fields are stale (last updated 2015). So ABG's "0 firm" is a *publication gap*, not a physical zero: capacity and flow for this border are split across the two point IDs. This is exactly the multi-operator fragmentation that Virtual Interconnection Points (VIPs) exist to consolidate.
+
 ## 7. What this means for storage
 
 - The swing above a flat baseline is what storage and flexible supply must cover. For the EU it is on the order of **hundreds of TWh every year** — that is the job underground storage does today.
