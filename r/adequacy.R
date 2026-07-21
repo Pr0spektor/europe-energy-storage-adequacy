@@ -31,22 +31,14 @@ SEVERITIES <- c(1.0, 1.2, 1.4)
 
 # ---- Path resolution (relative to script location) ----
 script_dir <- function() {
-  # If running via Rscript, get the script directory from environment
-  script <- Sys.getenv("RSCRIPT_FILE", unset = NA_character_)
-  if (!is.na(script)) {
-    return(dirname(normalizePath(script, mustWork = FALSE)))
+  # Rscript exposes the script path as --file= in the full command line. RSCRIPT_FILE
+  # is not set by Rscript, so relying on it silently falls through to getwd().
+  args <- commandArgs(trailingOnly = FALSE)
+  hit <- grep("^--file=", args, value = TRUE)
+  if (length(hit) > 0) {
+    return(dirname(normalizePath(sub("^--file=", "", hit[1]), mustWork = FALSE)))
   }
-  # Fallback: derive from current environment
-  wd <- getwd()
-  if (file.exists(file.path(wd, "..", "data"))) {
-    return(wd)
-  }
-  # If called within RStudio or interactively, try to infer from this file
-  this_file <- tryCatch(rstudioapi::getSourceEditorContext()$path, error = function(e) NA_character_)
-  if (!is.na(this_file)) {
-    return(dirname(this_file))
-  }
-  return(wd)
+  getwd()
 }
 
 get_repo_root <- function() {
@@ -89,17 +81,28 @@ energy_loss_factor <- function(observed_h2_twh = NULL) {
 
 # ---- Load AGSI and ALSI data ----
 load_agsi <- function(path = file.path(repo_root, "data", "raw", "agsi_2026-07-18.json")) {
-  jsonlite::fromJSON(path)
+  jsonlite::fromJSON(path, simplifyVector = FALSE)
 }
 
 load_alsi <- function(path = file.path(repo_root, "data", "raw", "alsi_2026-07-18.json")) {
-  jsonlite::fromJSON(path)
+  jsonlite::fromJSON(path, simplifyVector = FALSE)
 }
 
 # ---- Input assembly (mirrors Python _inputs()) ----
 stress_inputs <- function() {
   snap <- load_agsi()
   alsi <- load_alsi()
+
+  # Shape guard. jsonlite will happily simplify an array of objects into a data.frame,
+  # in which case sapply() below would iterate columns instead of rows and produce
+  # silent nonsense. Fail here instead, with a message that says what went wrong.
+  if (!is.list(snap$countries) || is.data.frame(snap$countries)) {
+    stop("agsi countries did not parse as a list of records - check simplifyVector = FALSE")
+  }
+  if (length(snap$countries) < 15 || length(snap$winter_2025_26) < 15) {
+    stop(sprintf("unexpected AGSI record counts: %d countries, %d winter rows",
+                 length(snap$countries), length(snap$winter_2025_26)))
+  }
 
   # Build working gas volume map
   wgv <- setNames(
@@ -248,68 +251,59 @@ fragile <- function(severity = 1.2, threshold_days = 30) {
 
 # ---- Self-test block (guarded by sys.nframe() == 0) ----
 if (sys.nframe() == 0) {
-  # Test volumetric_energy_ratio and energy_loss_factor are in reasonable ranges
+
+  # Regression harness. In R, stopifnot() treats EVERY argument as a condition that must
+  # be TRUE, so a bare message string passed alongside a test is itself evaluated and
+  # always fails. Messages therefore go in the argument NAME, which is the documented
+  # idiom: stopifnot("what went wrong" = <condition>).
+
+  check <- function(msg, cond) {
+    if (!isTRUE(cond)) stop(msg, call. = FALSE)
+    cat("  PASS  ", msg, "\n", sep = "")
+  }
+
+  row_of <- function(tbl, code) tbl[tbl$country == code, ]
+
+  cat("=== physics ===\n")
   ver <- volumetric_energy_ratio()
-  stopifnot(ver >= 0.25 && ver <= 0.35,
-            sprintf("volumetric_energy_ratio() = %.4f not in [0.25, 0.35]", ver))
-
+  check(sprintf("volumetric_energy_ratio() = %.4f is within [0.25, 0.35]", ver),
+        ver >= 0.25 && ver <= 0.35)
   elf <- energy_loss_factor()
-  stopifnot(elf >= 3.0 && elf <= 5.0,
-            sprintf("energy_loss_factor() = %.4f not in [3.0, 5.0]", elf))
+  check(sprintf("energy_loss_factor() = %.4f is within [3.0, 5.0]", elf),
+        elf >= 3.0 && elf <= 5.0)
 
-  # Test severity 1.0
   cat("\n=== severity 1.0x last winter's worst day ===\n")
   tbl_1_0 <- stress_table(1.0)
   print(tbl_1_0)
 
-  # Regression tests for severity 1.0
-  be_1_0 <- tbl_1_0[tbl_1_0$country == "BE", ]
-  stopifnot(nrow(be_1_0) == 1, be_1_0$binds_on_day[1] == 1,
-            be_1_0$constraint[1] == "rate",
-            sprintf("BE at severity 1.0 should bind on day 1 with rate constraint, got: day %s, %s",
-                    be_1_0$binds_on_day[1], be_1_0$constraint[1]))
+  for (code in c("BE", "LV", "PT")) {
+    r <- row_of(tbl_1_0, code)
+    check(sprintf("%s binds on day 1 on rate", code),
+          nrow(r) == 1 && r$binds_on_day[1] == 1 && r$constraint[1] == "rate")
+  }
 
-  lv_1_0 <- tbl_1_0[tbl_1_0$country == "LV", ]
-  stopifnot(nrow(lv_1_0) == 1, lv_1_0$binds_on_day[1] == 1,
-            lv_1_0$constraint[1] == "rate",
-            sprintf("LV at severity 1.0 should bind on day 1 with rate constraint"))
+  de <- row_of(tbl_1_0, "DE")
+  check("DE binds on day 55 on volume",
+        nrow(de) == 1 && de$binds_on_day[1] == 55 && de$constraint[1] == "volume")
+  check(sprintf("DE daily call = %.2f TWh/d matches the Python reference 3.97",
+                de$daily_call_twh_d[1]),
+        abs(de$daily_call_twh_d[1] - 3.97) < 0.005)
 
-  pt_1_0 <- tbl_1_0[tbl_1_0$country == "PT", ]
-  stopifnot(nrow(pt_1_0) == 1, pt_1_0$binds_on_day[1] == 1,
-            pt_1_0$constraint[1] == "rate",
-            sprintf("PT at severity 1.0 should bind on day 1 with rate constraint"))
+  fr <- row_of(tbl_1_0, "FR")
+  check("FR binds on day 62 on volume",
+        nrow(fr) == 1 && fr$binds_on_day[1] == 62 && fr$constraint[1] == "volume")
 
-  de_1_0 <- tbl_1_0[tbl_1_0$country == "DE", ]
-  stopifnot(nrow(de_1_0) == 1, de_1_0$binds_on_day[1] == 55,
-            de_1_0$constraint[1] == "volume",
-            sprintf("DE at severity 1.0 should bind on day 55 with volume constraint, got: day %s, %s",
-                    de_1_0$binds_on_day[1], de_1_0$constraint[1]))
-  # Check daily call is ~3.97 TWh/d (2 dp)
-  stopifnot(abs(de_1_0$daily_call_twh_d[1] - 3.97) < 0.005,
-            sprintf("DE daily_call should be ~3.97, got %.2f", de_1_0$daily_call_twh_d[1]))
+  es <- row_of(tbl_1_0, "ES")
+  check("ES binds on day 174 on volume",
+        nrow(es) == 1 && es$binds_on_day[1] == 174 && es$constraint[1] == "volume")
 
-  fr_1_0 <- tbl_1_0[tbl_1_0$country == "FR", ]
-  stopifnot(nrow(fr_1_0) == 1, fr_1_0$binds_on_day[1] == 62,
-            fr_1_0$constraint[1] == "volume",
-            sprintf("FR at severity 1.0 should bind on day 62, got: day %s",
-                    fr_1_0$binds_on_day[1]))
-
-  es_1_0 <- tbl_1_0[tbl_1_0$country == "ES", ]
-  stopifnot(nrow(es_1_0) == 1, es_1_0$binds_on_day[1] == 174,
-            es_1_0$constraint[1] == "volume",
-            sprintf("ES at severity 1.0 should bind on day 174, got: day %s",
-                    es_1_0$binds_on_day[1]))
-
-  # Test severity 1.2
   cat("\n=== severity 1.2x last winter's worst day ===\n")
   tbl_1_2 <- stress_table(1.2)
   print(tbl_1_2)
 
-  de_1_2 <- tbl_1_2[tbl_1_2$country == "DE", ]
-  stopifnot(nrow(de_1_2) == 1, de_1_2$binds_on_day[1] == 45,
-            de_1_2$constraint[1] == "volume",
-            sprintf("DE at severity 1.2 should bind on day 45, got: day %s",
-                    de_1_2$binds_on_day[1]))
+  de2 <- row_of(tbl_1_2, "DE")
+  check("DE binds on day 45 at 1.2x",
+        nrow(de2) == 1 && de2$binds_on_day[1] == 45 && de2$constraint[1] == "volume")
 
   cat("\nAll checks passed.\n")
 }
