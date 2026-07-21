@@ -72,6 +72,41 @@ has 45 days and then it is a rate problem."
 
 ---
 
+## Running it — data and API keys
+
+**Clone and run. No key, no account, no signup.** Every number in
+[RESEARCH.md](RESEARCH.md) and [RESULTS.md](RESULTS.md) and every chart in `results/` is
+reproduced from the raw API responses cached verbatim in `data/raw/`, so the published
+result is auditable by anyone without credentials of any kind:
+
+```bash
+git clone https://github.com/Pr0spektor/europe-energy-storage-adequacy.git
+cd europe-energy-storage-adequacy
+pip install -r requirements.txt
+python tests/test_adequacy.py     # 77 tests
+python src/research.py            # rebuilds RESEARCH.md from the cached data
+```
+
+**To pull fresher data than the bundled gas day**, supply your own keys — the repo never
+ships one:
+
+| Source | Key needed? | How to get it |
+|---|---|---|
+| **Eurostat** — monthly gas balances, sectoral balances | no | open API |
+| **ENTSOG** — network topology, flows, firm capacity | no | open API |
+| **GIE AGSI+ / ALSI** — storage fill and LNG send-out | yes, free | account at [agsi.gie.eu/account](https://agsi.gie.eu/account); one key covers both, sent as the `x-key` header, never expires |
+
+```bash
+cp .env.example .env        # then paste your key into AGSI_KEY
+python src/agsi.py          # or one-off: AGSI_KEY=... python src/agsi.py
+```
+
+`.env` is git-ignored; `.env.example` ships empty. `src/agsi.py` reads the key from the
+environment or from `.env`, and falls back to the bundled snapshot whenever a key is
+absent or the network is unavailable — so nothing in the repo can break for want of a
+credential. A test asserts that no key literal and no personal data ever enters a
+tracked file.
+
 ## Underlying findings
 
 **→ The study: [RESEARCH.md](RESEARCH.md)** · **[RESULTS.md](RESULTS.md)** · **[INSIGHT_MEMO.md](INSIGHT_MEMO.md)** · raw table [results/seasonality.csv](results/seasonality.csv)

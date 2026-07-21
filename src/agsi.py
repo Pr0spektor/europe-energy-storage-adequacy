@@ -4,8 +4,11 @@ AGSI+ is free but authenticated: create an account at https://agsi.gie.eu/accoun
 copy the key from the API Account page, and pass it in the **x-key header** (it is
 rejected as a query parameter).
 
-    export AGSI_KEY=...            # never hard-code it, never commit it
-    python src/agsi.py --refresh
+    cp .env.example .env && $EDITOR .env      # paste your key into AGSI_KEY
+    python src/agsi.py                        # or: AGSI_KEY=... python src/agsi.py
+
+Without a key nothing breaks: every function falls back to the snapshots bundled in
+data/raw/, which is what reproduces the published figures. The key only buys fresher data.
 
 Endpoints used:
     /api                                    latest gas day, EU -> countries -> companies -> facilities
@@ -27,7 +30,21 @@ TIMEOUT = 30
 
 
 def key() -> str | None:
-    return os.environ.get("AGSI_KEY")
+    """The AGSI+ key, from the environment or from a local .env file.
+
+    Never stored in the repository: .env is git-ignored and .env.example ships empty.
+    """
+    k = os.environ.get("AGSI_KEY")
+    if k:
+        return k.strip() or None
+    env = os.path.join(os.path.dirname(DATA), "..", ".env")
+    env = os.path.normpath(env)
+    if os.path.exists(env):
+        for line in open(env):
+            line = line.strip()
+            if line.startswith("AGSI_KEY=") and not line.startswith("#"):
+                return line.split("=", 1)[1].strip().strip('"\'') or None
+    return None
 
 
 def _get(params: str = "") -> dict:
