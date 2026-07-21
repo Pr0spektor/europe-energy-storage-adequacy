@@ -10,15 +10,15 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "results")
 # label offset per point (in points), tuned so nothing overlaps and no leader line is needed
 OFFSET = {
-    "Dornum / NETRA":        (12, 14),
+    "Dornum / NETRA":        (-12, -14),
     "Emden (EPT1)":          (14, -16),
     "Mallnow":               (12, 6),
     "GCP GAZ-SYSTEM/ONTRAS": (12, 4),
     "VIP Brandov":           (12, 6),
     "VIP Waidhaus":          (12, 6),
-    "VIP Oberkappel":        (12, 16),
-    "Uberackern ABG":        (14, -6),
-    "Uberackern SUDAL":      (14, -20),
+    "VIP Oberkappel":        (12, 4),
+    "Uberackern ABG":        (-12, 6),
+    "Uberackern SUDAL":      (-12, -16),
     "VIP Germany-CH":        (12, 4),
 }
 
@@ -62,8 +62,11 @@ def draw():
                     ("  ·  %.0f%% of firm" % (u * 100)) if u else "  ·  no firm published")
         else:
             head = "%s  →%s\nidle — 0 GWh/d" % (p["label"], p["to"])
-        ax.annotate(head, xy=(p["x"], p["y"]), xytext=OFFSET.get(p["label"], (12, 6)),
-                    textcoords="offset points", fontsize=7.5, fontweight="bold", va="center",
+        dx, dy = OFFSET.get(p["label"], (12, 6))
+        ha = "right" if dx < 0 else "left"
+        ax.annotate(head, xy=(p["x"], p["y"]), xytext=(dx, dy),
+                    textcoords="offset points", fontsize=7.5, fontweight="bold",
+                    va="center", ha=ha,
                     bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.8),
                     zorder=6)
         if flow > 0:
