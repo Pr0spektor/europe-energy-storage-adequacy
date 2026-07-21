@@ -8,8 +8,20 @@ import entsog, network as N
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "results")
-OFFSET = {"Emden (EPT1)": (-34, -30), "Dornum / NETRA": (10, 12),
-          "Uberackern ABG": (-40, -22), "VIP Oberkappel": (10, 4)}
+# label offset per point (in points), tuned so nothing overlaps and no leader line is needed
+OFFSET = {
+    "Dornum / NETRA":        (12, 14),
+    "Emden (EPT1)":          (14, -16),
+    "Mallnow":               (12, 6),
+    "GCP GAZ-SYSTEM/ONTRAS": (12, 4),
+    "VIP Brandov":           (12, 6),
+    "VIP Waidhaus":          (12, 6),
+    "VIP Oberkappel":        (12, 16),
+    "Uberackern ABG":        (14, -6),
+    "Uberackern SUDAL":      (14, -20),
+    "VIP Germany-CH":        (12, 4),
+}
+
 COL = {"above firm — running on non-firm capacity": "#c0392b",
        "no firm capacity published": "#e67e22",
        "at the firm limit": "#f1c40f",
@@ -39,10 +51,7 @@ def draw():
     snap = entsog.snapshot()
     fig, ax = plt.subplots(figsize=(10.5, 8))
 
-    pts = snap["points"]
-    # spread labels vertically where points sit on top of each other
-    ys = _declutter([p["y"] for p in pts], 3.2, -46, 16)
-    for p, ytxt in zip(pts, ys):
+    for p in snap["points"]:
         st = N.classify(p)
         flow = p["physical_flow"] / 1e6
         ax.scatter(p["x"], p["y"], s=55 + flow * 1.1, color=COL[st], alpha=.9,
@@ -53,14 +62,9 @@ def draw():
                     ("  ·  %.0f%% of firm" % (u * 100)) if u else "  ·  no firm published")
         else:
             head = "%s  →%s\nidle — 0 GWh/d" % (p["label"], p["to"])
-        # label to the side, with a short leader line only when it had to be nudged
-        dx = 12 if p["x"] > -30 else 12
-        ax.annotate(head, xy=(p["x"], p["y"]),
-                    xytext=(p["x"] + (2.5 if p["x"] > -30 else 2.5), ytxt),
-                    fontsize=7.5, fontweight="bold", va="center",
+        ax.annotate(head, xy=(p["x"], p["y"]), xytext=OFFSET.get(p["label"], (12, 6)),
+                    textcoords="offset points", fontsize=7.5, fontweight="bold", va="center",
                     bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.8),
-                    arrowprops=dict(arrowstyle="-", lw=0.5, color="#bbbbbb",
-                                    shrinkA=0, shrinkB=3) if abs(ytxt - p["y"]) > 1.5 else None,
                     zorder=6)
         if flow > 0:
             ax.annotate("", xy=(p["x"], p["y"]),
@@ -77,7 +81,7 @@ def draw():
                for k, c in COL.items()]
     ax.legend(handles=handles, fontsize=7.5, loc="center left", bbox_to_anchor=(0.02, 0.30),
               title="status", title_fontsize=8, framealpha=0.9)
-    ax.grid(alpha=.2); ax.set_xlim(-56, 14); ax.set_ylim(-46, 16)
+    ax.grid(alpha=.2); ax.set_xlim(-56, 16); ax.set_ylim(-46, 16)
     fig.tight_layout(); fig.savefig(os.path.join(OUT, "network_map.png"), dpi=150); plt.close(fig)
 
 
