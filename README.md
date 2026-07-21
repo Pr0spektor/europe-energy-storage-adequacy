@@ -42,6 +42,15 @@ terms. Neither fact is visible in any national percentage.
 
 ![Stress test](results/stress_days.png)
 
+Each layer of the argument has a chart behind it. Storage fill against the 90% refill
+target, how close each country came to its own maximum withdrawal rate, where the peak
+day actually came from, and where Germany's border binds:
+
+![EU storage fill by gas year](results/storage_fill_curves.png)
+![Deliverability pressure](results/storage_deliverability.png)
+![Caverns or ships](results/lng_vs_storage.png)
+![Germany's gas border](results/network_map.png)
+
 ## What it is good for
 
 The model answers one operational question — *if it turns cold and stays cold, how many days do
@@ -110,6 +119,12 @@ tracked file.
 ## Underlying findings
 
 **→ The study: [RESEARCH.md](RESEARCH.md)** · **[RESULTS.md](RESULTS.md)** · **[INSIGHT_MEMO.md](INSIGHT_MEMO.md)** · raw table [results/seasonality.csv](results/seasonality.csv)
+
+![Who burns the gas](results/demand_by_sector.png)
+![Storage injection and withdrawal cycle](results/storage_cycle.png)
+![Seasonal requirement vs available storage](results/requirement_vs_available.png)
+![Scenarios](results/scenarios.png)
+![Hydrogen capacity by store type](results/h2_by_store_type.png)
 
 ### The chain of evidence, in one place
 
