@@ -183,11 +183,18 @@ def main():
              "firm capacity — 162%% and 139%% respectively. That extra volume is interruptible or "
              "additional capacity: contractually curtailable, not guaranteed. The single-corridor "
              "concentration is the bottleneck, not the pipe diameter.\n" % c["NO->DE"])
-    L.append("Meanwhile **VIP Waidhaus sits at zero** — the Czech route that used to carry Russian gas "
-             "into Bavaria is idle, and **Mallnow now runs west-to-east at 86% of firm**, exporting to "
-             "Poland instead of importing from it. The map of 2019 has been redrawn: the load has moved "
-             "from the eastern border to the North Sea coast, and the eastern points are now transit and "
-             "reverse-flow assets.\n")
+    # export corridors, computed from the same data
+    exp = {k: v for k, v in c.items() if k.startswith("DE->")}
+    exp_line = ", ".join("**%s %.0f GWh/d**" % (k.replace("DE->", "to "), v)
+                         for k, v in sorted(exp.items(), key=lambda kv: -kv[1]))
+    L.append("The same day the map of 2019 is visibly redrawn on the export side: %s. **Mallnow now "
+             "runs west-to-east** (exporting to Poland at 86%% of firm, no longer importing), and "
+             "**VIP Waidhaus — the old Russian route into Bavaria — sits at exactly zero**. But the "
+             "eastern border is not dead: **VIP Brandov still carries %.0f GWh/d into Czechia** and the "
+             "Polish ONTRAS point runs at its firm limit. Germany has turned from a Russian-gas "
+             "destination into a **hub that re-exports Norwegian and LNG-sourced gas** south and east — "
+             "which is exactly why its own import points run above firm.\n"
+             % (exp_line, [r for r in NW.table() if r["point"] == "VIP Brandov"][0]["flow_gwh_d"]))
 
     L.append("## 7. What this means for storage\n")
     L.append("- The swing above a flat baseline is what storage and flexible supply must cover. For the EU "

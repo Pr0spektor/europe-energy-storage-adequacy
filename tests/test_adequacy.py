@@ -252,10 +252,12 @@ def test_peak_withdrawal_rate_is_a_power_not_an_energy():
 import entsog as EG
 import network as NW
 
-def test_snapshot_has_both_metered_and_topology_points():
+def test_snapshot_points_are_all_verified():
     snap = EG.snapshot()
-    assert len(snap["points"]) >= 6 and len(snap["topology"]) >= 10
+    assert len(snap["points"]) >= 10          # every point has fetched flow AND firm capacity
     assert snap["_gas_day"] == "2026-01-15"
+    for p in snap["points"]:
+        assert "physical_flow" in p and "firm_technical" in p
 
 def test_point_direction_key_matches_entsog_format():
     assert EG.point_direction("DE-TSO-0009", "ITP-00080", "entry") == "DE-TSO-0009ITP-00080entry"
@@ -282,6 +284,8 @@ def test_norwegian_imports_dominate_the_winter_border():
     c = NW.corridors()
     assert max(c, key=c.get) == "NO->DE"
     assert c["NO->DE"] > 900                      # GWh/d on the peak winter gas day
+    # the Czech export corridor is active (VIP Brandov), not idle as a naive read suggests
+    assert c["DE->CZ"] > 150 and c["DE->CH"] > 150
 
 def test_norwegian_entry_points_run_beyond_firm_capacity():
     stressed = {r["point"] for r in NW.stressed()}

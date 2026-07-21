@@ -37,64 +37,31 @@ def _declutter(ys, min_gap, lo, hi):
 
 def draw():
     snap = entsog.snapshot()
-    fig, ax = plt.subplots(figsize=(11, 8.5))
+    fig, ax = plt.subplots(figsize=(10.5, 8))
 
-    # ---- unmetered interconnection points ----
-    # A leader line is only used where a point is crowded (another point within CROWD
-    # units); isolated points that have room are labelled directly, no line.
-    topo = snap["topology"]
-    all_pts = [(q["x"], q["y"]) for q in topo] + [(q["x"], q["y"]) for q in snap["points"]]
-
-    def _crowded(px, py):
-        near = 0
-        for qx, qy in all_pts:
-            if (qx, qy) == (px, py):
-                continue
-            if abs(qx - px) < CROWD and abs(qy - py) < CROWD:
-                near += 1
-        return near > 0
-
-    for q in topo:
-        ax.scatter(q["x"], q["y"], s=24, facecolor="none", edgecolor="#b0b0b0",
-                   linewidth=.9, zorder=2)
-
-    crowded = [q for q in topo if _crowded(q["x"], q["y"])]
-    loose = [q for q in topo if not _crowded(q["x"], q["y"])]
-
-    # isolated points: label in place, no leader line
-    for q in loose:
-        ax.annotate(q["label"], xy=(q["x"], q["y"]), xytext=(6, -2),
-                    textcoords="offset points", fontsize=6.5, color="#7a7a7a", va="center")
-
-    # crowded points: pull labels to a decluttered column on the nearer side, with a line
-    left = sorted([q for q in crowded if q["x"] <= -25], key=lambda q: q["y"])
-    right = sorted([q for q in crowded if q["x"] > -25], key=lambda q: q["y"])
-    ly = _declutter([q["y"] for q in left], 3.6, -46, 16)
-    ry = _declutter([q["y"] for q in right], 3.6, -46, 16)
-    for grp, ys, lx, ha in ((left, ly, -60.5, "right"), (right, ry, 6.5, "left")):
-        for q, y in zip(grp, ys):
-            ax.annotate(q["label"], xy=(q["x"], q["y"]), xytext=(lx, y),
-                        fontsize=6.5, color="#7a7a7a", va="center", ha=ha,
-                        arrowprops=dict(arrowstyle="-", lw=0.5, color="#c8c8c8",
-                                        shrinkA=0, shrinkB=2))
-
-    # ---- metered points: coloured, sized by flow, with the flow arrow ----
-    for p in snap["points"]:
+    pts = snap["points"]
+    # spread labels vertically where points sit on top of each other
+    ys = _declutter([p["y"] for p in pts], 3.2, -46, 16)
+    for p, ytxt in zip(pts, ys):
         st = N.classify(p)
         flow = p["physical_flow"] / 1e6
-        ax.scatter(p["x"], p["y"], s=45 + flow * 1.1, color=COL[st], alpha=.9,
+        ax.scatter(p["x"], p["y"], s=55 + flow * 1.1, color=COL[st], alpha=.9,
                    edgecolor="white", linewidth=1.2, zorder=4)
         u = N.utilisation(p)
         if flow > 0:
-            lab = "%s\n%.0f GWh/d%s" % (p["label"], flow,
-                                        ("  ·  %.0f%% of firm" % (u * 100)) if u else "")
+            head = "%s  →%s\n%.0f GWh/d%s" % (p["label"], p["to"], flow,
+                    ("  ·  %.0f%% of firm" % (u * 100)) if u else "  ·  no firm published")
         else:
-            lab = "%s\nidle — 0 GWh/d" % p["label"]     # do not imply a flow it does not carry
-        ax.annotate(lab, (p["x"], p["y"]), fontsize=8, fontweight="bold",
-                    xytext=OFFSET.get(p["label"], (9, 6)),
-                    textcoords="offset points", zorder=6,
-                    bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.8))
-        # flow arrow only where gas actually moves
+            head = "%s  →%s\nidle — 0 GWh/d" % (p["label"], p["to"])
+        # label to the side, with a short leader line only when it had to be nudged
+        dx = 12 if p["x"] > -30 else 12
+        ax.annotate(head, xy=(p["x"], p["y"]),
+                    xytext=(p["x"] + (2.5 if p["x"] > -30 else 2.5), ytxt),
+                    fontsize=7.5, fontweight="bold", va="center",
+                    bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.8),
+                    arrowprops=dict(arrowstyle="-", lw=0.5, color="#bbbbbb",
+                                    shrinkA=0, shrinkB=3) if abs(ytxt - p["y"]) > 1.5 else None,
+                    zorder=6)
         if flow > 0:
             ax.annotate("", xy=(p["x"], p["y"]),
                         xytext=(p["x"] - (7 if p["direction"] == "entry" else -7), p["y"]),
@@ -102,17 +69,15 @@ def draw():
                         zorder=3)
 
     ax.set_title("Germany's gas border on the peak winter gas day %s\n"
-                 "ENTSOG Transparency Platform — physical flow vs firm technical capacity"
-                 % snap["_gas_day"], fontsize=11)
+                 "ENTSOG Transparency Platform — physical flow vs firm technical capacity "
+                 "(every point verified)" % snap["_gas_day"], fontsize=11)
     ax.set_xlabel("← west          ENTSOG schematic map coordinates          east →", fontsize=8)
     ax.set_ylabel("← south                                      north →", fontsize=8)
     handles = [plt.Line2D([], [], marker="o", ls="", color=c, label=k, markersize=8)
                for k, c in COL.items()]
-    handles.append(plt.Line2D([], [], marker="o", ls="", mfc="none", mec="#b0b0b0",
-                              label="other point (no metered flow)", markersize=8))
-    ax.legend(handles=handles, fontsize=7.5, loc="center left", bbox_to_anchor=(0.30, 0.60),
+    ax.legend(handles=handles, fontsize=7.5, loc="center left", bbox_to_anchor=(0.02, 0.30),
               title="status", title_fontsize=8, framealpha=0.9)
-    ax.grid(alpha=.2); ax.set_xlim(-62, 12); ax.set_ylim(-46, 18)
+    ax.grid(alpha=.2); ax.set_xlim(-56, 14); ax.set_ylim(-46, 16)
     fig.tight_layout(); fig.savefig(os.path.join(OUT, "network_map.png"), dpi=150); plt.close(fig)
 
 

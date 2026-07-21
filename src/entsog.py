@@ -51,7 +51,7 @@ def fetch_topology(from_country: str, to_country: str) -> list[dict]:
                           {"fromCountryKey": from_country, "toCountryKey": to_country}))
     except Exception:
         snap = snapshot()
-        return [p for p in snap["topology"] + snap["points"]
+        return [p for p in snap["points"]
                 if p.get("from") == from_country and p.get("to") == to_country]
     out = []
     for r in rows:
@@ -97,8 +97,8 @@ def fetch_flows(point_directions: list[str], gas_day: str,
 
 if __name__ == "__main__":
     snap = snapshot()
-    print("bundled snapshot: gas day %s, %d metered points, %d topology points"
-          % (snap["_gas_day"], len(snap["points"]), len(snap["topology"])))
+    print("bundled snapshot: gas day %s, %d verified metered points"
+          % (snap["_gas_day"], len(snap["points"])))
     for p in snap["points"]:
         print("  %-22s %s->%s  flow %8.1f GWh/d  firm %8.1f GWh/d"
               % (p["label"], p["from"], p["to"],

@@ -170,9 +170,13 @@ Source: **ENTSOG Transparency Platform** (`transparency.entsog.eu/api/v1`, open,
 | Dornum / NETRA | OGE | NO->DE | 589 | 423 | 139% | above firm — running on non-firm capacity |
 | Emden (EPT1) | OGE | NO->DE | 426 | 263 | 162% | above firm — running on non-firm capacity |
 | Mallnow | GASCADE | DE->PL | 223 | 259 | 86% | at the firm limit |
+| VIP Brandov | GASCADE | DE->CZ | 220 | 347 | 63% | spare firm capacity |
 | VIP Oberkappel | OGE | DE->AT | 217 | 215 | 101% | above firm — running on non-firm capacity |
+| VIP Germany-CH | Fluxys TENP | DE->CH | 195 | 404 | 48% | spare firm capacity |
 | Uberackern ABG | OGE | DE->AT | 68 | 0 | — | no firm capacity published |
+| GCP GAZ-SYSTEM/ONTRAS | ONTRAS | DE->PL | 49 | 49 | 100% | above firm — running on non-firm capacity |
 | VIP Waidhaus | OGE | DE->CZ | 0 | 0 | — | idle |
+| Uberackern SUDAL | bayernets | DE->AT | 0 | 0 | — | idle |
 
 ![Network map](results/network_map.png)
 
@@ -180,7 +184,7 @@ Source: **ENTSOG Transparency Platform** (`transparency.entsog.eu/api/v1`, open,
 
 **Conclusion.** On a peak winter day Germany pulls **1015 GWh/d** in from Norway through just two point clusters, Emden and Dornum, and both are running *above* their published firm capacity — 162% and 139% respectively. That extra volume is interruptible or additional capacity: contractually curtailable, not guaranteed. The single-corridor concentration is the bottleneck, not the pipe diameter.
 
-Meanwhile **VIP Waidhaus sits at zero** — the Czech route that used to carry Russian gas into Bavaria is idle, and **Mallnow now runs west-to-east at 86% of firm**, exporting to Poland instead of importing from it. The map of 2019 has been redrawn: the load has moved from the eastern border to the North Sea coast, and the eastern points are now transit and reverse-flow assets.
+The same day the map of 2019 is visibly redrawn on the export side: **to AT 285 GWh/d**, **to PL 272 GWh/d**, **to CZ 220 GWh/d**, **to CH 195 GWh/d**. **Mallnow now runs west-to-east** (exporting to Poland at 86% of firm, no longer importing), and **VIP Waidhaus — the old Russian route into Bavaria — sits at exactly zero**. But the eastern border is not dead: **VIP Brandov still carries 220 GWh/d into Czechia** and the Polish ONTRAS point runs at its firm limit. Germany has turned from a Russian-gas destination into a **hub that re-exports Norwegian and LNG-sourced gas** south and east — which is exactly why its own import points run above firm.
 
 ## 7. What this means for storage
 

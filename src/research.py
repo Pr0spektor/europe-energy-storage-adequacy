@@ -326,8 +326,10 @@ def main():
       "Belgium, against %.0f%% for Germany — a dependency invisible to any storage-fill target.\n"
       % tuple(([r for r in LNG.flexibility_table() if r["code"] == c][0]["lng_share"] * 100)
               for c in ("ES", "BE", "DE")))
-    A("7. **The import side is now concentrated and partly non-firm.** Norway into two German coastal "
-      "points, above firm capacity, while the eastern routes sit idle or reversed.\n")
+    A("7. **Germany has become a re-export hub, and its import points run above firm.** Norway lands "
+      "1,015 GWh/d at two coastal clusters (both above firm), and Germany forwards it on — Brandov to "
+      "Czechia, Oberkappel to Austria, Germany-CH to Switzerland, Mallnow reversed to Poland. The "
+      "Russian-era route at Waidhaus sits at zero; the load moved to the North Sea coast.\n")
     A("8. **Hydrogen does not inherit this buffer.** The same holes hold %.1fx less energy, so the "
       "seasonal margin has to be rebuilt, not converted.\n" % H.energy_loss_factor())
     A("\n---\n")

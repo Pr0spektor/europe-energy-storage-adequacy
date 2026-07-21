@@ -166,9 +166,13 @@ ENTSOG, peak winter gas day **2026-01-15**. Germany imported **1015 GWh/d** from
 | Dornum / NETRA | NO->DE | 589 GWh/d | 423 GWh/d | 139% |
 | Emden (EPT1) | NO->DE | 426 GWh/d | 263 GWh/d | 162% |
 | Mallnow | DE->PL | 223 GWh/d | 259 GWh/d | 86% |
+| VIP Brandov | DE->CZ | 220 GWh/d | 347 GWh/d | 63% |
 | VIP Oberkappel | DE->AT | 217 GWh/d | 215 GWh/d | 101% |
+| VIP Germany-CH | DE->CH | 195 GWh/d | 404 GWh/d | 48% |
 | Uberackern ABG | DE->AT | 68 GWh/d | 0 GWh/d | not published |
+| GCP GAZ-SYSTEM/ONTRAS | DE->PL | 49 GWh/d | 49 GWh/d | 100% |
 | VIP Waidhaus | DE->CZ | 0 GWh/d | 0 GWh/d | not published |
+| Uberackern SUDAL | DE->AT | 0 GWh/d | 0 GWh/d | not published |
 
 The bottleneck is not pipe diameter. It is **concentration**: a single sea-facing corridor now carries the load that used to arrive from three directions, and it is doing so on non-firm terms.
 
@@ -247,7 +251,7 @@ The engineering-and-strategy point is that this is a decision to be sized now, o
 
 6. **Half of southern Europe's peak day arrives by ship.** 84% for Spain, 81% for Belgium, against 14% for Germany — a dependency invisible to any storage-fill target.
 
-7. **The import side is now concentrated and partly non-firm.** Norway into two German coastal points, above firm capacity, while the eastern routes sit idle or reversed.
+7. **Germany has become a re-export hub, and its import points run above firm.** Norway lands 1,015 GWh/d at two coastal clusters (both above firm), and Germany forwards it on — Brandov to Czechia, Oberkappel to Austria, Germany-CH to Switzerland, Mallnow reversed to Poland. The Russian-era route at Waidhaus sits at zero; the load moved to the North Sea coast.
 
 8. **Hydrogen does not inherit this buffer.** The same holes hold 4.2x less energy, so the seasonal margin has to be rebuilt, not converted.
 

@@ -167,7 +167,7 @@ pipeline and embedded with its full explanation in **[RESEARCH.md](RESEARCH.md)*
 | What about data centres? | **≈20 TWh of electricity** in Germany (2024) → 25-37 TWh by 2030 — a power load, not a gas load | [RESULTS §4](RESULTS.md) |
 | What refills the swing? | EU injected **557 TWh** Apr-Oct 2025, withdrew **667 TWh** in winter; peak month **270 GW** | [RESULTS §5](RESULTS.md) |
 | Where are the bottlenecks? | Deliverability (Germany **74 GW** peak) and five gas-consuming countries with **zero** storage | [RESULTS §5](RESULTS.md) |
-| Where does the network bind? | Norway sends **1,015 GWh/d** into Germany on a peak winter day through two point clusters, both **above firm capacity** (162% / 139%); Waidhaus idle, Mallnow reversed | [RESULTS §6](RESULTS.md) |
+| Where does the network bind? | Norway lands **1,015 GWh/d** at two coastal points, both **above firm capacity** (162% / 139%); Germany re-exports it — **CZ 220, AT 285, PL 272, CH 195 GWh/d** — while the Russian-era Waidhaus route sits at zero | [RESULTS §6](RESULTS.md) |
 | How much margin is in the storage fleet? | EU **1,130 TWh** working volume, **20.0 TWh/d** out but only **12.3 TWh/d** in — 56 days to empty, 92 to refill | [RESEARCH L4](RESEARCH.md) |
 | Which winters were tight? | 2025/26 peaked at **83% full** — weakest since 2019; every other year hit 88–99% | [RESEARCH L4](RESEARCH.md) |
 | Who ran out of *rate*, not gas? | **Belgium 96%, Portugal 96%, Croatia 90%** of their own withdrawal capacity on the peak day; Germany only 47% | [RESEARCH L4](RESEARCH.md) |
