@@ -169,10 +169,10 @@ ENTSOG, peak winter gas day **2026-01-15**. Germany imported **1015 GWh/d** from
 | VIP Brandov | DE->CZ | 220 GWh/d | 347 GWh/d | 63% |
 | VIP Oberkappel | DE->AT | 217 GWh/d | 215 GWh/d | 101% |
 | VIP Germany-CH | DE->CH | 195 GWh/d | 404 GWh/d | 48% |
-| Uberackern ABG | DE->AT | 68 GWh/d | 0 GWh/d | not published |
+| Uberackern ABG | DE->AT | 68 GWh/d | 0 GWh/d | no firm published |
 | GCP GAZ-SYSTEM/ONTRAS | DE->PL | 49 GWh/d | 49 GWh/d | 100% |
-| VIP Waidhaus | DE->CZ | 0 GWh/d | 0 GWh/d | not published |
-| Uberackern SUDAL | DE->AT | 0 GWh/d | 0 GWh/d | not published |
+| VIP Waidhaus | DE->CZ | 0 GWh/d | 0 GWh/d | no firm published |
+| Uberackern SUDAL | DE->AT | 0 GWh/d | 228 GWh/d | 0% |
 
 The bottleneck is not pipe diameter. It is **concentration**: a single sea-facing corridor now carries the load that used to arrive from three directions, and it is doing so on non-firm terms.
 

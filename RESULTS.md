@@ -176,7 +176,7 @@ Source: **ENTSOG Transparency Platform** (`transparency.entsog.eu/api/v1`, open,
 | Uberackern ABG | OGE | DE->AT | 68 | 0 | — | no firm capacity published |
 | GCP GAZ-SYSTEM/ONTRAS | ONTRAS | DE->PL | 49 | 49 | 100% | above firm — running on non-firm capacity |
 | VIP Waidhaus | OGE | DE->CZ | 0 | 0 | — | idle |
-| Uberackern SUDAL | bayernets | DE->AT | 0 | 0 | — | idle |
+| Uberackern SUDAL | bayernets | DE->AT | 0 | 228 | 0% | idle |
 
 ![Network map](results/network_map.png)
 

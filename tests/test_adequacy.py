@@ -500,6 +500,25 @@ def test_author_line_is_the_handle_only():
                   encoding="utf-8").read()
     assert "Author: **[Pr0spektor](https://github.com/Pr0spektor)**" in readme
 
+
+def test_every_border_flow_and_firm_matches_the_live_api():
+    """Regression lock: all 20 numbers were fetched from ENTSOG on 2026-01-15 and must
+    not drift. If the bundled snapshot is ever re-fetched, these are the verified values."""
+    import json as _json, os as _os
+    verified = {
+        "ITP-00126": (588908693.488, 422669592.0), "ITP-00080": (426143547.649, 262758240.0),
+        "ITP-00096": (223496757.0, 259200000.0),   "ITP-00497": (48832204.715, 48703200.0),
+        "ITP-00537": (219706644.0, 347209440.0),   "ITP-00538": (0.0, 0.0),
+        "ITP-00539": (216859416.0, 214506768.0),   "ITP-00019": (68479909.0, 0.0),
+        "ITP-00007": (0.0, 227671224.0),           "ITP-00544": (194613067.0, 404400000.0),
+    }
+    f = _os.path.join(_os.path.dirname(__file__), "..", "data", "raw", "entsog_de_border_2026-01-15.json")
+    d = _json.load(open(f))
+    for p in d["points"]:
+        ff, fr = verified[p["pointKey"]]
+        assert abs(p["physical_flow"] - ff) < 1, (p["label"], "flow")
+        assert abs(p["firm_technical"] - fr) < 1, (p["label"], "firm")
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     passed = failed = 0

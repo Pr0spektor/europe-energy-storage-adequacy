@@ -174,7 +174,7 @@ def main():
     for r in NW.table():
         L.append("| %s | %s | %s | %.0f | %.0f | %s | %s |" % (
             r["point"], r["operator"], r["corridor"], r["flow_gwh_d"], r["firm_gwh_d"],
-            ("%.0f%%" % (r["utilisation"]*100)) if r["utilisation"] else "—", r["status"]))
+            ("%.0f%%" % (r["utilisation"]*100)) if r["utilisation"] is not None else "—", r["status"]))
     L.append("\n![Network map](results/network_map.png)\n")
     L.append("![Corridors](results/network_corridors.png)\n")
     c = NW.corridors()

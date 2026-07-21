@@ -226,7 +226,7 @@ def main():
     for r in NW.table():
         A("| %s | %s | %.0f GWh/d | %.0f GWh/d | %s |" % (r["point"], r["corridor"],
           r["flow_gwh_d"], r["firm_gwh_d"],
-          ("%.0f%%" % (r["utilisation"] * 100)) if r["utilisation"] else "not published"))
+          ("%.0f%%" % (r["utilisation"] * 100)) if r["utilisation"] is not None else "no firm published"))
     A("")
     A("The bottleneck is not pipe diameter. It is **concentration**: a single sea-facing corridor now "
       "carries the load that used to arrive from three directions, and it is doing so on non-firm "
