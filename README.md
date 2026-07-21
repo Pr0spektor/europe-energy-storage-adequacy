@@ -3,7 +3,7 @@
 **Europe measures winter gas security with one number — how full storage is. That number is
 wrong in three ways, and this repo quantifies all three from public data.**
 
-[![ci](https://github.com/Pr0spektor/europe-energy-storage-adequacy/actions/workflows/ci.yml/badge.svg)](https://github.com/Pr0spektor/europe-energy-storage-adequacy/actions/workflows/ci.yml)
+[![ci](https://github.com/Pr0spektor/europe-energy-storage-adequacy/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Pr0spektor/europe-energy-storage-adequacy/actions/workflows/ci.yml)
 
 Author: **[Pr0spektor](https://github.com/Pr0spektor)**
 
