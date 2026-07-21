@@ -35,7 +35,7 @@ WEATHER_SENSITIVITY = {
 }
 
 # Germany, electricity (not gas) — for scale comparison only.
-# Borderstep Institute / Bitkom: German data centres used ~20 TWh of electricity in 2024,
+# Borderstep Institute / Bitkom: German data centres used ≈20 TWh of electricity in 2024,
 # projected 25-37 TWh by 2030 depending on efficiency and AI growth.
 DE_DATACENTRE_ELECTRICITY_TWH_2024 = 20.0
 DE_DATACENTRE_ELECTRICITY_TWH_2030 = (25.0, 37.0)

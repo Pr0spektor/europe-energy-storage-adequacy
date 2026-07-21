@@ -36,7 +36,7 @@ So **47% of EU gas and 49% of German gas sits in weather-driven end uses.** The 
 
 Within German industry the load is concentrated: **Chemical and petrochemical 54 TWh**, **Food, beverages and tobacco 32 TWh**, **Non-metallic minerals 22 TWh**, **Paper, pulp and printing 19 TWh**, **Iron and steel 19 TWh**.
 
-For scale on the electricity side, **German data centres used ~20 TWh of electricity in 2024**, heading for 25–37 TWh by 2030. That is a large and growing *flat* load on the power system; it does not touch the seasonal gas swing, but it does compete for the same firm winter generation capacity.
+For scale on the electricity side, **German data centres used ≈20 TWh of electricity in 2024**, heading for 25–37 TWh by 2030. That is a large and growing *flat* load on the power system; it does not touch the seasonal gas swing, but it does compete for the same firm winter generation capacity.
 
 ![Sectors](results/demand_by_sector.png)
 ![German industry](results/de_industry_gas.png)
@@ -88,7 +88,7 @@ GIE AGSI+, gas day **2026-07-18**: the EU holds **1130 TWh** of working volume, 
 
 ### Who ran out of delivery rate rather than gas
 
-On its own peak day last winter each country used this share of its own maximum withdrawal rate. Above ~85%% there is no headroom left for a colder day:
+On its own peak day last winter each country used this share of its own maximum withdrawal rate. Above ≈85%% there is no headroom left for a colder day:
 
 | Country | Peak withdrawal | Capacity | Utilisation | Lowest fill |
 |---|---|---|---|---|
@@ -227,9 +227,9 @@ Salt caverns — the only store type with an established hydrogen track record �
 
 1. **Demand did not de-seasonalise.** Less gas, same winter shape (3.18x median peak/trough in 2025, up from 2.73x in 2020). Efficiency cut the level, not the swing.
 
-2. **The swing is a buildings problem.** ~47% of EU gas is weather-driven; industry is essentially flat. Policy aimed at industrial gas does not touch the peak.
+2. **The swing is a buildings problem.** ≈47% of EU gas is weather-driven; industry is essentially flat. Policy aimed at industrial gas does not touch the peak.
 
-3. **Storage is the whole answer today**, covering ~100% of every storage-owning country's swing, at a European peak of ~270 GW sustained for a month. No battery fleet is within four orders of magnitude of that job.
+3. **Storage is the whole answer today**, covering ≈100% of every storage-owning country's swing, at a European peak of ≈270 GW sustained for a month. No battery fleet is within four orders of magnitude of that job.
 
 4. **Two different scarcities exist and get conflated.** Large fleets (DE, IT, NL) are short of *volume*; small ones (BE, PT, HR, BG, ES) are short of *rate*. A single "% full" target is the wrong instrument for both.
 

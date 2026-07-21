@@ -80,7 +80,7 @@ Mean over 2020–2025:
 | 2024 | 837 | Jan | Aug | 3.38 | 161 |
 | 2025 | 865 | Jan | Jun | 3.58 | 181 |
 
-**Read:** Germany's annual gas use fell ~14% from 2021 to 2025, yet the winter peak still runs 3.6x the summer trough, and ~181 TWh a year has to be carried from summer into winter.
+**Read:** Germany's annual gas use fell ≈14% from 2021 to 2025, yet the winter peak still runs 3.6x the summer trough, and ≈181 TWh a year has to be carried from summer into winter.
 
 ## 4. Who burns it, and which part of it moves with the weather
 
@@ -104,7 +104,7 @@ Source: **Eurostat `nrg_bal_c`**, natural gas, GWh, 2024 (`data/raw/gas_sectors_
 
 ![Sectoral split](results/demand_by_sector.png)
 
-**Where the swing comes from.** Industry runs process heat more or less flat through the year; households and commercial buildings are almost pure space heating. So the winter peak is overwhelmingly a *buildings* phenomenon, amplified by gas-fired power and district heat in cold snaps. In Germany ~49% of gas volume sits in weather-driven end uses — which is why a mild winter moves the whole European balance.
+**Where the swing comes from.** Industry runs process heat more or less flat through the year; households and commercial buildings are almost pure space heating. So the winter peak is overwhelmingly a *buildings* phenomenon, amplified by gas-fired power and district heat in cold snaps. In Germany ≈49% of gas volume sits in weather-driven end uses — which is why a mild winter moves the whole European balance.
 
 ### Germany — which factories
 
@@ -116,7 +116,7 @@ Source: **Eurostat `nrg_bal_c`**, natural gas, GWh, 2024 (`data/raw/gas_sectors_
 | Paper, pulp and printing | 18.9 |
 | Iron and steel | 18.7 |
 
-Chemicals alone burn 54 TWh — more than the next two branches combined, and this is *energy use only*, excluding gas used as feedstock. For scale, **German data centres consumed ~20 TWh of electricity in 2024**, projected to 25–37 TWh by 2030 (Borderstep/Bitkom). Data centres are a fast-growing *electricity* load, not a gas load — they add to the power system's flat baseload, not to the seasonal gas swing.
+Chemicals alone burn 54 TWh — more than the next two branches combined, and this is *energy use only*, excluding gas used as feedstock. For scale, **German data centres consumed ≈20 TWh of electricity in 2024**, projected to 25–37 TWh by 2030 (Borderstep/Bitkom). Data centres are a fast-growing *electricity* load, not a gas load — they add to the power system's flat baseload, not to the seasonal gas swing.
 
 ![German industry](results/de_industry_gas.png)
 
@@ -157,7 +157,7 @@ In 2025 the EU-27 injected **557 TWh** into storage between April and October an
 
 The bottleneck is therefore not the annual volume but two other things:
 
-1. **Deliverability.** Germany alone must pull ~74 GW out of the ground in the peak month. A field that holds the energy but cannot deliver the rate is useless in a cold snap.
+1. **Deliverability.** Germany alone must pull ≈74 GW out of the ground in the peak month. A field that holds the energy but cannot deliver the rate is useless in a cold snap.
 
 2. **Countries with no storage at all.** Ireland (54 TWh/y), Georgia (35 TWh/y), Slovenia (10 TWh/y), Moldova (9 TWh/y), Luxembourg (7 TWh/y), Estonia (3 TWh/y), North Macedonia (3 TWh/y) consume gas but hold none of it underground. Their entire winter swing has to arrive in real time through a pipeline or an LNG terminal — so an interconnector outage there is immediately a supply event, not a price event.
 
@@ -185,8 +185,8 @@ Meanwhile **VIP Waidhaus sits at zero** — the Czech route that used to carry R
 ## 7. What this means for storage
 
 - The swing above a flat baseline is what storage and flexible supply must cover. For the EU it is on the order of **hundreds of TWh every year** — that is the job underground storage does today.
-- Batteries do not touch this: the entire EU grid-battery fleet is ~0.04 TWh, four orders of magnitude below the seasonal task.
-- Repurposing the gas storage fleet to hydrogen cuts its stored energy ~4.2x (1,100 TWh → 260 TWh), because a cavern holds a **volume**, not an energy.
+- Batteries do not touch this: the entire EU grid-battery fleet is ≈0.04 TWh, four orders of magnitude below the seasonal task.
+- Repurposing the gas storage fleet to hydrogen cuts its stored energy ≈4.2x (1,100 TWh → 260 TWh), because a cavern holds a **volume**, not an energy.
 
 ## 8. What is NOT in this repo yet (honest gaps)
 

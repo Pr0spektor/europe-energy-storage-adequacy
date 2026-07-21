@@ -1,8 +1,8 @@
 """Gas → hydrogen repurposing physics for underground storage.
 
 The point that decides seasonal adequacy: a cavern or depleted field holds a *volume*,
-not an energy. Hydrogen is far lighter than methane (density ratio ~8:1) but carries
-~2.4x more energy per kilogram, so per cubic metre it stores only about **a third** of
+not an energy. Hydrogen is far lighter than methane (density ratio ≈8:1) but carries
+≈2.4x more energy per kilogram, so per cubic metre it stores only about **a third** of
 methane's energy. Repurposing an existing gas store to hydrogen therefore shrinks the
 stored energy by roughly 3-4x once cushion gas and pressure limits are included.
 
@@ -14,7 +14,7 @@ from data import (LHV_CH4_KWH_PER_M3, LHV_H2_KWH_PER_M3, CUSHION_GAS_SHARE,
 
 
 def volumetric_energy_ratio() -> float:
-    """Energy stored per unit volume: hydrogen relative to methane (~0.30)."""
+    """Energy stored per unit volume: hydrogen relative to methane (≈0.30)."""
     return LHV_H2_KWH_PER_M3 / LHV_CH4_KWH_PER_M3
 
 

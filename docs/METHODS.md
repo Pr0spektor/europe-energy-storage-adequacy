@@ -18,8 +18,8 @@ deliverability and names whichever binds first — the distinction that governs 
 operation.
 
 ## Hydrogen repurposing
-A cavern or depleted field holds a volume. Hydrogen's volumetric energy is ~0.30 of methane's,
-so the same fleet holds ~4x less energy once cushion gas and pressure limits are included
+A cavern or depleted field holds a volume. Hydrogen's volumetric energy is ≈0.30 of methane's,
+so the same fleet holds ≈4x less energy once cushion gas and pressure limits are included
 (published per-store estimates are used rather than the clean physics ratio alone).
 
 ## Observed seasonality

@@ -55,7 +55,7 @@ from data that refreshes daily and costs nothing.
 | **Utilities & traders** | Which points bind and when; how much of a country's peak sits on non-firm capacity that can be curtailed; where the seasonal spread is really priced. |
 | **Industrial offtakers** (chemicals, cement, glass, steel) | German chemicals alone burn **54 TWh/y**. Interruptibility exposure, hedging horizon, and siting all follow from days-to-bind, not from fill. |
 | **Infrastructure investors** | Separates assets with duration value from assets that are stranded volume. |
-| **Data-centre and large-load developers** | German data centres go from **~20 TWh to 25–37 TWh** of electricity by 2030 — a flat load competing for the same firm winter capacity the gas system is backstopping. |
+| **Data-centre and large-load developers** | German data centres go from **≈20 TWh to 25–37 TWh** of electricity by 2030 — a flat load competing for the same firm winter capacity the gas system is backstopping. |
 
 **As a forecasting input:** the seasonality metrics (peak/trough, swing share, weather-exposed
 share by country) are a demand nowcast; the stress test is the downside scenario attached to it.
@@ -116,9 +116,9 @@ tracked file.
 | Question | Answer | Where |
 |---|---|---|
 | How uneven is European gas demand? | EU-27 peak/trough **2.68** in 2025, up from 2.29 in 2020 — 38 countries, 2020-2026 | [RESULTS §1-2](RESULTS.md) |
-| Who causes it? | ~**47%** of EU gas sits in weather-driven end uses; industry is nearly flat | [RESULTS §4](RESULTS.md) |
+| Who causes it? | ≈**47%** of EU gas sits in weather-driven end uses; industry is nearly flat | [RESULTS §4](RESULTS.md) |
 | Which factories? | German chemicals **54 TWh**, food **32**, cement/glass **22**, paper **19**, steel **19** | [RESULTS §4](RESULTS.md) |
-| What about data centres? | **~20 TWh of electricity** in Germany (2024) → 25-37 TWh by 2030 — a power load, not a gas load | [RESULTS §4](RESULTS.md) |
+| What about data centres? | **≈20 TWh of electricity** in Germany (2024) → 25-37 TWh by 2030 — a power load, not a gas load | [RESULTS §4](RESULTS.md) |
 | What refills the swing? | EU injected **557 TWh** Apr-Oct 2025, withdrew **667 TWh** in winter; peak month **270 GW** | [RESULTS §5](RESULTS.md) |
 | Where are the bottlenecks? | Deliverability (Germany **74 GW** peak) and five gas-consuming countries with **zero** storage | [RESULTS §5](RESULTS.md) |
 | Where does the network bind? | Norway sends **1,015 GWh/d** into Germany on a peak winter day through two point clusters, both **above firm capacity** (162% / 139%); Waidhaus idle, Mallnow reversed | [RESULTS §6](RESULTS.md) |
@@ -143,7 +143,7 @@ Monthly consumption straight from the **Eurostat** API (`nrg_cb_gasm`), per coun
 | DE | 2023 | 3.42 | 2.99 | 19.7% |
 | DE | 2024 | 3.38 | 2.87 | 19.2% |
 
-Germany burns ~3x more gas in the peak month than the trough month, and about **a fifth of
+Germany burns ≈3x more gas in the peak month than the trough month, and about **a fifth of
 annual consumption sits above a flat baseline** — the share flexibility must carry each year.
 
 `src/eurostat.py` is a working client for the open Eurostat API (no key needed). The

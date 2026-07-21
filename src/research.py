@@ -86,7 +86,7 @@ def main():
     A("Within German industry the load is concentrated: " +
       ", ".join("**%s %.0f TWh**" % (k.split(" (")[0], v / 1000)
                 for k, v in sorted(br.items(), key=lambda kv: -kv[1])) + ".\n")
-    A("For scale on the electricity side, **German data centres used ~%.0f TWh of electricity in 2024**, "
+    A("For scale on the electricity side, **German data centres used ≈%.0f TWh of electricity in 2024**, "
       "heading for %.0f–%.0f TWh by 2030. That is a large and growing *flat* load on the power system; "
       "it does not touch the seasonal gas swing, but it does compete for the same firm winter "
       "generation capacity.\n"
@@ -153,7 +153,7 @@ def main():
     dp = SF.deliverability_pressure()
     tight = [r for r in dp if r["peak_utilisation_pct"] >= 85]
     A("On its own peak day last winter each country used this share of its own maximum withdrawal "
-      "rate. Above ~85%% there is no headroom left for a colder day:\n")
+      "rate. Above ≈85%% there is no headroom left for a colder day:\n")
     A("| Country | Peak withdrawal | Capacity | Utilisation | Lowest fill |")
     A("|---|---|---|---|---|")
     for r in dp:
@@ -290,11 +290,11 @@ def main():
     A("1. **Demand did not de-seasonalise.** Less gas, same winter shape (%.2fx median peak/trough in "
       "2025, up from %.2fx in 2020). Efficiency cut the level, not the swing.\n"
       % (med["2025"][0], med["2020"][0]))
-    A("2. **The swing is a buildings problem.** ~%.0f%% of EU gas is weather-driven; industry is "
+    A("2. **The swing is a buildings problem.** ≈%.0f%% of EU gas is weather-driven; industry is "
       "essentially flat. Policy aimed at industrial gas does not touch the peak.\n"
       % (D.weather_exposed_share("EU27_2020") * 100))
-    A("3. **Storage is the whole answer today**, covering ~100%% of every storage-owning country's "
-      "swing, at a European peak of ~%.0f GW sustained for a month. No battery fleet is within four "
+    A("3. **Storage is the whole answer today**, covering ≈100%% of every storage-owning country's "
+      "swing, at a European peak of ≈%.0f GW sustained for a month. No battery fleet is within four "
       "orders of magnitude of that job.\n" % e["peak_withdrawal_gw"])
     A("4. **Two different scarcities exist and get conflated.** Large fleets (DE, IT, NL) are short of "
       "*volume*; small ones (%s) are short of *rate*. A single \"%% full\" target is the wrong "

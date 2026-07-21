@@ -2,22 +2,18 @@
 
 *Figures are produced directly from the model (`python src/analysis.py`).*
 
-> This memo covers the electricity-scenario layer only. For the full study across measured
-> demand seasonality, sectoral split, storage fleet, LNG and the network, see
-> **[RESEARCH.md](RESEARCH.md)**; for every country-year figure, **[RESULTS.md](RESULTS.md)**.
-
 ## Situation
 With wind and solar at 70% of annual electricity demand,
 Europe must carry a **seasonal swing of 238 TWh** and deliver
 **85 GW** at the winter peak, on top of a flat
 2.2 TWh/day of other dispatchable supply. Today's
-underground gas storage holds ~1,100 TWh — roughly
+underground gas storage holds ≈1,100 TWh — roughly
 5x that swing.
 
 ## Key findings
 1. **A cavern stores a volume, not an energy.** Hydrogen carries only
-   ~0.30 of methane's energy per cubic metre, so repurposing the
-   fleet cuts stored energy ~4.2x — from 1,100 TWh
+   ≈0.30 of methane's energy per cubic metre, so repurposing the
+   fleet cuts stored energy ≈4.2x — from 1,100 TWh
    to **260 TWh**.
 2. **Comfort becomes a thin margin.** Against the same seasonal swing, the gas fleet is
    22% utilised; on hydrogen it is

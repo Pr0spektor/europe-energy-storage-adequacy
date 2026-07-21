@@ -81,8 +81,8 @@ def main():
         L.append("| %s | %.0f | %s | %s | %.2f | %.0f |" % (
             r["year"], r["annual_total"]/3600, months[m.index(max(m))], months[m.index(min(m))],
             r["peak_to_trough"], r["swing_absolute"]/3600))
-    L.append("\n**Read:** Germany's annual gas use fell ~%.0f%% from 2021 to 2025, yet the winter peak still "
-             "runs %.1fx the summer trough, and ~%.0f TWh a year has to be carried from summer into winter.\n"
+    L.append("\n**Read:** Germany's annual gas use fell ≈%.0f%% from 2021 to 2025, yet the winter peak still "
+             "runs %.1fx the summer trough, and ≈%.0f TWh a year has to be carried from summer into winter.\n"
              % ((1 - de[-1]["annual_total"]/de[1]["annual_total"])*100, de[-1]["peak_to_trough"],
                 de[-1]["swing_absolute"]/3600))
 
@@ -104,7 +104,7 @@ def main():
     L.append("**Where the swing comes from.** Industry runs process heat more or less flat through the "
              "year; households and commercial buildings are almost pure space heating. So the winter peak "
              "is overwhelmingly a *buildings* phenomenon, amplified by gas-fired power and district heat "
-             "in cold snaps. In Germany ~%.0f%% of gas volume sits in weather-driven end uses — which is "
+             "in cold snaps. In Germany ≈%.0f%% of gas volume sits in weather-driven end uses — which is "
              "why a mild winter moves the whole European balance.\n" % (D.weather_exposed_share("DE")*100))
 
     L.append("### Germany — which factories\n")
@@ -115,7 +115,7 @@ def main():
         L.append("| %s | %.1f |" % (k, v/1000))
     L.append("\nChemicals alone burn %.0f TWh — more than the next two branches combined, and this is "
              "*energy use only*, excluding gas used as feedstock. For scale, **German data centres consumed "
-             "~%.0f TWh of electricity in 2024**, projected to %.0f–%.0f TWh by 2030 (Borderstep/Bitkom). "
+             "≈%.0f TWh of electricity in 2024**, projected to %.0f–%.0f TWh by 2030 (Borderstep/Bitkom). "
              "Data centres are a fast-growing *electricity* load, not a gas load — they add to the power "
              "system's flat baseload, not to the seasonal gas swing.\n"
              % (br["Chemical and petrochemical"]/1000, D.DE_DATACENTRE_ELECTRICITY_TWH_2024,
@@ -155,7 +155,7 @@ def main():
              % tuple(([r for r in cov if r["country"] == c][0]["storage_cover"] * 100)
                      for c in ("AT", "CZ", "NL", "BE", "TR")))
     L.append("\nThe bottleneck is therefore not the annual volume but two other things:\n")
-    L.append("1. **Deliverability.** Germany alone must pull ~%.0f GW out of the ground in the peak "
+    L.append("1. **Deliverability.** Germany alone must pull ≈%.0f GW out of the ground in the peak "
              "month. A field that holds the energy but cannot deliver the rate is useless in a cold "
              "snap.\n" % [r for r in BAL.table() if r["country"] == "DE"][0]["peak_withdrawal_gw"])
     ns = BAL.no_storage()
@@ -192,9 +192,9 @@ def main():
     L.append("## 7. What this means for storage\n")
     L.append("- The swing above a flat baseline is what storage and flexible supply must cover. For the EU "
              "it is on the order of **hundreds of TWh every year** — that is the job underground storage does today.\n"
-             "- Batteries do not touch this: the entire EU grid-battery fleet is ~0.04 TWh, four orders of "
+             "- Batteries do not touch this: the entire EU grid-battery fleet is ≈0.04 TWh, four orders of "
              "magnitude below the seasonal task.\n"
-             "- Repurposing the gas storage fleet to hydrogen cuts its stored energy ~4.2x "
+             "- Repurposing the gas storage fleet to hydrogen cuts its stored energy ≈4.2x "
              "(1,100 TWh → 260 TWh), because a cavern holds a **volume**, not an energy.\n")
 
     L.append("## 8. What is NOT in this repo yet (honest gaps)\n")

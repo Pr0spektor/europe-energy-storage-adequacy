@@ -4,7 +4,7 @@ Utilisation = physical flow / firm technical capacity on the same gas day.
 
 Reading the number honestly:
   < 100%  spare firm capacity at that point
-  ~100%   the point is at its firm limit — nothing left to lean on in a cold snap
+  ≈100%   the point is at its firm limit — nothing left to lean on in a cold snap
   > 100%  the point is only carrying that volume because interruptible or
           additional (non-firm) capacity is being used. That extra volume is
           contractually curtailable, so a corridor above 100% is a *risk*

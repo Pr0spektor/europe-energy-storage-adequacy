@@ -99,7 +99,8 @@ def charts(s: dict):
     bars = ax.bar(names, vals, color=["#20344a", "#3B6EA5", "#C0504D"])
     for b, v in zip(bars, vals):
         ax.text(b.get_x() + b.get_width()/2, v, f" {v:,.0f}", ha="center", va="bottom", fontsize=9)
-    ax.set_ylabel("TWh"); ax.set_title("Seasonal storage: needed vs what the fleet holds")
+    ax.set_ylabel("Seasonal storage energy (TWh)")
+    ax.set_title("Seasonal storage: needed vs what the fleet holds")
     fig.tight_layout(); fig.savefig(os.path.join(RESULTS, "requirement_vs_available.png"), dpi=120); plt.close(fig)
 
     # 3) hydrogen capacity by store type vs GIE target
@@ -162,13 +163,13 @@ With wind and solar at {s['assumptions']['vre_share']*100:.0f}% of annual electr
 Europe must carry a **seasonal swing of {req['seasonal_energy_twh']:,.0f} TWh** and deliver
 **{req['peak_withdrawal_gw']:,.0f} GW** at the winter peak, on top of a flat
 {req['balancing_baseload_twh_per_day']:.1f} TWh/day of other dispatchable supply. Today's
-underground gas storage holds ~{UGS_NATURAL_GAS_TWH:,.0f} TWh — roughly
+underground gas storage holds ≈{UGS_NATURAL_GAS_TWH:,.0f} TWh — roughly
 {UGS_NATURAL_GAS_TWH/req['seasonal_energy_twh']:.0f}x that swing.
 
 ## Key findings
 1. **A cavern stores a volume, not an energy.** Hydrogen carries only
-   ~{h2['volumetric_energy_ratio']:.2f} of methane's energy per cubic metre, so repurposing the
-   fleet cuts stored energy ~{h2['energy_shrink_factor']:.1f}x — from {h2['ch4_fleet_twh']:,.0f} TWh
+   ≈{h2['volumetric_energy_ratio']:.2f} of methane's energy per cubic metre, so repurposing the
+   fleet cuts stored energy ≈{h2['energy_shrink_factor']:.1f}x — from {h2['ch4_fleet_twh']:,.0f} TWh
    to **{h2['h2_fleet_twh']:,.0f} TWh**.
 2. **Comfort becomes a thin margin.** Against the same seasonal swing, the gas fleet is
    {ad['gas_today']['energy_utilisation']*100:.0f}% utilised; on hydrogen it is

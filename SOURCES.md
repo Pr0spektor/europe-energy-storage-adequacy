@@ -15,10 +15,10 @@
 - **EU underground gas storage working capacity ≈ 1,100 TWh** — Gas Infrastructure Europe
   (GIE) AGSI+ aggregate. https://www.gie.eu/ · https://agsi.gie.eu/
 - **Repurposing EU gas storage to hydrogen ≈ 260–265 TWh** working gas energy, split roughly
-  **salt caverns ~49 TWh (18%), depleted gas fields ~171 TWh (68%), aquifers ~40 TWh (14%)** —
+  **salt caverns ≈49 TWh (18%), depleted gas fields ≈171 TWh (68%), aquifers ≈40 TWh (14%)** —
   techno-economic analysis of underground hydrogen storage in Europe (iScience / PMC).
   https://pmc.ncbi.nlm.nih.gov/articles/PMC10821165/
-- **GIE: Europe needs ~45 TWh of underground hydrogen storage** — GIE position paper.
+- **GIE: Europe needs ≈45 TWh of underground hydrogen storage** — GIE position paper.
   https://www.gie.eu/wp-content/uploads/filr/9697/RPT-EU_Underground_Hydrogen_Storage_Targets-090424-CLEAN.pdf
 - **EU electricity demand ≈ 2,700 TWh/yr; wind + solar ≈ 29% of the EU power mix (2024);
   renewables ≈ 47.5% of gross consumption** — Ember European Electricity Review 2025 and
@@ -27,7 +27,7 @@
 
 ## Physics
 - Hydrogen vs methane: mass density ratio ≈ 8:1 in methane's favour, gravimetric energy ≈ 2.4:1
-  in hydrogen's favour, so **volumetric energy ≈ 0.30 of methane** (LHV ~3.0 vs ~9.97 kWh/m³ at
+  in hydrogen's favour, so **volumetric energy ≈ 0.30 of methane** (LHV ≈3.0 vs ≈9.97 kWh/m³ at
   standard conditions). This, not chemistry alone, is why repurposing shrinks stored energy.
 
 > Capacity and demand figures are planning inputs at EU aggregate level, not a licensed
@@ -39,7 +39,7 @@
 |---|---|---|---|
 | Eurostat | `nrg_bal_c` — complete energy balances, natural gas (G3000), GWh, 2024 | gas by sector: power & heat, industry, households, commercial; German industry by branch | `data/raw/gas_sectors_2024.json` |
 | Eurostat | `nrg_cb_gasm` — `STK_CHG_MG`, TJ GCV, monthly 2025, all geos | net injection / withdrawal per country per month | `data/raw/gas_stock_change_2025.json` |
-| Borderstep Institute / Bitkom | German data centre electricity: ~20 TWh (2024); 25-37 TWh projected 2030 | scale comparison for the data-centre question (electricity, not gas) | constant in `src/demand.py` |
+| Borderstep Institute / Bitkom | German data centre electricity: ≈20 TWh (2024); 25-37 TWh projected 2030 | scale comparison for the data-centre question (electricity, not gas) | constant in `src/demand.py` |
 
 Raw API responses are stored verbatim and decoded by the same unit-tested parsers used
 for live pulls, so every figure in RESULTS.md can be traced back to the source document.
@@ -80,5 +80,5 @@ One further source is free but gated behind a registration:
 
 - **ENTSO-E Transparency Platform** (electricity flows, generation, congestion) — register
   at <https://transparency.entsoe.eu/>, then email transparency@entsoe.eu with subject
-  "RESTful API access"; access is granted within ~3 working days, after which the security
+  "RESTful API access"; access is granted within ≈3 working days, after which the security
   token is generated in account settings.
