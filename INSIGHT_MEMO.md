@@ -2,6 +2,10 @@
 
 *Figures are produced directly from the model (`python src/analysis.py`).*
 
+> This memo covers the electricity-scenario layer only. For the full study across measured
+> demand seasonality, sectoral split, storage fleet, LNG and the network, see
+> **[RESEARCH.md](RESEARCH.md)**; for every country-year figure, **[RESULTS.md](RESULTS.md)**.
+
 ## Situation
 With wind and solar at 70% of annual electricity demand,
 Europe must carry a **seasonal swing of 238 TWh** and deliver
