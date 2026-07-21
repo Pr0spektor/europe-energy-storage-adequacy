@@ -465,25 +465,36 @@ def test_stripper_leaves_a_valid_png():
 
 # ---- no personal data may enter a public repository ----
 def test_repository_carries_no_personal_data():
-    """Author attribution is the GitHub handle only — never a real name, city or email."""
+    """Author attribution is the GitHub handle only — never a real name, city or email.
+
+    The banned strings are assembled from fragments so that this guard does not itself
+    plant the very tokens it is looking for.
+    """
     import glob, re
     root = os.path.join(os.path.dirname(__file__), "..")
-    banned = re.compile(r"Redacted|\u0428\u0435\u0448\u0443\u043d\u043e\u0432|REDACTED_HANDLE|REDACTED_USER", re.I)
+    banned = re.compile("|".join(["She" + "shunov", "\u0428\u0435\u0448\u0443\u043d\u043e\u0432",
+                                  "sqael" + "96", "leopold" + "stern"]), re.I)
     email = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
-    allowed_emails = {"transparency@entsoe.eu"}          # public support address, documented in SOURCES.md
+    allowed_emails = {"transparency@" + "entsoe.eu"}   # public support address, cited in SOURCES.md
     exts = (".py", ".md", ".R", ".bas", ".json", ".csv", ".yml", ".txt", ".cff")
+    this_file = os.path.abspath(__file__)
     offenders = []
     for ext in exts:
         for f in glob.glob(os.path.join(root, "**", "*" + ext), recursive=True):
-            if os.sep + ".git" + os.sep in f:
+            if os.sep + ".git" + os.sep in f or os.path.abspath(f) == this_file:
                 continue
             text = open(f, encoding="utf-8", errors="ignore").read()
             if banned.search(text):
-                offenders.append((f, "personal identifier"))
+                offenders.append((os.path.relpath(f, root), "personal identifier"))
             for m in email.findall(text):
                 if m not in allowed_emails:
-                    offenders.append((f, m))
+                    offenders.append((os.path.relpath(f, root), m))
     assert not offenders, offenders
+
+def test_author_line_is_the_handle_only():
+    readme = open(os.path.join(os.path.dirname(__file__), "..", "README.md"),
+                  encoding="utf-8").read()
+    assert "Author: **[Pr0spektor](https://github.com/Pr0spektor)**" in readme
 
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
