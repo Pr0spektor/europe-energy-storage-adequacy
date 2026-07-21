@@ -165,6 +165,7 @@ python src/stress.py           # cold-snap stress test — days to bind, rate vs
 python src/stress_chart.py     # stress_days.png
 Rscript r/adequacy.R           # same model in R (needs jsonlite)
 python src/research.py         # regenerates RESEARCH.md from every layer
+python src/strip_meta.py       # removes generator metadata from the published PNGs
 python tests/test_adequacy.py  # 22/22 standalone …
 pytest -q                      # … or under pytest (CI)
 ```
