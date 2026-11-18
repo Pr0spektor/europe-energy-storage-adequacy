@@ -33,3 +33,18 @@ def test_missing_countries_is_rejected():
 def test_snapshot_age_is_computed_from_the_filename():
     age = refresh.snapshot_age_days()
     assert age is None or age >= 0
+
+
+def test_an_api_error_body_is_reported_as_an_access_problem():
+    """AGSI returns HTTP 200 with an error object; that must not read as a parsing failure."""
+    import importlib.util, os
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    spec = importlib.util.spec_from_file_location(
+        "refresh_snapshots", os.path.join(root, "tools", "refresh_snapshots.py"))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    body = {"last_page": 0, "total": 0, "dataset": "storage ERROR",
+            "error": "access denied", "message": "Invalid or missing API key", "data": []}
+    assert "access denied" in mod.api_error(body)
+    assert mod.api_error({"eu": {}, "countries": []}) is None

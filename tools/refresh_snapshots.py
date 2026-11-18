@@ -60,6 +60,22 @@ def snapshot_age_days(path: str | None = None) -> int | None:
     return (dt.date.today() - day).days
 
 
+def api_error(payload) -> str | None:
+    """AGSI answers with HTTP 200 and an error object when it refuses a request.
+
+    A wrong or expired key therefore looks like a successful call whose body happens to be
+    empty. Left alone, the validator would report "no gas day" and send the reader looking
+    for a parsing bug instead of an access problem.
+    """
+    if not isinstance(payload, dict):
+        return "response is not a JSON object"
+    if payload.get("error"):
+        return f"{payload.get('error')}: {payload.get('message') or 'no message'}"
+    if str(payload.get("dataset") or "").endswith("ERROR"):
+        return f"dataset marked ERROR: {payload.get('message') or 'no message'}"
+    return None
+
+
 def validate(payload: dict) -> list[str]:
     """Return a list of problems; an empty list means the payload may be written."""
     problems: list[str] = []
@@ -124,6 +140,11 @@ def main() -> int:
         return 0
 
     payload = agsi.fetch_latest()
+    refusal = api_error(payload)
+    if refusal:
+        print(f"AGSI refused the request ({refusal}).")
+        print("A key is required: register at https://agsi.gie.eu/ and export AGSI_KEY.")
+        return 1
     problems = validate(payload)
     fetched_day = payload.get("_gas_day")
     if fetched_day:
