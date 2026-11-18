@@ -260,3 +260,21 @@ observations. Decision support, not investment advice.
 
 ## License
 MIT — see [LICENSE](LICENSE).
+
+## Data freshness
+
+The published figures are computed from a dated AGSI+ snapshot in `data/raw/`. That keeps
+them reproducible, but a snapshot ages: six months later a winter stress test describes a
+winter that has already happened. `tools/refresh_snapshots.py` fetches the current gas day,
+validates it (fill level consistent with stored and working volume, country breakdown
+present, gas day not in the future) and writes a new dated file rather than overwriting the
+old one. Without `AGSI_KEY` it reports the age and exits cleanly.
+
+```bash
+python tools/refresh_snapshots.py --check 150    # age gate, used in CI
+python tools/refresh_snapshots.py --write        # needs AGSI_KEY
+```
+
+`.github/workflows/data-refresh.yml` runs on the first of each month, opens a pull request
+when the snapshot moves, and fails if the snapshot passes 150 days — so a missing secret
+shows up as a red build rather than a quietly stale number.

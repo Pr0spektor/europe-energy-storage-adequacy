@@ -1,0 +1,43 @@
+name: Data refresh
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"        # first of the month, 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  agsi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh the AGSI+ snapshot
+        env:
+          AGSI_KEY: ${{ secrets.AGSI_KEY }}
+        run: python tools/refresh_snapshots.py --write
+
+      - name: Fail if the snapshot is older than 150 days
+        run: python tools/refresh_snapshots.py --check 150
+
+      - name: Open a pull request when the snapshot moved
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "data: refresh the AGSI+ snapshot"
+          title: "Data refresh: AGSI+ snapshot"
+          body: |
+            Automated refresh of the bundled AGSI+ snapshot.
+
+            The tool validates the payload before writing (fill level consistent with
+            stored/working volume, country breakdown present, gas day not in the future)
+            and refuses to overwrite an existing date.
+          branch: data-refresh/agsi
+          delete-branch: true
+          add-paths: data/raw/agsi_*.json

@@ -20,11 +20,17 @@ Offline, everything falls back to the bundled snapshots in data/raw/:
     agsi_de_facilities_2026-07-18.json   German operators and individual sites
 """
 from __future__ import annotations
-import json, os, urllib.request
+import glob, json, os, urllib.request
 
 API = "https://agsi.gie.eu/api"
 DATA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "raw")
-SNAP = os.path.join(DATA, "agsi_2026-07-18.json")
+def _latest_snapshot() -> str:
+    """Newest dated snapshot in data/raw, so a refresh does not need a code change."""
+    files = [f for f in glob.glob(os.path.join(DATA, "agsi_*.json")) if "facilities" not in f]
+    return sorted(files)[-1] if files else os.path.join(DATA, "agsi_2026-07-18.json")
+
+
+SNAP = _latest_snapshot()
 FAC = os.path.join(DATA, "agsi_de_facilities_2026-07-18.json")
 TIMEOUT = 30
 
