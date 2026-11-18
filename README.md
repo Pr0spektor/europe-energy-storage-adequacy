@@ -53,9 +53,10 @@ day actually came from, and where Germany's border binds:
 
 ### And the hydrogen buffer does not transfer one-for-one
 
-The same argument reaches forward. Europe's ≈1,100 TWh of gas storage is often treated as a
+The same argument reaches forward. Europe's ≈1,130 TWh of gas storage is often treated as a
 ready-made hydrogen buffer — but a cavern stores a **volume, not an energy**, and hydrogen holds
-≈0.30 of methane's energy per m³, so the same holes hold only **≈260 TWh** of hydrogen: a **4.2×**
+≈0.30 of methane's energy per m³, so the bare volumetric ratio alone would leave **≈340 TWh**.
+Counting cushion gas and pressure limits store by store brings the usable figure to **≈260 TWh** — a **4.3×**
 shrink. That does not kill the transition; it turns it into a sizing decision with three levers,
 none free:
 
@@ -91,7 +92,7 @@ has 45 days and then it is a rate problem."
 
 | | |
 |---|---|
-| **Python** | reference implementation, 71 unit tests, all four data feeds |
+| **Python** | reference implementation, 78 unit tests, all four data feeds |
 | **R** | `r/adequacy.R` — full port of the stress test and hydrogen physics, base R + jsonlite, with regression assertions against the Python reference (executed in CI) |
 | **VBA** | `vba/StorageStress.bas` — the stress test as Excel worksheet functions, so an analyst can drag a severity cell and watch days-to-bind move. `SelfTest()` reproduces the Python values. |
 
@@ -108,7 +109,7 @@ result is auditable by anyone without credentials of any kind:
 git clone https://github.com/Pr0spektor/europe-energy-storage-adequacy.git
 cd europe-energy-storage-adequacy
 pip install -r requirements.txt
-python tests/test_adequacy.py     # 77 tests
+python tests/test_adequacy.py     # 78 tests
 python src/research.py            # rebuilds RESEARCH.md from the cached data
 ```
 
@@ -161,7 +162,7 @@ pipeline and embedded with its full explanation in **[RESEARCH.md](RESEARCH.md)*
 
 | Question | Answer | Where |
 |---|---|---|
-| How uneven is European gas demand? | EU-27 peak/trough **2.68** in 2025, up from 2.29 in 2020 — 38 countries, 2020-2026 | [RESULTS §1-2](RESULTS.md) |
+| How uneven is European gas demand? | EU-27 peak/trough **2.68** in 2025, up from 2.29 in 2020 — EU-27 plus neighbours, 38 countries, 2020-2026 | [RESULTS §1-2](RESULTS.md) |
 | Who causes it? | ≈**47%** of EU gas sits in weather-driven end uses; industry is nearly flat | [RESULTS §4](RESULTS.md) |
 | Which factories? | German chemicals **54 TWh**, food **32**, cement/glass **22**, paper **19**, steel **19** | [RESULTS §4](RESULTS.md) |
 | What about data centres? | **≈20 TWh of electricity** in Germany (2024) → 25-37 TWh by 2030 — a power load, not a gas load | [RESULTS §4](RESULTS.md) |
@@ -171,10 +172,10 @@ pipeline and embedded with its full explanation in **[RESEARCH.md](RESEARCH.md)*
 | How much margin is in the storage fleet? | EU **1,130 TWh** working volume, **20.0 TWh/d** out but only **12.3 TWh/d** in — 56 days to empty, 92 to refill | [RESEARCH L4](RESEARCH.md) |
 | Which winters were tight? | 2025/26 peaked at **83% full** — weakest since 2019; every other year hit 88–99% | [RESEARCH L4](RESEARCH.md) |
 | Who ran out of *rate*, not gas? | **Belgium 96%, Portugal 96%, Croatia 90%** of their own withdrawal capacity on the peak day; Germany only 47% | [RESEARCH L4](RESEARCH.md) |
-| Which sites, which operators? | 46 German sites, 23 operators; **Rehden alone 35.7 TWh = 15%** of national volume, at **6% full** | [RESEARCH L4](RESEARCH.md) |
+| Which sites, which operators? | 46 German sites, 23 operators; **Rehden alone 35.7 TWh = 14%** of national volume, at **6% full** | [RESEARCH L4](RESEARCH.md) |
 | Caverns or ships? | **84% of Spain's** and **81% of Belgium's** peak-day flexibility arrived by LNG ship; Germany only **14%** | [RESEARCH](RESEARCH.md) |
 | How long does a cold spell take to break something? | Germany **55 days**, France **62**, Spain **174**; Belgium/Portugal/Latvia **rate-bound on day 1** | [RESEARCH](RESEARCH.md) |
-| What happens under hydrogen? | Same caverns hold **4.2× less** energy — the buffer disappears | [RESULTS §6](RESULTS.md) |
+| What happens under hydrogen? | Same caverns hold **4.3× less** energy — the buffer disappears | [RESULTS §6](RESULTS.md) |
 
 
 ## Measured seasonality (real data, not assumptions)
@@ -222,7 +223,7 @@ src/seasonality.py  # per-country/per-year seasonal swing from real data
 src/eurostat.py     # Eurostat API client + disk cache (offline fallback)
 src/analysis.py     # charts + results/summary.json + INSIGHT_MEMO.md
 data/               # cached real Eurostat monthly series
-tests/              # 22 unit tests (incl. checks against the real data)
+tests/              # 78 unit tests (incl. checks against the real data)
 ```
 
 ## Run it
@@ -247,7 +248,7 @@ python src/stress_chart.py     # stress_days.png
 Rscript r/adequacy.R           # same model in R (needs jsonlite)
 python src/research.py         # regenerates RESEARCH.md from every layer
 python src/strip_meta.py       # removes generator metadata from the published PNGs
-python tests/test_adequacy.py  # 22/22 standalone …
+python tests/test_adequacy.py  # 78/78 standalone …
 pytest -q                      # … or under pytest (CI)
 ```
 

@@ -7,7 +7,7 @@ Energy is in TWh, power in GW, unless stated otherwise.
 # ---- Underground gas storage (UGS) inventory, EU ----------------------------------
 # Working gas energy today (natural gas) and the energy the SAME pore/cavern volume
 # would hold if repurposed to hydrogen (studies land near a quarter of the CH4 energy).
-UGS_NATURAL_GAS_TWH = 1100.0        # EU working gas capacity (GIE / AGSI order of magnitude)
+UGS_NATURAL_GAS_TWH = 1130.0        # EU working gas capacity, 2026 AGSI snapshot (fleet table: 1,130.2 TWh)
 
 # Repurposed-to-hydrogen working gas energy by store type (TWh H2)
 UGS_H2_BY_TYPE = {

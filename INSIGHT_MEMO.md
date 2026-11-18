@@ -7,16 +7,16 @@ With wind and solar at 70% of annual electricity demand,
 Europe must carry a **seasonal swing of 238 TWh** and deliver
 **85 GW** at the winter peak, on top of a flat
 2.2 TWh/day of other dispatchable supply. Today's
-underground gas storage holds ≈1,100 TWh — roughly
+underground gas storage holds ≈1,130 TWh — roughly
 5x that swing.
 
 ## Key findings
 1. **A cavern stores a volume, not an energy.** Hydrogen carries only
    ≈0.30 of methane's energy per cubic metre, so repurposing the
-   fleet cuts stored energy ≈4.2x — from 1,100 TWh
+   fleet cuts stored energy ≈4.3x — from 1,130 TWh
    to **260 TWh**.
 2. **Comfort becomes a thin margin.** Against the same seasonal swing, the gas fleet is
-   22% utilised; on hydrogen it is
+   21% utilised; on hydrogen it is
    **92%** — and at about **90% wind and solar** the repurposed fleet no longer covers the swing.
 3. **Volume binds before deliverability.** The hydrogen fleet uses
    34% of its withdrawal capability but
