@@ -25,9 +25,23 @@ import glob, json, os, urllib.request
 API = "https://agsi.gie.eu/api"
 DATA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "raw")
 def _latest_snapshot() -> str:
-    """Newest dated snapshot in data/raw, so a refresh does not need a code change."""
+    """Newest dated snapshot in data/raw that carries a full winter block.
+
+    A single-day file (data/current/, imported from a CSV export) has current stock and
+    capacities but no min/max fill or peak withdrawal, so the winter model cannot run on it.
+    Skipping those here means a partial file can be added without silently redefining the
+    model's inputs.
+    """
     files = [f for f in glob.glob(os.path.join(DATA, "agsi_*.json")) if "facilities" not in f]
-    return sorted(files)[-1] if files else os.path.join(DATA, "agsi_2026-07-18.json")
+    usable = []
+    for f in files:
+        try:
+            with open(f) as fh:
+                if json.load(fh).get("winter_2025_26"):
+                    usable.append(f)
+        except (json.JSONDecodeError, OSError):
+            continue
+    return sorted(usable)[-1] if usable else os.path.join(DATA, "agsi_2026-07-18.json")
 
 
 SNAP = _latest_snapshot()

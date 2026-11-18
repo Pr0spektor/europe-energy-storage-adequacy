@@ -48,3 +48,17 @@ def test_an_api_error_body_is_reported_as_an_access_problem():
             "error": "access denied", "message": "Invalid or missing API key", "data": []}
     assert "access denied" in mod.api_error(body)
     assert mod.api_error({"eu": {}, "countries": []}) is None
+
+
+def test_a_single_day_snapshot_never_becomes_the_model_input(tmp_path, monkeypatch):
+    """A CSV import has no winter block; it must not redefine the model by being newest."""
+    import json
+    import agsi
+
+    full = json.load(open(agsi.SNAP))
+    (tmp_path / "agsi_2026-01-01.json").write_text(json.dumps(full))
+    (tmp_path / "agsi_2026-11-17.json").write_text(
+        json.dumps({"_gas_day": "2026-11-17", "winter_2025_26": []}))
+
+    monkeypatch.setattr(agsi, "DATA", str(tmp_path))
+    assert agsi._latest_snapshot().endswith("agsi_2026-01-01.json")

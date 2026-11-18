@@ -281,3 +281,23 @@ python tools/refresh_snapshots.py --write        # needs AGSI_KEY
 `.github/workflows/data-refresh.yml` runs on the first of each month, opens a pull request
 when the snapshot moves, and fails if the snapshot passes 150 days — so a missing secret
 shows up as a red build rather than a quietly stale number.
+
+## Current state — 17 November 2026
+
+Imported from an AGSI country-aggregated CSV export (`tools/import_agsi_csv.py`, gas day
+2026-11-17). This is one gas day, so it carries stock, fill, capacities and flows but not the
+winter block; the model above still runs on the last full snapshot. The two are kept apart on
+purpose and live in different directories.
+
+| | 17 Nov 2026 | 18 Jul 2026 |
+|---|---|---|
+| EU gas in storage | **794.3 TWh** | 606.6 TWh |
+| Fill | **70.15%** | 53.67% |
+| Days at full withdrawal capacity | **39.3** | 30.3 |
+| Withdrawal utilisation that day | 15.7% of capacity | — |
+
+Germany is the case the thesis predicts: the largest fleet after Italy (**141.5 TWh**) but only
+**57.2% full** and **7.07 TWh/d** of withdrawal capacity, which is **20 days** — the shortest
+duration of any large system, against 61.9 days for Italy at 86.8%. Slovakia (49.2%), Latvia
+(52.7%) and the Netherlands (60.9%) are the other low fills. Ukraine sits outside the EU
+aggregate at **114.0 TWh, 35.5% full**, which matters for transit rather than for EU cover.
