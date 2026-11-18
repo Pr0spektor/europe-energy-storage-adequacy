@@ -215,7 +215,7 @@ Germany, the largest fleet in Europe, empties in **55 days** at 1.0x and **45 da
 
 ## What happens when the same fleet has to hold hydrogen
 
-Hydrogen holds about **0.30** of methane's energy per cubic metre, and a cavern stores a volume, not an energy. Repurposed, Europe's **1100 TWh** of gas storage becomes **260 TWh** of hydrogen storage — an energy shrink of **4.2x**.
+Hydrogen holds about **0.30** of methane's energy per cubic metre, and a cavern stores a volume, not an energy. Repurposed, Europe's **1130 TWh** of gas storage becomes **260 TWh** of hydrogen storage — an energy shrink of **4.3x**.
 
 | Store type | Hydrogen-capable energy (TWh) |
 |---|---|
@@ -227,7 +227,7 @@ Salt caverns — the only store type with an established hydrogen track record �
 
 **So what — the choice this forces, not a dead end.** "We already have the storage" does not survive the volumetric arithmetic; the same holes hold roughly a fifth of the energy on hydrogen. That does not make the transition impossible, it makes it a sizing decision with three levers, none free:
 
-1. **Keep methane storage for the seasonal job and decarbonise the molecule elsewhere** (biomethane, synthetic methane, or carbon capture on the burn) — the existing 1100 TWh buffer stays intact, but the abatement moves upstream and has to be paid for there.
+1. **Keep methane storage for the seasonal job and decarbonise the molecule elsewhere** (biomethane, synthetic methane, or carbon capture on the burn) — the existing 1130 TWh buffer stays intact, but the abatement moves upstream and has to be paid for there.
 
 2. **Repurpose to hydrogen and rebuild the missing volume** — to hold the same *energy* on hydrogen Europe would need on the order of **four to five times the cavern volume it has today**, and suitable salt geology is concentrated in a handful of regions (northern Germany, the Netherlands, parts of the UK and Iberia), not evenly available where the demand sits. New-build is therefore both a capital and a siting problem, not just an engineering one.
 
@@ -253,7 +253,7 @@ The engineering-and-strategy point is that this is a decision to be sized now, o
 
 7. **Germany has become a re-export hub, and its import points run above firm.** Norway lands 1,015 GWh/d at two coastal clusters (both above firm), and Germany forwards it on — Brandov to Czechia, Oberkappel to Austria, Germany-CH to Switzerland, Mallnow reversed to Poland. The Russian-era route at Waidhaus sits at zero; the load moved to the North Sea coast.
 
-8. **Hydrogen does not inherit this buffer.** The same holes hold 4.2x less energy, so the seasonal margin has to be rebuilt, not converted.
+8. **Hydrogen does not inherit this buffer.** The same holes hold 4.3x less energy, so the seasonal margin has to be rebuilt, not converted.
 
 
 ---
