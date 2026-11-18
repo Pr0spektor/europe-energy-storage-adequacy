@@ -74,3 +74,41 @@ if __name__ == "__main__":
           % (r["target_twh"], r["target_met"], r["headroom_twh"]))
     print("Salt caverns alone cover the target: %s"
           % (UGS_H2_BY_TYPE["Salt caverns"] >= GIE_H2_STORAGE_TARGET_TWH))
+
+# ---------------------------------------------------------------- uncertainty band ---
+# The repurposed-energy figure is a model result, not a measurement: it depends on the
+# volumetric ratio (which moves with gas quality and compressibility) and on the share of
+# the working volume that has to be kept as cushion gas. Both are reported as ranges in the
+# literature, so the headline should be a range too.
+LHV_H2_RANGE = (2.9, 3.1)          # kWh per m3 at standard conditions
+LHV_CH4_RANGE = (9.9, 10.5)
+CUSHION_RANGE = (0.40, 0.60)
+
+
+def repurposed_energy_band(n: int = 20000, seed: int = 42) -> dict:
+    """Monte Carlo over the two assumptions behind the hydrogen capacity figure.
+
+    The published per-store totals already embed a central ratio and cushion share, so each
+    draw scales that total by the relative deviation of the two parameters. Returns P10,
+    P50 and P90 of the fleet total in TWh.
+    """
+    import random
+    rng = random.Random(seed)
+    base = float(sum(UGS_H2_BY_TYPE.values()))
+    central_ratio = volumetric_energy_ratio()
+    draws = []
+    for _ in range(n):
+        ratio = rng.uniform(*LHV_H2_RANGE) / rng.uniform(*LHV_CH4_RANGE)
+        cushion = rng.uniform(*CUSHION_RANGE)
+        scale = (ratio / central_ratio) * ((1.0 - cushion) / (1.0 - CUSHION_GAS_SHARE))
+        draws.append(base * scale)
+    draws.sort()
+
+    def pct(q: float) -> float:
+        return round(draws[min(int(q / 100.0 * (n - 1)), n - 1)], 1)
+
+    return {"base_twh": round(base, 1), "p10_twh": pct(10), "p50_twh": pct(50),
+            "p90_twh": pct(90), "n": n, "seed": seed,
+            "assumptions": {"lhv_h2_kwh_per_m3": LHV_H2_RANGE,
+                            "lhv_ch4_kwh_per_m3": LHV_CH4_RANGE,
+                            "cushion_share": CUSHION_RANGE}}

@@ -56,7 +56,9 @@ day actually came from, and where Germany's border binds:
 The same argument reaches forward. Europe's ≈1,130 TWh of gas storage is often treated as a
 ready-made hydrogen buffer — but a cavern stores a **volume, not an energy**, and hydrogen holds
 ≈0.30 of methane's energy per m³, so the bare volumetric ratio alone would leave **≈340 TWh**.
-Counting cushion gas and pressure limits store by store brings the usable figure to **≈260 TWh** — a **4.3×**
+Counting cushion gas and pressure limits store by store brings the usable figure to **≈260 TWh** on a 35% cushion share, the methane-derived assumption — a **4.3×**
+Hydrogen needs more cushion gas than methane, so that number is a range, not a point: at a
+40–60% cushion share the fleet holds **164–227 TWh** (P10–P90, median 195) — `src/hydrogen.py::repurposed_energy_band`, written to `results/hydrogen_band.json`.
 shrink. That does not kill the transition; it turns it into a sizing decision with three levers,
 none free:
 

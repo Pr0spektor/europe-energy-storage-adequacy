@@ -1,0 +1,22 @@
+{
+ "base_twh": 260.0,
+ "p10_twh": 164.1,
+ "p50_twh": 195.4,
+ "p90_twh": 227.2,
+ "n": 20000,
+ "seed": 42,
+ "assumptions": {
+  "lhv_h2_kwh_per_m3": [
+   2.9,
+   3.1
+  ],
+  "lhv_ch4_kwh_per_m3": [
+   9.9,
+   10.5
+  ],
+  "cushion_share": [
+   0.4,
+   0.6
+  ]
+ }
+}
