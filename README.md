@@ -22,8 +22,9 @@ hit 96% of their own withdrawal *rate*** on the peak day while looking comfortab
 A single "% full" target speaks to none of these.
 
 **2 · Storage is not the only flexibility, and the alternative carries a different risk.**
-On its peak day **84% of Spain's and 81% of Belgium's flexibility arrived by LNG ship**, against
-**14% for Germany**. Regasification needs no geology and builds fast — but it depends on a cargo
+Across the two swing sources, **84% of Spain's and 81% of Belgium's peak-day flexibility capacity
+sits in regasification, against 14% for Germany** — a capacity mix, not an observed same-day flow
+(see AUDIT.md, finding 1). Regasification needs no geology and builds fast — but it depends on a cargo
 being at the jetty on exactly the days every other importer is bidding for it. Caverns are
 pre-positioned; ships are not. A fill-based metric scores Iberia safe and misses the exposure
 entirely.
